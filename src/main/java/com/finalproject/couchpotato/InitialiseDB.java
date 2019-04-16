@@ -7,14 +7,7 @@ import org.sqlite.SQLiteConfig;
 
 public class InitialiseDB {
 
-    @SuppressWarnings("Duplicates")
-
-        public static void main(String[] args) {
-            InitialiseDB initDB = new InitialiseDB();
-           // initDB.createTables(initDB.connectDB());
-        }
-
-        private Connection connectDB() {
+    private Connection connectDB() {
             Connection con = null;
 
             try {
@@ -57,13 +50,13 @@ public class InitialiseDB {
                     "(?,?,?,?,?,?,?)";
 
             PreparedStatement pst = con.prepareStatement(addMovies);
-            pst.setString(1, movie.getMovieTitle());
-            pst.setString(2, movie.getMovieSummary());
-            pst.setString(3, movie.getMovieDuration());
-            pst.setString(4, movie.getMovieGenre());
-            pst.setString(5, movie.getReleaseDate());
-            pst.setString(6, movie.getCoverImage());
-            pst.setString(7, movie.getTrailer());
+            pst.setString(1, movie.getMovie_title());
+            pst.setString(2, movie.getMovie_summary());
+            pst.setString(3, movie.getMovie_duration());
+            pst.setString(4, movie.getMovie_genre());
+            pst.setString(5, movie.getMovie_release_date());
+            pst.setString(6, movie.getMovie_cover_image());
+            pst.setString(7, movie.getMovie_trailer());
 
             pst.executeUpdate();
             pst.close();
@@ -93,14 +86,14 @@ public class InitialiseDB {
 
             while (rs.next()) {
                 Movies movie = new Movies();
-                movie.setMovieID(rs.getInt("movie_id"));
-                movie.setMovieTitle(rs.getString("movie_title"));
-                movie.setMovieSummary(rs.getString("movie_summary"));
-                movie.setMovieDuration(rs.getString("movie_duration"));
-                movie.setBookGenre(rs.getString("movie_genre"));
-                movie.setReleaseDate(rs.getString("movie_releaseDate"));
-                movie.setCoverImage(rs.getString("movie_coverImage"));
-                movie.setTrailer(rs.getString("movie_Trailer"));
+                movie.setMovie_id(rs.getInt("movie_id"));
+                movie.setMovie_title(rs.getString("movie_title"));
+                movie.setMovie_summary(rs.getString("movie_summary"));
+                movie.setMovie_duration(rs.getString("movie_duration"));
+                movie.setMovie_genre(rs.getString("movie_genre"));
+                movie.setMovie_release_date(rs.getString("movie_releaseDate"));
+                movie.setMovie_cover_image(rs.getString("movie_coverImage"));
+                movie.setMovie_trailer(rs.getString("movie_Trailer"));
 
                 movies.add(movie);
             }
@@ -119,22 +112,22 @@ public class InitialiseDB {
         return movies;
     }
 
-    public boolean updateMovieRecord(Connection con, Movies movie){
+    public boolean updateMovie(Connection con, Movies movie){
         try {
             String updateRecord = "UPDATE tblMovies SET movie_title = ?, movie_summary = ?, movie_duration = ?," +
                     "movie_genre = ?, movie_releaseDate = ?, movie_coverImage, movie_trailer WHERE movie_id = ?";
 
             PreparedStatement pst = con.prepareStatement(updateRecord);
 
-            pst.setString(1, movie.getMovieTitle());
-            pst.setString(2, movie.getMovieSummary());
-            pst.setString(3, movie.getMovieDuration());
-            pst.setString(4, movie.getMovieGenre());
-            pst.setString(5, movie.getMovieReleaseDate());
-            pst.setString(6, movie.getMovieCoverImage());
-            pst.setString(7, movie.getMovieTrailer());
+            pst.setString(1, movie.getMovie_title());
+            pst.setString(2, movie.getMovie_summary());
+            pst.setString(3, movie.getMovie_duration());
+            pst.setString(4, movie.getMovie_genre());
+            pst.setString(5, movie.getMovie_release_date());
+            pst.setString(6, movie.getMovie_cover_image());
+            pst.setString(7, movie.getMovie_trailer());
 
-            pst.setInt(8, movie.getMovieID());
+            pst.setInt(8, movie.getMovie_id());
 
             pst.executeUpdate();
             pst.close();
@@ -153,12 +146,12 @@ public class InitialiseDB {
         }
         return true;
     }
-    public boolean removeMovie(Connection con, Movies movie){
+    public boolean deleteMovie(Connection con, Movies movie){
         try {
             String removeMovie = "DELETE FROM tblMovies WHERE movie_id = ?";
             PreparedStatement pst = con.prepareStatement(removeMovie);
 
-            pst.setInt(1, movie.getMovieID());
+            pst.setInt(1, movie.getMovie_id());
             pst.executeUpdate();
 
             pst.close();
@@ -178,7 +171,7 @@ public class InitialiseDB {
         return true;
     }
 
-    public Connection getDBConnetion() {
+    public Connection getDBConnection() {
         Connection con = connectDB();
         createTables(con);
         return con;
