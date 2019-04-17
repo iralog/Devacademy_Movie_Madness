@@ -1,5 +1,7 @@
 package com.finalproject.couchpotato;
 
+import java.util.ArrayList;
+
 //Class coded by Danillo
 public class Users {
 
@@ -9,6 +11,8 @@ public class Users {
     private String user_name;
     private int user_age;
     private String user_joinDate;
+    InitialiseDB initDB = new InitialiseDB(); //TODO Confirm this instance in all classes
+    public static ArrayList<Movies> movies = new ArrayList<>(); //TODO Confirm
 
     public Users(int user_id, String user_username, String user_password,
                  String user_name, int user_age, String user_joinDate) {

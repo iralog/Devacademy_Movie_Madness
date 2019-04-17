@@ -12,7 +12,7 @@ public class Movies {
     private String movie_release_date;
     private String movie_cover_image;
     private String movie_trailer;
-    InitialiseDB initDB=new InitialiseDB();
+    InitialiseDB initDB = new InitialiseDB();
     public static ArrayList<Movies> movies=new ArrayList<>();
 
 

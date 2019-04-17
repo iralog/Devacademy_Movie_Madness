@@ -5,7 +5,14 @@ import java.util.ArrayList;
 
 import org.sqlite.SQLiteConfig;
 
+@SuppressWarnings("Duplicates") //this @notation was missing (Danillo)
 public class InitialiseDB {
+
+    //this main block was missing (Danillo)
+    public static void main(String[] args) {
+        InitialiseDB initDB = new InitialiseDB();
+        initDB.createTables(initDB.connectDB());
+    }
 
     private Connection connectDB() {
             Connection con = null;
@@ -23,9 +30,9 @@ public class InitialiseDB {
             }
             return con;
         }
-    //TODO (It creates only the table Movies)
+    //TODO (It creates only the table Movies)(Danillo)
     // Missing tables Users, MovieReviews, Actors and MovieCast
-    // Double check field names
+    // Double check field names & table names
     private void createTables(Connection con) {
 
         try {
@@ -82,9 +89,9 @@ public class InitialiseDB {
         Statement stmnt = null;
 
         try {
-            String getBooksQuery = "SELECT * FROM tblMovies";
+            String getMoviesQuery = "SELECT * FROM tblMovies";
             stmnt = con.createStatement();
-            ResultSet rs = stmnt.executeQuery(getBooksQuery);
+            ResultSet rs = stmnt.executeQuery(getMoviesQuery);
 
             while (rs.next()) {
                 Movies movie = new Movies();
