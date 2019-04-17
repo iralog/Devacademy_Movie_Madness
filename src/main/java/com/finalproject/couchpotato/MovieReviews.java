@@ -45,7 +45,6 @@ public class MovieReviews {
 
     public void setReviewDate(String reviewDate) {
         this.reviewDate = reviewDate;
-        System.out.println("cheese");
     }
 }
 
