@@ -23,7 +23,9 @@ public class InitialiseDB {
             }
             return con;
         }
-
+    //TODO (It creates only the table Movies)
+    // Missing tables Users, MovieReviews, Actors and MovieCast
+    // Double check field names
     private void createTables(Connection con) {
 
         try {
