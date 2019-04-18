@@ -9,8 +9,8 @@ public class Movies {
     private String movie_summary;
     private String movie_duration;
     private String movie_genre;
-    private String movie_release_date;
-    private String movie_cover_image;
+    private String movie_releaseDate;
+    private String movie_coverImage;
     private String movie_trailer;
     InitialiseDB initDB=new InitialiseDB();
     public static ArrayList<Movies> movies=new ArrayList<>();
@@ -18,15 +18,15 @@ public class Movies {
 
     public Movies(int movie_id, String movie_title, String movie_summary,
                   String movie_duration, String movie_genre,
-                  String movie_release_date, String movie_cover_image,
+                  String movie_releaseDate, String movie_coverImage,
                   String movie_trailer) {
         this.movie_id = movie_id;
         this.movie_title = movie_title;
         this.movie_summary = movie_summary;
         this.movie_duration = movie_duration;
         this.movie_genre = movie_genre;
-        this.movie_release_date = movie_release_date;
-        this.movie_cover_image = movie_cover_image;
+        this.movie_releaseDate = movie_releaseDate;
+        this.movie_coverImage = movie_coverImage;
         this.movie_trailer = movie_trailer;
     }
 
@@ -73,20 +73,20 @@ public class Movies {
         this.movie_genre = movie_genre;
     }
 
-    public String getMovie_release_date() {
-        return movie_release_date;
+    public String getMovie_releaseDate() {
+        return movie_releaseDate;
     }
 
-    public void setMovie_release_date(String movie_release_date) {
-        this.movie_release_date = movie_release_date;
+    public void setMovie_releaseDate(String movie_releaseDate) {
+        this.movie_releaseDate = movie_releaseDate;
     }
 
-    public String getMovie_cover_image() {
-        return movie_cover_image;
+    public String getMovie_coverImage() {
+        return movie_coverImage;
     }
 
-    public void setMovie_cover_image(String movie_cover_image) {
-        this.movie_cover_image = movie_cover_image;
+    public void setMovie_coverImage(String movie_coverImage) {
+        this.movie_coverImage = movie_coverImage;
     }
 
     public String getMovie_trailer() {
