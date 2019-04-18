@@ -72,7 +72,8 @@ public class Users {
         this.user_joinDate = user_joinDate;
     }
 
-    public ArrayList<Users>getAllUsers(){users = initDB.getUsers(initDB.getDBConnection());
+
+    public ArrayList<Users>getUsers(){users = initDB.getUsers(initDB.getDBConnection());
         return users;}
 
 

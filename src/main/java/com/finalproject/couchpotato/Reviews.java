@@ -11,6 +11,7 @@ public class Reviews {
     private int review_rating;
     private String review_date;
 
+
     InitialiseDB initDB = new InitialiseDB();
     public static ArrayList<Reviews> reviews = new ArrayList<>();
 
@@ -56,7 +57,7 @@ public class Reviews {
     }
 
     public ArrayList<Reviews> getReviews() {
-        reviews = initDB.getReviews(initDB.getDBConection());
+        reviews = initDB.getReviews(initDB.getDBConnection());
         return reviews;
     }
 
