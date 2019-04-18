@@ -76,7 +76,7 @@ public class Users {
         return users;}
 
 
-    //Methods (Add, Update and Remove User)
+    //Methods (Add, Update and Delete User)
     public void addNewUser(Users user) {
         initDB.addNewUser(initDB.getDBConnection(), user);
     }

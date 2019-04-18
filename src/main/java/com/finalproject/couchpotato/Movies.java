@@ -97,6 +97,9 @@ public class Movies {
         this.movie_trailer = movie_trailer;
     }
 
+    public ArrayList<Movies>getAllMovies(){movies = initDB.getMovies(initDB.getDBConnection());
+        return movies;}
+
     //Methods (Add, Update and Remove movie)
     public void addNewMovie(Movies movie){
         initDB.addNewMovie(initDB.getDBConnection(),movie);
