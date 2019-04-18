@@ -13,7 +13,7 @@ public class Movies {
     private String movie_cover_image;
     private String movie_trailer;
     InitialiseDB initDB = new InitialiseDB();
-    public static ArrayList<Movies> movies=new ArrayList<>();
+    public static ArrayList<Movies> movies = new ArrayList<>();
 
 
     public Movies(int movie_id, String movie_title, String movie_summary,
@@ -32,7 +32,7 @@ public class Movies {
 
     public Movies(){}
 
-
+    //Getters and Setters
     public int getMovie_id() {
         return movie_id;
     }
@@ -97,22 +97,16 @@ public class Movies {
         this.movie_trailer = movie_trailer;
     }
 
-
+    //Methods (Add, Update and Remove movie)
     public void addNewMovie(Movies movie){
         initDB.addNewMovie(initDB.getDBConnection(),movie);
     }
-
 
     public void updateMovie(Movies movie){
         initDB.updateMovie(initDB.getDBConnection(),movie);
     }
 
-
-
-
-
-    public void deleteMovie(Movies movie){
-        initDB.deleteMovie(initDB.getDBConnection(),movie);
+    public void deleteMovie(Movies movie){ initDB.deleteMovie(initDB.getDBConnection(),movie);
 
     }
 }

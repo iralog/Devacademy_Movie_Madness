@@ -12,8 +12,9 @@ public class MovieReviews {
         this.reviewComment = reviewComment;
         this.reviewRating = reviewRating;
         this.reviewDate = reviewDate;
-
     }
+
+    public MovieReviews(){}
 
     public int getReviewID() {
         return reviewID;
@@ -46,5 +47,12 @@ public class MovieReviews {
     public void setReviewDate(String reviewDate) {
         this.reviewDate = reviewDate;
     }
+
+    //Methods (Add, Update and Remove Movie Reviews)
+    public void addNewMovieReview(MovieReviews movieReview) {initDB.addNewMovieReview(initDB.getDBConnection(), movieReview);}
+
+    public void updateMovieReviewRecord(MovieReviews movieReview) {initDB.updateMovieReviewRecord(initDB.getDBConnection(), movieReview);}
+
+    public void deleteMovieReview(MovieReviews movieReview) {initDB.deleteMovieReview(initDB.getDBConnection(), movieReview);}
 }
 

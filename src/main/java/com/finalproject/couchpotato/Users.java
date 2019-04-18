@@ -1,8 +1,9 @@
+//Class coded by Danillo
+
 package com.finalproject.couchpotato;
 
 import java.util.ArrayList;
 
-//Class coded by Danillo
 public class Users {
 
     private int user_id;
@@ -11,8 +12,8 @@ public class Users {
     private String user_name;
     private int user_age;
     private String user_joinDate;
-    InitialiseDB initDB = new InitialiseDB(); //TODO Confirm this instance in all classes
-    public static ArrayList<Movies> movies = new ArrayList<>(); //TODO Confirm
+    InitialiseDB initDB = new InitialiseDB();
+    public static ArrayList<Users> users = new ArrayList<>();
 
     public Users(int user_id, String user_username, String user_password,
                  String user_name, int user_age, String user_joinDate) {
@@ -23,18 +24,15 @@ public class Users {
         this.user_age = user_age;
         this.user_joinDate = user_joinDate;
     }
-    public Users(){
 
-    }
+    public Users(){}
 
     //Getters and Setters
     public int getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
-    }
+    public void setUser_id(int user_id) {this.user_id = user_id;}
 
     public String getUser_username() {
         return user_username;
@@ -56,9 +54,7 @@ public class Users {
         return user_name;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
-    }
+    public void setUser_name(String user_name) {this.user_name = user_name;}
 
     public int getUser_age() {
         return user_age;
@@ -76,17 +72,17 @@ public class Users {
         this.user_joinDate = user_joinDate;
     }
 
+    public ArrayList<Users>getAllUsers(){users = initDB.getUsers(initDB.getDBConnection());
+        return users;}
+
+
     //Methods (Add, Update and Remove User)
     public void addNewUser(Users user) {
-        initDB.addNewUser(initDB.getDBConnetion(), user);
+        initDB.addNewUser(initDB.getDBConnection(), user);
     }
 
-    public void updateUserRecord(Users user) {
+    public void updateUserRecord(Users user) {initDB.updateUserRecord(initDB.getDBConnection(), user);}
 
-        initDB.updateUserRecord(initDB.getDBConnetion(), user);
-    }
+    public void deleteUser(Users user) {initDB.deleteUser(initDB.getDBConnection(), user);}
 
-    public void removeUser(Users user) {
-        initDB.removeUser(initDB.getDBConnetion(), user);
-    }
 }
