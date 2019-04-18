@@ -55,13 +55,23 @@ public class Reviews {
         this.review_date = review_date;
     }
 
-    public ArrayList<Reviews>getReviews()(reviews = initDB.getReviews(initDB.getDBConection());
-    return reviews;)
+    public ArrayList<Reviews> getReviews() {
+        reviews = initDB.getReviews(initDB.getDBConection());
+        return reviews;
+    }
 
     //Add and Delete Reviews
-    public void addNewReview(Reviews review) {initDB.addNewReview(init.getConnection().review);}
+    public void addNewReview(Reviews review) {
+        initDB.addNewReview(initDB.getDBConnection(), review);
+    }
 
-    public void deleteReview(Reviews review) {initDB.deleteReview(init.getConnection().review);}
+    public void deleteReview(Reviews review) {
+        initDB.deleteReview(initDB.getDBConnection(), review);
+    }
 
+    public void updateReview(Reviews review) {
+        initDB.updateReview(initDB.getDBConnection(), review);
+    }
 }
+
 
