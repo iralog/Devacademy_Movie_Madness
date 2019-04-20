@@ -9,7 +9,7 @@ public class Actors {
     private String actor_gender;
     private String actor_profilePhoto;
     InitialiseDB initDB = new InitialiseDB();
-    public static ArrayList<Actors> actor = new ArrayList<>();
+    public static ArrayList<Actors> actors = new ArrayList<>();
 
     public Actors() {
 
@@ -65,8 +65,8 @@ public class Actors {
     //Below ready for use. no methods made yet.
 
     public ArrayList<Actors>getAllActors(){
-       actor = initDB.getActors(initDB.getDBConnection());
-        return actor;
+       actors = initDB.getActors(initDB.getDBConnection());
+        return actors;
    }
     public void addNewActors(Actors actor) {
       initDB.addNewActors(initDB.getDBConnection(),actor);
