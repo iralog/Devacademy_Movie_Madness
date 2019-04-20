@@ -2,7 +2,6 @@ package com.finalproject.couchpotato;
 
 import java.sql.*;
 import java.util.ArrayList;
-
 import org.sqlite.SQLiteConfig;
 
 @SuppressWarnings("Duplicates") //this @notation was missing (Danillo)
@@ -101,7 +100,7 @@ public class InitialiseDB {
     public boolean updateMovie(Connection con, Movies movie){
         try {
             String updateRecord = "UPDATE tblMovies SET movie_title = ?, movie_summary = ?, movie_duration = ?," +
-                    "movie_genre = ?, movie_releaseDate = ?, movie_coverImage, movie_trailer WHERE movie_id = ?";
+                    "movie_genre = ?, movie_releaseDate = ?, movie_coverImage = ?, movie_trailer = ? WHERE movie_id = ?";
 
             PreparedStatement pst = con.prepareStatement(updateRecord);
 
@@ -112,7 +111,6 @@ public class InitialiseDB {
             pst.setString(5, movie.getMovie_releaseDate());
             pst.setString(6, movie.getMovie_coverImage());
             pst.setString(7, movie.getMovie_trailer());
-
             pst.setInt(8, movie.getMovie_id());
 
             pst.executeUpdate();
@@ -156,7 +154,6 @@ public class InitialiseDB {
         }
         return true;
     }
-
 
         public void addNewUser(Connection con, Users user) {
         try {
