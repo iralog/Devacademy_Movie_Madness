@@ -12,7 +12,7 @@ public class InitialiseDB {
         InitialiseDB initDB = new InitialiseDB();
     }
 
-    public Connection getDBConnection() {
+    protected Connection getDBConnection() {
         Connection con = null;
 
         try {
