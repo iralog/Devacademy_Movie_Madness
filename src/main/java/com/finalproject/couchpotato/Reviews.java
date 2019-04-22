@@ -22,6 +22,7 @@ public class Reviews {
         this.review_date = review_date;
 
     }
+    public Reviews(){}
 
     //Getter and Setters
     public int getReview_id() {
