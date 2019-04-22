@@ -2,19 +2,14 @@ package com.finalproject.couchpotato;
 
 import java.sql.*;
 import java.util.ArrayList;
+
 import org.sqlite.SQLiteConfig;
 
-@SuppressWarnings("Duplicates") //this @notation was missing (Danillo)
+@SuppressWarnings("Duplicates")
 public class InitialiseDB {
-
-    //this main block was missing (Danillo)
-    public static void main(String[] args) {
-        InitialiseDB initDB = new InitialiseDB();
-    }
 
     protected Connection getDBConnection() {
         Connection con = null;
-
         try {
             Class.forName("org.sqlite.JDBC");
             SQLiteConfig config = new SQLiteConfig();
@@ -45,12 +40,10 @@ public class InitialiseDB {
 
             pst.executeUpdate();
             pst.close();
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getClass());
             ex.printStackTrace();
-        }
-        finally {
+        } finally {
             try {
                 con.close();
             } catch (SQLException e) {
@@ -97,7 +90,7 @@ public class InitialiseDB {
         return movies;
     }
 
-    public boolean updateMovie(Connection con, Movies movie){
+    public boolean updateMovie(Connection con, Movies movie) {
         try {
             String updateRecord = "UPDATE tblMovies SET movie_title = ?, movie_summary = ?, movie_duration = ?," +
                     "movie_genre = ?, movie_releaseDate = ?, movie_coverImage = ?, movie_trailer = ? WHERE movie_id = ?";
@@ -116,13 +109,11 @@ public class InitialiseDB {
 
             pst.executeUpdate();
             pst.close();
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getClass());
             ex.printStackTrace();
             return false;
-        }
-        finally {
+        } finally {
             try {
                 con.close();
             } catch (SQLException e) {
@@ -131,7 +122,8 @@ public class InitialiseDB {
         }
         return true;
     }
-    public boolean deleteMovie(Connection con, Movies movie){
+
+    public boolean deleteMovie(Connection con, Movies movie) {
         try {
             String removeMovie = "DELETE FROM tblMovies WHERE movie_id = ?";
             PreparedStatement pst = con.prepareStatement(removeMovie);
@@ -140,13 +132,11 @@ public class InitialiseDB {
             pst.executeUpdate();
 
             pst.close();
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getClass());
             ex.printStackTrace();
             return false;
-        }
-        finally {
+        } finally {
             try {
                 con.close();
             } catch (SQLException e) {
@@ -156,7 +146,7 @@ public class InitialiseDB {
         return true;
     }
 
-        public void addNewUser(Connection con, Users user) {
+    public void addNewUser(Connection con, Users user) {
         try {
             String addUsers = "INSERT INTO tblUsers (user_username, user_password, user_name, user_age, user_joinDate) VALUES " +
                     "(?,?,?,?,?)";
@@ -170,12 +160,10 @@ public class InitialiseDB {
 
             pst.executeUpdate();
             pst.close();
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getClass());
             ex.printStackTrace();
-        }
-        finally {
+        } finally {
             try {
                 con.close();
             } catch (SQLException e) {
@@ -184,7 +172,7 @@ public class InitialiseDB {
         }
     }
 
-    public boolean updateUserRecord(Connection con, Users user){
+    public boolean updateUserRecord(Connection con, Users user) {
         try {
             String updateRecord = "UPDATE tblUsers SET user_ username= ?, user_password = ?, user_name = ?," +
                     "user_age = ?, user_joinDate = ? WHERE user_id = ?";
@@ -199,13 +187,11 @@ public class InitialiseDB {
 
             pst.executeUpdate();
             pst.close();
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getClass());
             ex.printStackTrace();
             return false;
-        }
-        finally {
+        } finally {
             try {
                 con.close();
             } catch (SQLException e) {
@@ -215,7 +201,7 @@ public class InitialiseDB {
         return true;
     }
 
-    public boolean deleteUser(Connection con, Users user){
+    public boolean deleteUser(Connection con, Users user) {
         try {
             String removeUser = "DELETE FROM tblUsers WHERE user_id = ?";
             PreparedStatement pst = con.prepareStatement(removeUser);
@@ -224,13 +210,11 @@ public class InitialiseDB {
             pst.executeUpdate();
 
             pst.close();
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getClass());
             ex.printStackTrace();
             return false;
-        }
-        finally {
+        } finally {
             try {
                 con.close();
             } catch (SQLException e) {
@@ -287,12 +271,10 @@ public class InitialiseDB {
 
             pst.executeUpdate();
             pst.close();
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getClass());
             ex.printStackTrace();
-        }
-        finally {
+        } finally {
             try {
                 con.close();
             } catch (SQLException e) {
@@ -301,7 +283,7 @@ public class InitialiseDB {
         }
     }
 
-    public boolean deleteReview(Connection con, Reviews review){
+    public boolean deleteReview(Connection con, Reviews review) {
         try {
             String removeReview = "DELETE FROM tblREviews WHERE review_id = ?";
             PreparedStatement pst = con.prepareStatement(removeReview);
@@ -310,13 +292,11 @@ public class InitialiseDB {
             pst.executeUpdate();
 
             pst.close();
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getClass());
             ex.printStackTrace();
             return false;
-        }
-        finally {
+        } finally {
             try {
                 con.close();
             } catch (SQLException e) {
@@ -360,7 +340,7 @@ public class InitialiseDB {
         return reviews;
     }
 
-    public boolean updateReview(Connection con, Reviews review){
+    public boolean updateReview(Connection con, Reviews review) {
         try {
             String updateRecord = "UPDATE tblReviews SET review_comment= ?, review_rating = ?" +
                     "review_date = ?, WHERE review_id = ?";
@@ -373,13 +353,11 @@ public class InitialiseDB {
 
             pst.executeUpdate();
             pst.close();
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getClass());
             ex.printStackTrace();
             return false;
-        }
-        finally {
+        } finally {
             try {
                 con.close();
             } catch (SQLException e) {
@@ -402,12 +380,10 @@ public class InitialiseDB {
 
             pst.executeUpdate();
             pst.close();
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getClass());
             ex.printStackTrace();
-        }
-        finally {
+        } finally {
             try {
                 con.close();
             } catch (SQLException e) {
@@ -416,7 +392,7 @@ public class InitialiseDB {
         }
     }
 
-    public boolean updateActorProfileList (Connection con, Actors actor){
+    public boolean updateActorProfileList(Connection con, Actors actor) {
         try {
             String updateRecord = "UPDATE tbActors SET actor_name= ?, actor_age = ?, actor_gender = ?," +
                     "actor_profilePhoto = ? WHERE actor_id = ?";
@@ -430,13 +406,11 @@ public class InitialiseDB {
 
             pst.executeUpdate();
             pst.close();
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getClass());
             ex.printStackTrace();
             return false;
-        }
-        finally {
+        } finally {
             try {
                 con.close();
             } catch (SQLException e) {
@@ -446,7 +420,7 @@ public class InitialiseDB {
         return true;
     }
 
-    public boolean deleteActor(Connection con, Actors actor){
+    public boolean deleteActor(Connection con, Actors actor) {
         try {
             String removeActor = "DELETE FROM tblActors WHERE actor_id = ?";
             PreparedStatement pst = con.prepareStatement(removeActor);
@@ -455,13 +429,11 @@ public class InitialiseDB {
             pst.executeUpdate();
 
             pst.close();
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getClass());
             ex.printStackTrace();
             return false;
-        }
-        finally {
+        } finally {
             try {
                 con.close();
             } catch (SQLException e) {
@@ -471,7 +443,7 @@ public class InitialiseDB {
         return true;
     }
 
-    public boolean updateActorsProfileList(Connection con, Actors actor){
+    public boolean updateActorsProfileList(Connection con, Actors actor) {
         try {
             String updateRecord = "UPDATE tblActors SET actor_age= ?, actor_name = ?, actor_gender" +
                     "actor_profilePhoto = ?, WHERE actor_id = ?";
@@ -485,13 +457,11 @@ public class InitialiseDB {
 
             pst.executeUpdate();
             pst.close();
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getClass());
             ex.printStackTrace();
             return false;
-        }
-        finally {
+        } finally {
             try {
                 con.close();
             } catch (SQLException e) {
