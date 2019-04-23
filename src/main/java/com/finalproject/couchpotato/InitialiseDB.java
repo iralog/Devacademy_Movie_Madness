@@ -19,8 +19,7 @@ public class InitialiseDB {
             SQLiteConfig config = new SQLiteConfig();
             config.enforceForeignKeys(true);
             con = DriverManager.getConnection("jdbc:sqlite:" +
-                            "..../lib/MovieMadnessDB.db",
-                            "C:/hakuna/lib/MovieMadnessDB.db",
+                            "./lib/MovieMadnessDB.db",
                     config.toProperties());
         } catch (Exception ex) {
             System.out.println(ex.getClass());
