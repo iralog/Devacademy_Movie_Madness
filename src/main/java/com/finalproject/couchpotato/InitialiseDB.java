@@ -7,15 +7,20 @@ import org.sqlite.SQLiteConfig;
 
 @SuppressWarnings("Duplicates")
 public class InitialiseDB {
+    public static void main(String[] args) {
+        InitialiseDB initDB = new InitialiseDB();
+        initDB.connectDB();
+    }
+        private Connection connectDB(){
+            Connection con = null;
 
-    protected Connection getDBConnection() {
-        Connection con = null;
         try {
             Class.forName("org.sqlite.JDBC");
             SQLiteConfig config = new SQLiteConfig();
             config.enforceForeignKeys(true);
             con = DriverManager.getConnection("jdbc:sqlite:" +
-                            "D:/DevAcademyFinal-Hakuna Matata/Hakuna-Matata-dev/lib/MovieMadnessDB.db",
+                            "..../lib/MovieMadnessDB.db",
+                            "C:/hakuna/lib/MovieMadnessDB.db",
                     config.toProperties());
         } catch (Exception ex) {
             System.out.println(ex.getClass());
@@ -26,7 +31,9 @@ public class InitialiseDB {
 
     public void addNewMovie(Connection con, Movies movie) {
         try {
-            String addMovies = "INSERT INTO tblMovies (movie_title, movie_summary, movie_duration, movie_genre, movie_releaseDate, movie_coverImage, movie_trailer) VALUES " +
+            String addMovies = "INSERT INTO tblMovies (movie_title, movie_summary," +
+                    " movie_duration, movie_genre, movie_release_date, movie_cover_image," +
+                    " movie_trailer) VALUES " +
                     "(?,?,?,?,?,?,?)";
 
             PreparedStatement pst = con.prepareStatement(addMovies);
@@ -69,8 +76,8 @@ public class InitialiseDB {
                 movie.setMovie_summary(rs.getString("movie_summary"));
                 movie.setMovie_duration(rs.getString("movie_duration"));
                 movie.setMovie_genre(rs.getString("movie_genre"));
-                movie.setMovie_releaseDate(rs.getString("movie_releaseDate"));
-                movie.setMovie_coverImage(rs.getString("movie_coverImage"));
+                movie.setMovie_releaseDate(rs.getString("movie_release_date"));
+                movie.setMovie_coverImage(rs.getString("movie_cover_image"));
                 movie.setMovie_trailer(rs.getString("movie_Trailer"));
 
                 movies.add(movie);
@@ -93,7 +100,7 @@ public class InitialiseDB {
     public boolean updateMovie(Connection con, Movies movie) {
         try {
             String updateRecord = "UPDATE tblMovies SET movie_title = ?, movie_summary = ?, movie_duration = ?," +
-                    "movie_genre = ?, movie_releaseDate = ?, movie_coverImage = ?, movie_trailer = ? WHERE movie_id = ?";
+                    "movie_genre = ?, movie_release_date = ?, movie_cover_image = ?, movie_trailer = ? WHERE movie_id = ?";
 
             PreparedStatement pst = con.prepareStatement(updateRecord);
 
@@ -482,5 +489,10 @@ public class InitialiseDB {
             }
         }
         return actors;
+    }
+
+    public Connection getDBConnection() {
+        Connection con = connectDB();
+        return con;
     }
 }
