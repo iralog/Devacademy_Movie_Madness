@@ -16,10 +16,6 @@ public class Reviews {
     public static ArrayList<Reviews> reviews = new ArrayList<>();
 
 
-    public Reviews(){}
-
-
-
     public Reviews(int review_id, String review_comment, int review_rating, String review_date) {
         this.review_id = review_id;
         this.review_comment = review_comment;
