@@ -9,7 +9,7 @@ public class Actors {
     private String actor_gender;
     private String actor_profilePhoto;
     InitialiseDB initDB = new InitialiseDB();
-    public static ArrayList<Actors> actor = new ArrayList<>();
+    public static ArrayList<Actors> actors = new ArrayList<>();
 
     public Actors() {
 
@@ -62,19 +62,20 @@ public class Actors {
     public void setActor_profilePhoto(String actor_profilePhoto) {
         this.actor_profilePhoto = actor_profilePhoto;
     }
-    //      Below ready for use. no methods made yet.
-//    public ArrayList<Actors>getAllActors(){
-//        actor = initDB.getActors(initDB.getDBConnection());
-//        return actor;
-//    }
-//    public void addNewActors(Actors actor) {
-//        initDB.addNewActors(initDB.getDBConnection(),actor);
-//    }
-//    public void updateActorProfileList(Actors actor){
-//        initDB.updateActorsProfileList(initDB.getDBConnection(), actor);
-//    }
-//    public void removeActor(Actors actor){
-//        initDB.removeActors(initDB.getDBConnection(), actor);
-//    }
+    //Below ready for use. no methods made yet.
+
+    public ArrayList<Actors>getAllActors(){
+       actors = initDB.getActors(initDB.getDBConnection());
+        return actors;
+   }
+    public void addNewActors(Actors actor) {
+      initDB.addNewActors(initDB.getDBConnection(),actor);
+  }
+ public void updateActorProfileList(Actors actor){
+      initDB.updateActorsProfileList(initDB.getDBConnection(), actor);
+   }
+    public void deleteActor(Actors actor){
+       initDB.deleteActor(initDB.getDBConnection(), actor);
+   }
 
 }
