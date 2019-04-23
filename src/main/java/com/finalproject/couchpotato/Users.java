@@ -82,7 +82,7 @@ public class Users {
     }
 
 
-    public ArrayList<Users>getUsers(){users = initDB.getUsers(initDB.getDBConnection());
+    public ArrayList<Users>getAllUsers(){users = initDB.getUsers(initDB.getDBConnection());
         return users;}
 
 
