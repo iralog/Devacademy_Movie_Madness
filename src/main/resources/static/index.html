@@ -1,11 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<style>
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+
+    .active {
+        background-color: #4CAF50;
+    }
+
+</style>
+
+
 <head>
     <meta charset="UTF-8">
     <title>CoachPotato-Index</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
 </head>
 <body>
 
+<ul>
+    <li><a type="button" class="active" href="#home">Home</a></li>
+
+</ul>
+
+<div class="text-center">
+    <h1>CouchPotato-Index</h1>
+    <p class="alert alert-warning"><strong>Manage your library from the options below:</strong></p>
+    <a type="button" class="btn btn-primary" href="/viewMovies">View Our Movies</a>
+    <a type="button" class="btn btn-warning" href="/addMovies">Add New Movies</a>
+    <a type="button" class="btn btn-danger" href="/editDeleteMovie">Change/Delete Movies</a>
+</div>
 
 
 </body>
