@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Book - Bookcase</title>
+    <title>Add Movies to your library</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
@@ -14,7 +14,7 @@
 
         <div>
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie ID</p>
-            <input class="col-md-4 text-center" type="text" th:field="*{movie_id}" th:value="${movies.movie_id()}"
+            <input class="col-md-4 text-center" type="text" th:field="*{movie_id}" th:value="${movie.movie_id}"
                    readonly/>
         </div>
 

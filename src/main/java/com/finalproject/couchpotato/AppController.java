@@ -84,7 +84,7 @@ public class AppController {
     @GetMapping("/viewMovies")
     public String viewMovies(Model model) {
         movie.getAllMovies();
-        model.addAttribute("movie", Movies.movies);
+        model.addAttribute("m", Movies.movies);
         return "viewMovies";
     }
 
