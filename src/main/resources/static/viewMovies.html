@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Your movies - CouchPotato</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
 </head>
 <body>
+<table class="table table-hover text-center">
+    <thead class="thead-dark">
+    <tr>
+        <th class="align-middle" scope="col">#</th>
+        <th class="align-middle" scope="col">Cover</th>
+        <th class="align-middle" scope="col">Movie Title</th>
+        <th class="align-middle" scope="col">Movie Summary</th>
+        <th class="align-middle" scope="col">Movie Trailer</th>
+    </tr>
+    </thead>
+    <tbody class="tbody-light">
+    <tr th:each="movies :${movie}">
+        <td class="align-middle" th:text="${movies.getMovie_id()}"></td>
+        <td class="align-middle" style="max-width: 25%; width: 25%"><img class="img-thumbnail w-25" th:src="${movies.getMovie_coverImage()}"/></td>
+        <h5 class="align-middle" th:text="${movies.getMovie_title()}"></h5>
+
+        <td>
+            <p class="align-middle" th:text="${movies.getMovie_duration()}"></p>
+            <p class="align-middle" th:text="${movies.getMovie_genre()}"></p>
+            <p class="align-middle" th:text="${movies.getMovie_releaseDate()}"></p>
+            <p class="align-middle" th:text="${movies.getMovie_summary()}"></p>
+
+        <td class="align-middle" th:text="${movies.getMovie_trailer()}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="container text-center">
+    <a class="btn btn-success" href="/">Back To Homepage</a>
+</div>
 
 </body>
 </html>
