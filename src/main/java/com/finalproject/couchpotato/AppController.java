@@ -6,11 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
-<<<<<<< HEAD
 @SuppressWarnings("Duplicates")
-=======
->>>>>>> 26a5e08a3ae6549257ad2025218d1bf2e5ed0e7a
 @Controller
 public class AppController {
 
@@ -18,6 +14,72 @@ public class AppController {
     Actors actor = new Actors();
     Reviews review = new Reviews();
     Users user = new Users();
+
+    @GetMapping("/viewReviews")
+    public String viewReviews(Model model) {
+        review.getReviews();
+        model.addAttribute("review", Reviews.reviews);
+        return "viewReviews";
+    }
+
+    @GetMapping("/addReview")
+    public String reviewToAdd(Model model) {
+        int nextID = Reviews.reviews.size() + 1;
+        System.out.println(nextID);
+        Reviews review = new Reviews();
+        review.setReview_id(nextID);
+        model.addAttribute("review", review);
+        return "addReview";
+    }
+
+    @PostMapping("/addingReview")
+    public String reviewAdded(@ModelAttribute Reviews review) {
+        review.addNewReview(review);
+        return "viewReviews";
+    }
+
+    @GetMapping("/editDeleteReview")
+    public String editDeleteReview(Model model) {
+        model.addAttribute("review", Reviews.reviews);
+        model.addAttribute("reviewEdit", new Reviews());
+        return "editDeleteReview";
+    }
+
+    @PostMapping("/editReview")
+    public String reviewToEdit(@ModelAttribute Reviews review, Model model) {
+        Reviews r = new Reviews();
+        for (Reviews rev : Reviews.reviews) {
+            if (rev.getReview_id() == review.getReview_id()) {
+                r = rev;
+            }
+        }
+        model.addAttribute("review", r);
+        return "editReview";
+    }
+
+    @PostMapping("/reviewSaved")
+    public String reviewSaved(@ModelAttribute Reviews review) {
+        review.updateReview(review);
+        return "viewReviews";
+    }
+
+    @PostMapping("/reviewDelete")
+    public String reviewToDelete(@ModelAttribute Reviews review, Model model) {
+        Reviews r = new Reviews();
+        for (Reviews rev : Reviews.reviews) {
+            if (rev.getReview_id() == review.getReview_id()) {
+                r = rev;
+            }
+        }
+        model.addAttribute("review", r);
+        return "reviewDelete";
+    }
+
+    @PostMapping("/reviewDeleted")
+    public String reviewDeleted(@ModelAttribute Reviews review) {
+        review.deleteReview(review);
+        return "viewReviews";
+    }
 
     @GetMapping("/viewMovies")
     public String viewMovies(Model model) {
