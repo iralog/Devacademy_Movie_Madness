@@ -8,11 +8,8 @@ import org.sqlite.SQLiteConfig;
 @SuppressWarnings("Duplicates")
 public class InitialiseDB {
 
-<<<<<<< HEAD
-    //this main block was missing (Danillo)
-   public static void main(String[] args) {
-        InitialiseDB initDB = new InitialiseDB();
-    }
+
+
 
     private Connection connectDB() {
             Connection con = null;
@@ -34,7 +31,6 @@ public class InitialiseDB {
     // Missing tables Users, MovieReviews, Actors and MovieCast
     // Double check field names & table names
     //created the methods for Users table (Irina)
-=======
     protected Connection getDBConnection() {
         Connection con = null;
         try {
@@ -50,7 +46,6 @@ public class InitialiseDB {
         }
         return con;
     }
->>>>>>> 26a5e08a3ae6549257ad2025218d1bf2e5ed0e7a
 
     public void addNewMovie(Connection con, Movies movie) {
         try {
