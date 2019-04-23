@@ -9,9 +9,8 @@ import org.sqlite.SQLiteConfig;
 public class InitialiseDB {
 
     //this main block was missing (Danillo)
-    public static void main(String[] args) {
+   public static void main(String[] args) {
         InitialiseDB initDB = new InitialiseDB();
-        initDB.createTables(initDB.connectDB());
     }
 
     private Connection connectDB() {
@@ -33,25 +32,7 @@ public class InitialiseDB {
     //TODO (It creates only the table Movies)(Danillo)
     // Missing tables Users, MovieReviews, Actors and MovieCast
     // Double check field names & table names
-    private void createTables(Connection con) {
-
-        try {
-            Statement stmnt = con.createStatement();
-            String createMoviesTable = "CREATE TABLE IF NOT EXISTS tblMovies " +
-                    "(movie_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    " movie_title TEXT NOT NULL," +
-                    " movie_summary TEXT NOT NULL," +
-                    " movie_duration TEXT NOT NULL," +
-                    " movie_genre TEXT NOT NULL," +
-                    " movie_releaseDate TEXT NOT NULL)" +
-                    " movie_coverImage TEXT NOT NULL)" +
-                    " movie_trailer TEXT NOT NULL)";
-
-            stmnt.executeUpdate(createMoviesTable);
-        } catch (Exception ex) {
-            System.out.println(ex.getClass());
-        }
-    }
+    //created the methods for Users table (Irina)
 
     public void addNewMovie(Connection con, Movies movie) {
         try {
@@ -63,9 +44,40 @@ public class InitialiseDB {
             pst.setString(2, movie.getMovie_summary());
             pst.setString(3, movie.getMovie_duration());
             pst.setString(4, movie.getMovie_genre());
-            pst.setString(5, movie.getMovie_release_date());
-            pst.setString(6, movie.getMovie_cover_image());
+            pst.setString(5, movie.getMovie_releaseDate());
+            pst.setString(6, movie.getMovie_coverImage());
             pst.setString(7, movie.getMovie_trailer());
+
+            pst.executeUpdate();
+            pst.close();
+        }
+        catch(Exception ex){
+            System.out.println(ex.getClass());
+            ex.printStackTrace();
+        }
+        finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    public void addNewUser(Connection con, Users user) {
+        try {
+            String addUsers = "INSERT INTO tblUsers (user_username, user_password\n" +
+                    "user_name,user_age,user_email,user_joinDate) VALUES " +
+                    "(?,?,?,?,?,?,?)";
+
+            PreparedStatement pst = con.prepareStatement(addUsers);
+            pst.setString(1, user.getUser_username());
+            pst.setString(2, user.getUser_password());
+            pst.setString(3, user.getUser_name());
+            pst.setInt(4, user.getUser_age());
+            pst.setString(5, user.getUser_email());
+            pst.setString(6, user.getUser_joinDate());
 
             pst.executeUpdate();
             pst.close();
@@ -100,8 +112,8 @@ public class InitialiseDB {
                 movie.setMovie_summary(rs.getString("movie_summary"));
                 movie.setMovie_duration(rs.getString("movie_duration"));
                 movie.setMovie_genre(rs.getString("movie_genre"));
-                movie.setMovie_release_date(rs.getString("movie_releaseDate"));
-                movie.setMovie_cover_image(rs.getString("movie_coverImage"));
+                movie.setMovie_releaseDate(rs.getString("movie_releaseDate"));
+                movie.setMovie_coverImage(rs.getString("movie_coverImage"));
                 movie.setMovie_trailer(rs.getString("movie_Trailer"));
 
                 movies.add(movie);
@@ -121,6 +133,43 @@ public class InitialiseDB {
         return movies;
     }
 
+    public ArrayList<Users> getUsers(Connection con) {
+
+        ArrayList<Users> users = new ArrayList<Users>();
+        Statement stmnt = null;
+
+        try {
+            String getMoviesQuery = "SELECT * FROM tblUsers";
+            stmnt = con.createStatement();
+            ResultSet rs = stmnt.executeQuery(getMoviesQuery);
+
+            while (rs.next()) {
+               Users user=new Users();
+                user.setUser_id(rs.getInt("user_id"));
+              user.setUser_username(rs.getString("user_username"));
+               user.setUser_password(rs.getString("user_password"));
+                user.setUser_name(rs.getString("user_name"));
+                user.setUser_age(rs.getInt("user_age"));
+               user.setUser_email(rs.getString("user_email"));
+               user.setUser_joinDate(rs.getString("user_joinDate"));
+
+               users.add(user);
+            }
+
+        } catch (Exception ex) {
+            System.out.println(ex.getClass());
+            ex.printStackTrace();
+        } finally {
+            try {
+                stmnt.close();
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return users;
+    }
+
     public boolean updateMovie(Connection con, Movies movie){
         try {
             String updateRecord = "UPDATE tblMovies SET movie_title = ?, movie_summary = ?, movie_duration = ?," +
@@ -132,8 +181,8 @@ public class InitialiseDB {
             pst.setString(2, movie.getMovie_summary());
             pst.setString(3, movie.getMovie_duration());
             pst.setString(4, movie.getMovie_genre());
-            pst.setString(5, movie.getMovie_release_date());
-            pst.setString(6, movie.getMovie_cover_image());
+            pst.setString(5, movie.getMovie_releaseDate());
+            pst.setString(6, movie.getMovie_coverImage());
             pst.setString(7, movie.getMovie_trailer());
 
             pst.setInt(8, movie.getMovie_id());
@@ -180,9 +229,11 @@ public class InitialiseDB {
         return true;
     }
 
+
+
+
     public Connection getDBConnection() {
         Connection con = connectDB();
-        createTables(con);
         return con;
     }
 }

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-/Duplicates/
+@SuppressWarnings("Duplicates")
 @Controller
 public class AppController {
 
@@ -27,6 +27,7 @@ public class AppController {
 
 
     @GetMapping("/movieAdded")
+
 
     @GetMapping("/editDeleteMovie")
 

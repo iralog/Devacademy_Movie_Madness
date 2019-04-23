@@ -1,7 +1,7 @@
 package com.finalproject.couchpotato;
 
 import java.util.ArrayList;
-
+//by Irina
 public class Movies {
 
     private int movie_id;

@@ -11,17 +11,19 @@ public class Users {
     private String user_password;
     private String user_name;
     private int user_age;
+    private String user_email;
     private String user_joinDate;
     InitialiseDB initDB = new InitialiseDB();
     public static ArrayList<Users> users = new ArrayList<>();
 
     public Users(int user_id, String user_username, String user_password,
-                 String user_name, int user_age, String user_joinDate) {
+                 String user_name, int user_age, String user_email,String user_joinDate) {
         this.user_id = user_id;
         this.user_username = user_username;
         this.user_password = user_password;
         this.user_name = user_name;
         this.user_age = user_age;
+        this.user_email=user_email;
         this.user_joinDate = user_joinDate;
     }
 
@@ -62,6 +64,13 @@ public class Users {
 
     public void setUser_age(int user_age) {
         this.user_age = user_age;
+    }
+    public String getUser_email() {
+        return user_email;
+    }
+
+    public void setUser_email(String user_email) {
+        this.user_email = user_email;
     }
 
     public String getUser_joinDate() {
