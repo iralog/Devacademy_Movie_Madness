@@ -58,7 +58,7 @@ public class Reviews {
         this.review_date = review_date;
     }
 
-    public ArrayList<Reviews> getReviews() {
+    public ArrayList<Reviews> getAllReviews() {
         reviews = initDB.getReviews(initDB.getDBConnection());
         return reviews;
     }

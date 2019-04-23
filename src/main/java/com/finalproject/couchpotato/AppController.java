@@ -17,7 +17,7 @@ public class AppController {
 
     @GetMapping("/viewReviews")
     public String viewReviews(Model model) {
-        review.getReviews();
+        review.getAllReviews();
         model.addAttribute("review", Reviews.reviews);
         return "viewReviews";
     }
@@ -147,4 +147,139 @@ public class AppController {
         movie.deleteMovie(movie);
         return "viewMovies";
     }
+    
+    @GetMapping("/viewActors")
+    public String viewActors(Model model) {
+        actor.getAllActors();
+        model.addAttribute("actor", Actors.actors);
+        return "viewActors";
+    }
+
+    @GetMapping("/addActor")
+    public String actorToAdd(Model model) {
+        int nextID = Actors.actors.size() + 1;
+        System.out.println(nextID);
+        Actors actor = new Actors();
+        actor.setActor_id(nextID);
+        model.addAttribute("actor", actor);
+        return "addActor";
+    }
+
+    @PostMapping("/addingActor")
+    public String actorAdded(@ModelAttribute Actors actor) {
+        actor.addNewActors(actor);
+        return "viewActors";
+    }
+
+    @GetMapping("/editDeleteActor")
+    public String editDeleteActor(Model model) {
+        model.addAttribute("actor", Actors.actors);
+        model.addAttribute("actorEdit", new Actors());
+        return "editDeleteActor";
+    }
+
+    @PostMapping("/editActor")
+    public String actorToEdit(@ModelAttribute Actors actor, Model model) {
+        Actors a = new Actors();
+        for (Actors ac : Actors.actors) {
+            if (ac.getActor_id() == actor.getActor_id()) {
+                a = ac;
+            }
+        }
+        model.addAttribute("actor", a);
+        return "editActor";
+    }
+
+    @PostMapping("/actorSaved")
+    public String actorSaved(@ModelAttribute Actors actor) {
+        actor.updateActorProfileList(actor);
+        return "viewActors";
+    }
+
+    @PostMapping("/actorDelete")
+    public String actorToDelete(@ModelAttribute Actors actor, Model model) {
+        Actors a = new Actors();
+        for (Actors ac : Actors.actors) {
+            if (ac.getActor_id() == actor.getActor_id()) {
+                a = ac;
+            }
+        }
+        model.addAttribute("actor", a);
+        return "actorDelete";
+    }
+
+    @PostMapping("/actorDeleted")
+    public String actorDeleted(@ModelAttribute Actors actor) {
+        actor.deleteActor(actor);
+        return "viewActors";
+    }
+
+    @GetMapping("/viewUsers")
+    public String viewUsers(Model model) {
+        user.getAllUsers();
+        model.addAttribute("user", Users.users);
+        return "viewUsers";
+    }
+
+    @GetMapping("/addUser")
+    public String userToAdd(Model model) {
+        int nextID = Users.users.size() + 1;
+        System.out.println(nextID);
+        Users user = new Users();
+        user.setUser_id(nextID);
+        model.addAttribute("user", user);
+        return "addUser";
+    }
+
+    @PostMapping("/addingUser")
+    public String userAdded(@ModelAttribute Users user) {
+        user.addNewUser(user);
+        return "viewUsers";
+    }
+
+
+    @GetMapping("/editDeleteUser")
+    public String editDeleteUser(Model model) {
+        model.addAttribute("user", Users.users);
+        model.addAttribute("userEdit", new Users());
+        return "editDeleteUser";
+    }
+
+    @PostMapping("/editUser")
+    public String userToEdit(@ModelAttribute Users user, Model model) {
+        Users u = new Users();
+        for (Users usr : Users.users) {
+            if (usr.getUser_id() == user.getUser_id()) {
+                u = usr;
+            }
+        }
+        model.addAttribute("user", u);
+        return "editUser";
+    }
+
+    @PostMapping("/userSaved")
+    public String userSaved(@ModelAttribute Users user) {
+        user.updateUserRecord(user);
+        return "viewUsers";
+    }
+
+    @PostMapping("/userDelete")
+    public String userToDelete(@ModelAttribute Users user, Model model) {
+        Users u = new Users();
+        for (Users usr : Users.users) {
+            if (usr.getUser_id() == user.getUser_id()) {
+                u = usr;
+            }
+        }
+        model.addAttribute("user", u);
+        return "userDelete";
+    }
+
+    @PostMapping("/userDeleted")
+    public String userDeleted(@ModelAttribute Users user) {
+        user.deleteUser(user);
+        return "viewUsers";
+    }
 }
+
+
