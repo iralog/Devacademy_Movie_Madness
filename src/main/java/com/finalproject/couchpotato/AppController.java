@@ -17,7 +17,7 @@ public class AppController {
 
     @GetMapping("/viewReviews")
     public String viewReviews(Model model) {
-        review.getReviews();
+        review.getAllReviews();
         model.addAttribute("review", Reviews.reviews);
         return "viewReviews";
     }
