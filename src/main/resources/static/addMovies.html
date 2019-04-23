@@ -1,10 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add Book - Bookcase</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
 </head>
 <body>
+<div class="text-center">
+    <h1 class="pb-2">Add new Movies to your library</h1>
+    <form action="#" th:action="@{/updateMovie}" th:object="${movie}" method="post">
 
+        <div>
+            <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie ID</p>
+            <input class="col-md-4 text-center" type="text" th:field="*{movie_id}" th:value="${movies.movie_id()}"
+                   readonly/>
+        </div>
+
+        <div>
+            <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Title</p>
+            <input class="col-md-4 text-center" type="text" th:field="*{movie_title}"
+                   placeholder="Example: The Gladiator"/>
+        </div>
+
+        <div>
+            <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Summary</p>
+            <textarea class="col-md-4 text-center" type="text" th:field="*{movie_summary}"
+                      placeholder="Example: Set in Roman times, the story of a once-powerful general forced to become a common gladiator. The emperor's son is enraged when he is passed over as heir in favour of his father's favourite general."/></textarea>
+        </div>
+
+
+        <div>
+            <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Duration</p>
+            <input class="col-md-4 text-center" type="text" th:field="*{movie_duration}"
+                   placeholder="Example: 2 hours 51 minutes"/>
+        </div>
+
+        <div>
+            <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Release-Date</p>
+            <input class="col-md-4 text-center" type="text" th:field="*{movie_releaseDate}"
+                   placeholder="Example: 12 May 2000"/>
+        </div>
+
+        <div>
+            <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Cover</p>
+            <input class="col-md-4 text-center" type="text" th:field="*{movie_coverImage}"
+                   placeholder="Example: URL link here or local path"/>
+        </div>
+
+        <div>
+            <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Trailer</p>
+            <input class="col-md-4 text-center" type="text" th:field="*{movie_trailer}"
+                   placeholder="Example: URL link here"/>
+        </div>
+
+
+        <br/>
+        <input class="btn btn-danger mt-2 mr-2" type="reset" value="Reset"/>
+        <input class="btn btn-primary mt-2 ml-2" type="submit" value="Submit"/>
+    </form>
+</div>
+<div class="text-center">
+    <a class="btn btn-success" href="/">Back to Homepage</a>
+</div>
 </body>
 </html>
