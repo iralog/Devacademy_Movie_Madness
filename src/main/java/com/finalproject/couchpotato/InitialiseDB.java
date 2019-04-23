@@ -148,15 +148,17 @@ public class InitialiseDB {
 
     public void addNewUser(Connection con, Users user) {
         try {
-            String addUsers = "INSERT INTO tblUsers (user_username, user_password, user_name, user_age, user_joinDate) VALUES " +
-                    "(?,?,?,?,?)";
+            String addUsers = "INSERT INTO tblUsers (user_username, user_password, user_name, user_age,user_email," +
+                    " user_joinDate) VALUES " +
+                    "(?,?,?,?,?,?)";
 
             PreparedStatement pst = con.prepareStatement(addUsers);
             pst.setString(1, user.getUser_username());
             pst.setString(2, user.getUser_password());
             pst.setString(3, user.getUser_name());
             pst.setInt(4, user.getUser_age());
-            pst.setString(5, user.getUser_joinDate());
+            pst.setString(5, user.getUser_email());
+            pst.setString(6, user.getUser_joinDate());
 
             pst.executeUpdate();
             pst.close();
@@ -175,7 +177,7 @@ public class InitialiseDB {
     public boolean updateUserRecord(Connection con, Users user) {
         try {
             String updateRecord = "UPDATE tblUsers SET user_ username= ?, user_password = ?, user_name = ?," +
-                    "user_age = ?, user_joinDate = ? WHERE user_id = ?";
+                    "user_age = ?, user_email = ?,user_joinDate = ? WHERE user_id = ?";
 
             PreparedStatement pst = con.prepareStatement(updateRecord);
 
@@ -183,7 +185,8 @@ public class InitialiseDB {
             pst.setString(2, user.getUser_password());
             pst.setString(3, user.getUser_name());
             pst.setInt(4, user.getUser_age());
-            pst.setString(5, user.getUser_joinDate());
+            pst.setString(5, user.getUser_email());
+            pst.setString(6, user.getUser_joinDate());
 
             pst.executeUpdate();
             pst.close();
@@ -240,6 +243,7 @@ public class InitialiseDB {
                 user.setUser_password(rs.getString("user_password"));
                 user.setUser_name(rs.getString("user_name"));
                 user.setUser_age(rs.getInt("user_age"));
+                user.setUser_email(rs.getString("user_email"));
                 user.setUser_joinDate(rs.getString("user_joinDate"));
 
                 users.add(user);
@@ -392,33 +396,7 @@ public class InitialiseDB {
         }
     }
 
-    public boolean updateActorProfileList(Connection con, Actors actor) {
-        try {
-            String updateRecord = "UPDATE tbActors SET actor_name= ?, actor_age = ?, actor_gender = ?," +
-                    "actor_profilePhoto = ? WHERE actor_id = ?";
 
-            PreparedStatement pst = con.prepareStatement(updateRecord);
-
-            pst.setString(1, actor.getActor_name());
-            pst.setInt(2, actor.getActor_age());
-            pst.setString(3, actor.getActor_gender());
-            pst.setString(4, actor.getActor_profilePhoto());
-
-            pst.executeUpdate();
-            pst.close();
-        } catch (Exception ex) {
-            System.out.println(ex.getClass());
-            ex.printStackTrace();
-            return false;
-        } finally {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return true;
-    }
 
     public boolean deleteActor(Connection con, Actors actor) {
         try {
