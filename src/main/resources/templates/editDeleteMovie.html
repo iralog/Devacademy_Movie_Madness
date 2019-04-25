@@ -13,54 +13,49 @@
 
     <form action="#" th:action="@{/updateMovie}" th:object="${movie}" method="post">
 
-
         <div th:each="movies:${movie}" th:text="${movies.getMovie_id()}">
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie ID</p>
             <input class="col-md-4 text-center" type="text" th:field="movie_id" th:value="${movies.getMovie_id()}"
                    readonly/>
         </div>
 
+
         <div th:each="movies:${movie}" th:text="${movies.getMovie_title()}">
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Title</p>
-            <input class="col-md-4 text-center" type="text" th:field="movie_title" th:value="${movies.getMovie_title()}"
-                   placeholder="Example: The Gladiator"/>
+            <input class="col-md-4 text-center" type="text" th:field="movie_title" th:value="${movies.getMovie_title()}"/>
         </div>
 
         <div th:each="movies:${movie}" th:text="${movies.getMovie_summary()}">
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Summary</p>
             <textarea class="col-md-4 text-center" type="text" th:field="movie_summary"
-                      th:value="${movies.getMovie_summary()}"
-                      placeholder="Example: Set in Roman times, the story of a once-powerful general forced to become a common gladiator. The emperor's son is enraged when he is passed over as heir in favour of his father's favourite general."/></textarea>
+                      th:value="${movies.getMovie_summary()}"/></textarea>
         </div>
 
 
         <div th:each="movies:${movie}" th:text="${movies.getMovie_duration()}">
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Duration</p>
             <input class="col-md-4 text-center" type="text" th:field="movie_duration"
-                   th:value="${movies.getMovie_duration()}"
-                   placeholder="Example: 2 hours 51 minutes"/>
+                   th:value="${movies.getMovie_duration()}"/>
         </div>
 
         <div th:each="movies:${movie}" th:text="${movies.getMovie_releaseDate()}">
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Release-Date</p>
             <input class="col-md-4 text-center" type="text" th:field="movie_releaseDate"
-                   th:value="${movies.getMovie_releaseDate()}"
-                   placeholder="Example: 12 May 2000"/>
+                   th:value="${movies.getMovie_releaseDate()}"/>
         </div>
 
         <div th:each="movies:${movie}" th:text="${movies.getMovie_coverImage()}">
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Cover</p>
             <input class="col-md-4 text-center" type="text" th:field="movie_coverImage"
-                   th:value="${movies.getMovie_coverImage()}"
-                   placeholder="Example: URL link here or local path"/>
+                   th:value="${movies.getMovie_coverImage()}"/>
         </div>
 
         <div th:each="movies:${movie}" th:text="${movies.getMovie_trailer()}">
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Trailer</p>
             <input class="col-md-4 text-center" type="text" th:field="movie_trailer"
-                   th:value="${movies.getMovie_trailer()}"
-                   placeholder="Example: URL link here"/>
+                   th:value="${movies.getMovie_trailer()}"/>
         </div>
+
 
         <br/>
         <a class="btn btn-warning mt-2 mr-2" href="/editDeleteBook">Cancel</a>
