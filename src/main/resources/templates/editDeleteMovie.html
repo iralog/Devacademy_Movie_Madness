@@ -26,8 +26,6 @@
     <tbody class="tbody-light">
     <tr th:each="movies :${movie}">
         <td class="align-middle" th:text="${movies.getMovie_id()}"></td>
-        <td class="align-middle" style="max-width: 25%; width: 25%"><img class="img-thumbnail w-25"
-                                                                         th:src="${movies.getMovie_coverImage()}"/></td>
         <td>
             <h5 class="align-middle" th:text="${movies.getMovie_title()}"></h5>
             <p class="align-middle" th:text="${movies.getMovie_duration()}"></p>
