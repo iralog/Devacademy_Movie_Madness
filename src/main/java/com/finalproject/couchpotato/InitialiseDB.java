@@ -10,8 +10,8 @@ import org.sqlite.SQLiteConfig;
 @Service
 public class InitialiseDB {
 
-        public Connection connectDB(){
-            Connection con = null;
+    public Connection connectDB() {
+        Connection con = null;
 
         try {
             Class.forName("org.sqlite.JDBC");
@@ -109,7 +109,6 @@ public class InitialiseDB {
             pst.setString(5, movie.getMovie_releaseDate());
             pst.setString(6, movie.getMovie_coverImage());
             pst.setString(7, movie.getMovie_trailer());
-
             pst.setInt(8, movie.getMovie_id());
 
             pst.executeUpdate();
@@ -400,7 +399,6 @@ public class InitialiseDB {
             }
         }
     }
-
 
 
     public boolean deleteActor(Connection con, Actors actor) {

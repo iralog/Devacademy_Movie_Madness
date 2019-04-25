@@ -35,7 +35,7 @@ public class AppController {
     @PostMapping("/addingReview")
     public String reviewAdded(@ModelAttribute Reviews review) {
         review.addNewReview(review);
-        return "viewReviews";
+        return "index";
     }
 
     @GetMapping("/editDeleteReview")
@@ -60,7 +60,7 @@ public class AppController {
     @PostMapping("/reviewSaved")
     public String reviewSaved(@ModelAttribute Reviews review) {
         review.updateReview(review);
-        return "viewReviews";
+        return "index";
     }
 
     @PostMapping("/reviewDelete")
@@ -78,7 +78,7 @@ public class AppController {
     @PostMapping("/reviewDeleted")
     public String reviewDeleted(@ModelAttribute Reviews review) {
         review.deleteReview(review);
-        return "viewReviews";
+        return "index";
     }
 
     @GetMapping("/viewMovies")
@@ -101,7 +101,7 @@ public class AppController {
     @PostMapping("/addingMovie")
     public String movieAdded(@ModelAttribute Movies movie) {
         movie.addNewMovie(movie);
-        return "viewMovies";
+        return "index";
     }
 
 
@@ -127,7 +127,7 @@ public class AppController {
     @PostMapping("/movieSaved")
     public String movieSaved(@ModelAttribute Movies movie) {
         movie.updateMovie(movie);
-        return "viewMovies";
+        return "index";
     }
 
     @PostMapping("/movieDelete")
@@ -145,7 +145,7 @@ public class AppController {
     @PostMapping("/movieDeleted")
     public String movieDeleted(@ModelAttribute Movies movie) {
         movie.deleteMovie(movie);
-        return "viewMovies";
+        return "index";
     }
     
     @GetMapping("/viewActors")
@@ -168,7 +168,7 @@ public class AppController {
     @PostMapping("/addingActor")
     public String actorAdded(@ModelAttribute Actors actor) {
         actor.addNewActors(actor);
-        return "viewActors";
+        return "index";
     }
 
     @GetMapping("/editDeleteActor")
@@ -193,7 +193,7 @@ public class AppController {
     @PostMapping("/actorSaved")
     public String actorSaved(@ModelAttribute Actors actor) {
         actor.updateActorProfileList(actor);
-        return "viewActors";
+        return "index";
     }
 
     @PostMapping("/actorDelete")
@@ -211,7 +211,7 @@ public class AppController {
     @PostMapping("/actorDeleted")
     public String actorDeleted(@ModelAttribute Actors actor) {
         actor.deleteActor(actor);
-        return "viewActors";
+        return "index";
     }
 
     @GetMapping("/viewUsers")
@@ -234,7 +234,7 @@ public class AppController {
     @PostMapping("/addingUser")
     public String userAdded(@ModelAttribute Users user) {
         user.addNewUser(user);
-        return "viewUsers";
+        return "index";
     }
 
 
@@ -260,7 +260,7 @@ public class AppController {
     @PostMapping("/userSaved")
     public String userSaved(@ModelAttribute Users user) {
         user.updateUserRecord(user);
-        return "viewUsers";
+        return "index";
     }
 
     @PostMapping("/userDelete")
@@ -278,7 +278,7 @@ public class AppController {
     @PostMapping("/userDeleted")
     public String userDeleted(@ModelAttribute Users user) {
         user.deleteUser(user);
-        return "viewUsers";
+        return "index";
     }
 }
 
