@@ -10,7 +10,7 @@
 <body>
 <div class="text-center">
     <h1 class="pb-2">Add new Movies to your library</h1>
-    <form action="#" th:action="@{/updateMovie}" th:object="${movie}" method="post">
+    <form action="#" th:action="@{/addingMovie}" th:object="${movie}" method="post">
 
         <div>
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie ID</p>
@@ -34,13 +34,19 @@
         <div>
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Duration</p>
             <input class="col-md-4 text-center" type="text" th:field="*{movie_duration}"
-                   placeholder="Example: 2 hours 51 minutes"/>
+                   placeholder="Example: 151 minutes"/>
         </div>
 
         <div>
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Release-Date</p>
             <input class="col-md-4 text-center" type="text" th:field="*{movie_releaseDate}"
-                   placeholder="Example: 12 May 2000"/>
+                   placeholder="Example: 12/05/2000"/>
+        </div>
+
+        <div>
+            <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Genre</p>
+            <input class="col-md-4 text-center" type="text" th:field="*{movie_genre}"
+                   placeholder="Drama, Action, Horror"/>
         </div>
 
         <div>
