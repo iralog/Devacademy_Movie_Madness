@@ -3,15 +3,14 @@ package com.finalproject.couchpotato;
 import java.sql.*;
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Service;
 import org.sqlite.SQLiteConfig;
 
 @SuppressWarnings("Duplicates")
+@Service
 public class InitialiseDB {
-    public static void main(String[] args) {
-        InitialiseDB initDB = new InitialiseDB();
-        initDB.connectDB();
-    }
-        private Connection connectDB(){
+
+        public Connection connectDB(){
             Connection con = null;
 
         try {
@@ -19,7 +18,7 @@ public class InitialiseDB {
             SQLiteConfig config = new SQLiteConfig();
             config.enforceForeignKeys(true);
             con = DriverManager.getConnection("jdbc:sqlite:" +
-                            "C:/hakuna/lib/MovieMadnessDB.db",
+                            "./lib/MovieMadnessDB.db",
                     config.toProperties());
         } catch (Exception ex) {
             System.out.println(ex.getClass());

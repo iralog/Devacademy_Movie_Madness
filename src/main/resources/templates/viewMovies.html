@@ -8,30 +8,37 @@
           crossorigin="anonymous">
 </head>
 <body>
-<table class="table table-hover text-center">
+<table class="table table-hover text-left">
     <thead class="thead-dark">
     <tr>
-        <th class="align-middle" scope="col">#</th>
-        <th class="align-middle" scope="col">Cover</th>
-        <th class="align-middle" scope="col">Movie Title</th>
-        <th class="align-middle" scope="col">Movie Summary</th>
-        <th class="align-middle" scope="col">Movie Trailer</th>
+        <th class="align-left" scope="col">#</th>
+        <th class="align-left" scope="col">Cover</th>
+        <th class="align-left" scope="col">Movie Title</th>
+        <th class="align-left" scope="col">Movie Info</th>
+        <th class="align-left" scope="col">Movie Summary</th>
+        <th class="align-left" scope="col">Movie Trailer</th>
     </tr>
     </thead>
     <tbody class="tbody-light">
     <tr th:each="movies:${movie}">
-        <td class="align-middle" th:text="${movies.getMovie_id()}"></td>
-        <td class="align-middle" style="max-width: 25%; width: 25%">
-            <img class="img-thumbnail w-25" th:src="${movies.getMovie_coverImage()}"/></td>
-        <td class="align-middle" th:text="${movies.getMovie_title()}"></td>
+        <td class="align-left" th:text="${movies.getMovie_id()}"></td>
+        <td class="align-left" style="width: 200px;">
+            <img class="img-thumbnail w-100" th:src="${movies.getMovie_coverImage()}"/></td>
+        <td class="align-left" style="font-weight:bold" th:text="${movies.getMovie_title()}"></td>
 
         <td>
-            <p class="align-middle" th:text="${movies.getMovie_duration()}"></p>
-            <p class="align-middle" th:text="${movies.getMovie_genre()}"></p>
-            <p class="align-middle" th:text="${movies.getMovie_releaseDate()}"></p>
-            <p class="align-middle" th:text="${movies.getMovie_summary()}"></p>
-
-        <td class="align-middle" th:text="${movies.getMovie_trailer()}"></td>
+            <p class="align-left" th:text="${movies.getMovie_duration()}"></p>
+            <p class="align-left" th:text="${movies.getMovie_genre()}"></p>
+            <p class="align-left" th:text="${movies.getMovie_releaseDate()}"></p>
+        </td>
+        <td>
+        <p class="align-left" th:text="${movies.getMovie_summary()}"></p>
+        </td>
+        <td>
+            <div>
+                <iframe width="280" height="160" th:src="${movies.getMovie_trailer()}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </td>
     </tr>
     </tbody>
 </table>
