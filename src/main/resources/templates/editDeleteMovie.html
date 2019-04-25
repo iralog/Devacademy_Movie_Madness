@@ -28,32 +28,37 @@
 
         <div th:each="movies:${movie}" th:text="${movies.getMovie_summary()}">
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Summary</p>
-            <textarea class="col-md-4 text-center" type="text" th:field="movie_summary" th:value="${movies.getMovie_summary()}"
+            <textarea class="col-md-4 text-center" type="text" th:field="movie_summary"
+                      th:value="${movies.getMovie_summary()}"
                       placeholder="Example: Set in Roman times, the story of a once-powerful general forced to become a common gladiator. The emperor's son is enraged when he is passed over as heir in favour of his father's favourite general."/></textarea>
         </div>
 
 
         <div th:each="movies:${movie}" th:text="${movies.getMovie_duration()}">
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Duration</p>
-            <input class="col-md-4 text-center" type="text" th:field="movie_duration" th:value="${movies.getMovie_duration()}"
+            <input class="col-md-4 text-center" type="text" th:field="movie_duration"
+                   th:value="${movies.getMovie_duration()}"
                    placeholder="Example: 2 hours 51 minutes"/>
         </div>
 
         <div th:each="movies:${movie}" th:text="${movies.getMovie_releaseDate()}">
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Release-Date</p>
-            <input class="col-md-4 text-center" type="text" th:field="movie_releaseDate" th:value="${movies.getMovie_releaseDate()}"
+            <input class="col-md-4 text-center" type="text" th:field="movie_releaseDate"
+                   th:value="${movies.getMovie_releaseDate()}"
                    placeholder="Example: 12 May 2000"/>
         </div>
 
         <div th:each="movies:${movie}" th:text="${movies.getMovie_coverImage()}">
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Cover</p>
-            <input class="col-md-4 text-center" type="text" th:field="movie_coverImage" th:value="${movies.getMovie_coverImage()}"
+            <input class="col-md-4 text-center" type="text" th:field="movie_coverImage"
+                   th:value="${movies.getMovie_coverImage()}"
                    placeholder="Example: URL link here or local path"/>
         </div>
 
         <div th:each="movies:${movie}" th:text="${movies.getMovie_trailer()}">
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Trailer</p>
-            <input class="col-md-4 text-center" type="text" th:field="movie_trailer" th:value="${movies.getMovie_trailer()}"
+            <input class="col-md-4 text-center" type="text" th:field="movie_trailer"
+                   th:value="${movies.getMovie_trailer()}"
                    placeholder="Example: URL link here"/>
         </div>
 
@@ -61,10 +66,13 @@
         <a class="btn btn-warning mt-2 mr-2" href="/editDeleteBook">Cancel</a>
         <input class="btn btn-primary mt-2 ml-2" type="submit" value="Save"/>
         <input class="btn btn-danger mt-2 ml-2" type="delete" value="Delete"/>
+
     </form>
+    
 </div>
 <div class="text-center">
     <a class="btn btn-success" href="/">Back to Homepage</a>
 </div>
 </body>
+
 </html>
