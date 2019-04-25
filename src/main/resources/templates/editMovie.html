@@ -14,37 +14,37 @@
     <form action="#" th:action="@{/updateMovie}" th:object="${movie}" method="post">
 
         <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie ID</p>
-        <input class="col-md-4 text-center" type="text" th:field="*{movie_id}" th:value="${movies.getMovie_id}"
+        <input class="col-md-4 text-center" type="text" th:field="*{movie_id}" th:value="${movie.getMovie_id}"
                readonly/>
 
 
         <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Title</p>
-        <input class="col-md-4 text-center" type="text" th:field="*{movie_title}" th:value="${movies.getMovie_title}"/>
+        <input class="col-md-4 text-center" type="text" th:field="*{movie_title}" th:value="${movie.getMovie_title}"/>
 
 
         <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Summary</p>
         <textarea class="col-md-4 text-center" type="text" th:field="*{movie_summary}"
-                  th:value="${movies.getMovie_summary}"/></textarea>
+                  th:value="${movie.getMovie_summary}"/></textarea>
 
 
         <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Duration</p>
         <input class="col-md-4 text-center" type="text" th:field="*{movie_duration}"
-               th:value="${movies.getMovie_duration}"/>
+               th:value="${movie.getMovie_duration}"/>
 
 
         <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Release-Date</p>
         <input class="col-md-4 text-center" type="text" th:field="*{movie_releaseDate}"
-               th:value="${movies.getMovie_releaseDate}"/>
+               th:value="${movie.getMovie_releaseDate}"/>
 
 
         <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Cover</p>
         <input class="col-md-4 text-center" type="text" th:field="*{movie_coverImage}"
-               th:value="${movies.getMovie_coverImage}"/>
+               th:value="${movie.getMovie_coverImage}"/>
 
 
         <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Trailer</p>
         <input class="col-md-4 text-center" type="text" th:field="*{movie_trailer}"
-               th:value="${movies.getMovie_trailer}"/>
+               th:value="${movie.getMovie_trailer}"/>
 
 
         <br/>
