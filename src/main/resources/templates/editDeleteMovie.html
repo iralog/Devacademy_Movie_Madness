@@ -37,12 +37,13 @@
 </table>
 <div class="container text-center">
 
-    <form action="#" th:action="@{/updateMovie}" th:object="${movie}" method="post">
+    <form action="#" th:action="@{/editMovie}" th:object="${movieEdit}" method="post">
         <p>Enter the ID of the Movie to Edit</p>
         <p>Book ID: <input type="text" th:field="*{movie_id}"/></p>
         <input class="btn btn-warning" type="submit" value="Edit Movie"/>
+
     </form>
-    <form action="#" th:action="@{/deleteMovie}" th:object="${movie}" method="post">
+    <form action="#" th:action="@{/movieDelete}" th:object="${movieEdit}" method="post">
         <p>Enter the ID of the Movie you would like to Delete</p>
         <p>Book ID: <input type="text" th:field="*{movie_id}"/></p>
         <input class="btn btn-danger" type="submit" value="Delete Movie"/>
