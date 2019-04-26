@@ -88,6 +88,14 @@ public class AppController {
         return "viewMovies";
     }
 
+
+    @GetMapping("/viewMoviesByUser")
+    public String viewMoviesByUser(Model model) {
+        movie.getAllMovies();
+        model.addAttribute("movie", Movies.movies);
+        return "viewMoviesByUser";
+    }
+
     @GetMapping("/addMovie")
     public String movieToAdd(Model model) {
         int nextID = Movies.movies.size() + 1;
