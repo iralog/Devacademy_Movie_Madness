@@ -55,20 +55,26 @@ a.nav-menu-link {
     margin: 0 0.9rem;
     padding: 0.9rem;
 }
+
 .nav-menu .nav-menu-item:nth-last-child(2) a {
     border: 1px solid #aaa;
     margin: 0 0.2rem;
 }
+
 .nav-menu .nav-menu-item:nth-last-child(1) a {
     margin: 0 0.2rem;
     margin-right: 0.9rem;
-    background-color: red;
+    background-color: #ce0000;
     color: #fff;
-
 }
+
 a.nav-menu-link:hover {
     color: #fff;
     background-color: #444;
+}
+
+.nav-menu .nav-menu-item:nth-last-child(1) a:hover {
+    background-color: #ff0000;
 }
 
 /* SIDE-NAV */
