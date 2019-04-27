@@ -88,7 +88,6 @@ public class AppController {
         return "viewMovies";
     }
 
-
     @GetMapping("/viewMoviesByUser")
     public String viewMoviesByUser(Model model) {
         movie.getAllMovies();
@@ -111,7 +110,6 @@ public class AppController {
         movie.addNewMovie(movie);
         return "index";
     }
-
 
     @GetMapping("/editDeleteMovie")
     public String editDeleteMovie(Model model) {
@@ -155,7 +153,7 @@ public class AppController {
         movie.deleteMovie(movie);
         return "index";
     }
-    
+
     @GetMapping("/viewActors")
     public String viewActors(Model model) {
         actor.getAllActors();
@@ -222,9 +220,8 @@ public class AppController {
         return "index";
     }
 
-
     @GetMapping("/testpage")
-    public String testpage(Model model){
+    public String testpage(Model model) {
         return "testpage";
     }
 
