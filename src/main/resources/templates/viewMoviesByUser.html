@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>CoachPotato - Movie Reviews</title>
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#movies-table').DataTable();
+        } );
+    </script>
+</head>
+<body>
+<!-- TABLE -->
+<table id="movies-table" class="display" style="width:100%">
+    <thead>
+    <tr>
+        <th>Movie Title</th>
+        <th>Duration</th>
+        <th>Genre</th>
+        <th>Release Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="movies:${movie}">
+        <td th:text="${movies.getMovie_title()}"></td>
+        <td th:text="${movies.getMovie_duration()}"></td>
+        <td th:text="${movies.getMovie_genre()}"></td>
+        <td th:text="${movies.getMovie_releaseDate()}"></td>
+    </tr>
+    </tbody>
+</table>
+<!-- END OF TABLE -->
+
+<div class="container text-center">
+    <a class="btn btn-success" href="/">Back To Homepage</a>
+</div>
+
+</body>
+</html>
