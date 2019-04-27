@@ -3,22 +3,28 @@
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-    <title>CoachPotato - Movie Reviews</title>
+    <title>CouchPotato - Movie Reviews</title>
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+
+
     <script type="text/javascript">
         $(document).ready(function() {
             $('#movies-table').DataTable();
         } );
     </script>
 </head>
-<body>
+<body style="background: #1e1e1e"  >
 <!-- TABLE -->
-<table id="movies-table" class="display" style="width:100%">
+<table id="movies-table" class="table table-dark" style=" width:100%">
     <thead>
     <tr>
+        <th>Cover</th>
         <th>Movie Title</th>
         <th>Duration</th>
         <th>Genre</th>
@@ -26,7 +32,9 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="movies:${movie}">
+    <tr th:each="movies:${movie}"  style="color: white; background: #1e1e1e">
+        <td class="align-left" style="width: 50px;">
+            <img class="img-thumbnail" th:src="${movies.getMovie_coverImage()}"/></td>
         <td th:text="${movies.getMovie_title()}"></td>
         <td th:text="${movies.getMovie_duration()}"></td>
         <td th:text="${movies.getMovie_genre()}"></td>
