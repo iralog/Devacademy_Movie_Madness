@@ -1,88 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
-    <meta charset="UTF-8">
-
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-    <title>Your movies - CouchPotato</title>
-    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
-
-    <link rel="stylesheet" type="text/css" th:href="@{https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css}">
-
-    <!--<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>-->
-    <!--<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>-->
-    <!--<script type="text/javascript" class="table table-hover text-left"></script>-->
-
-
-    <script type="text/javascript" language="javascript" th:src="@{https://code.jquery.com/jquery-3.3.1.js}"></script>
-    <script type="text/javascript" language="javascript" th:src="@{https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js}"></script>
-    <script type="text/javascript" language="javascript" th:src="@{../resources/demo.js}"></script>
-
-
-
-    <script type="text/javascript" class="table table-hover text-left">
-
-
+    <title>CoachPotato - Movie Reviews</title>
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
         $(document).ready(function() {
-            $('#table1').DataTable();
+            $('#movies-table').DataTable();
         } );
-
-
     </script>
 </head>
 <body>
-
-<table id="table1" class="table table-hover text-left">
-    <script>
-        $(document).ready(function() {
-            $('table1').DataTable();
-        } );</script>
-
-    <thead class="thead-dark">
+<!-- TABLE -->
+<table id="movies-table" class="display" style="width:100%">
+    <thead>
     <tr>
-        <!--th class="align-left" scope="col">#</th-->
-
-        <th class="align-left" scope="col">Movie Info</th>
-        <th class="align-left" scope="col">Movie Summary</th>
-
-        <!--th class="align-left" scope="col">Movie Trailer</th-->
+        <th>Movie Title</th>
+        <th>Duration</th>
+        <th>Genre</th>
+        <th>Release Date</th>
     </tr>
     </thead>
-    <tbody class="tbody-light">
+    <tbody>
     <tr th:each="movies:${movie}">
-        <!--td class="align-left" th:text="${movies.getMovie_id()}"></td-->
-        <td class="align-left" style="width: 100px;">
-            <img class="img-thumbnail w-100" th:src="${movies.getMovie_coverImage()}"/> </td>
-        <!--td class="align-left" style="font-weight:bold" th:text="${movies.getMovie_title()}"></td-->
-
-
-
-        <td>
-            <p class="align-left" style="font-weight: bold" th:text="${movies.getMovie_title()}"></p>
-            <p class="align-left" th:text="${movies.getMovie_duration()}"></p>
-            <p class="align-left" th:text="${movies.getMovie_genre()}"></p>
-            <p class="align-left" th:text="${movies.getMovie_releaseDate()}"></p>
-        </td>
-        <td>
-            <p class="align-left" th:text="${movies.getMovie_summary()}"></p>
-        </td>
-        <!--td>
-            <div>
-                <iframe width="280" height="160" th:src="${movies.getMovie_trailer()}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </td-->
+        <td th:text="${movies.getMovie_title()}"></td>
+        <td th:text="${movies.getMovie_duration()}"></td>
+        <td th:text="${movies.getMovie_genre()}"></td>
+        <td th:text="${movies.getMovie_releaseDate()}"></td>
     </tr>
     </tbody>
 </table>
+<!-- END OF TABLE -->
 
 <div class="container text-center">
     <a class="btn btn-success" href="/">Back To Homepage</a>
 </div>
-
 
 </body>
 </html>
