@@ -245,6 +245,7 @@ span.hamburger-line {
     #video-container {
         background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)),
         url("../img/bg_hakunas.jpg") center no-repeat;
+
     }
 
 }

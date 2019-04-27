@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>CouchPotato</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/home_styles.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home_styles.css}"/>
 </head>
 <body>
 <!-- NAV -->
 <div class="nav">
     <h2 class="nav-brand">
-        <img src="../img/logo_cp.svg" alt="CouchPotato">
+        <img th:src="@{/img/logo_cp.svg}">
     </h2>
     <ul class="nav-menu">
         <li class="nav-menu-item">
@@ -20,7 +20,7 @@
             <a href="#" class="nav-menu-link">Reviews</a>
         </li>
         <li class="nav-menu-item">
-            <a href="#" class="nav-menu-link">Log in</a>
+            <a th:href="@{/admin.html}" class="nav-menu-link">Log in</a>
         </li>
         <li class="nav-menu-item">
             <a href="#" class="nav-menu-link">Sign up</a>
@@ -42,7 +42,7 @@
             <a href="#" class="side-nav-link">Reviews</a>
         </li>
         <li class="side-nav-item">
-            <a href="#" class="side-nav-link">Log in</a>
+            <a th:href="@{/admin.html}" class="side-nav-link">Log in</a>
         </li>
         <li class="side-nav-item">
             <a href="#" class="side-nav-link">Sign up</a>
@@ -59,12 +59,11 @@
                 <h1>Movie reviews from people who live on the couch</h1>
                 <button>View More</button>
             </div>
-        </div>
-        <video autoplay muted loop src="../media/testing_video.mp4"></video>
+        </div> http://hakunas.000webhostapp.com/hakunas_video_bg.mp4
+        <video autoplay muted loop th:src="@{http://hakunas.000webhostapp.com/hakunas_video_bg.mp4}"></video>
     </div>
 </div> <!-- END OF HEADER -->
 
-
-<script type="text/javascript" src="../js/toggler.js"></script>
+<script type="text/javascript" th:src="@{/js/toggler.js}"></script>
 </body>
 </html>
