@@ -1,20 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>CoachPotato-Index</title>
+    <title>CouchPotato</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
-    <link rel="stylesheet" href="css/admin_style.css">
+    <link rel="stylesheet" type="text/css" href="css/admin_styles.css"/>
 </head>
 <body>
+<!-- NAV -->
+<div class="nav-couch">
+    <h2 class="nav-brand-couch">
+        <img src="img/logo_cp.svg">
+    </h2>
+    <ul class="nav-menu-couch">
+        <li class="nav-menu-item-couch">
+            <a href="viewMovies" class="nav-menu-link-couch">Movies</a>
+        </li>
+        <li class="nav-menu-item-couch">
+            <a href="viewActors" class="nav-menu-link-couch">Actors</a>
+        </li>
+        <li class="nav-menu-item-couch">
+            <a href="viewCasts" class="nav-menu-link-couch">Casts</a>
+        </li>
+        <li class="nav-menu-item-couch">
+            <a href="viewReviews" class="nav-menu-link-couch">Reviews</a>
+        </li>
+        <li class="nav-menu-item-couch">
+            <a href="viewUsers" class="nav-menu-link-couch">Users</a>
+        </li>
+        <li class="nav-menu-item-couch">
+            <a href="#" class="nav-menu-link-couch">Log off</a>
+        </li>
+    </ul>
+    <div class="hamburger-icon-couch" id="hamburger-icon-couch">
+        <span class="hamburger-line-couch"></span>
+        <span class="hamburger-line-couch"></span>
+        <span class="hamburger-line-couch"></span>
+    </div>
+</div>
+<!-- END OF NAV -->
 
-<ul>
-    <li><a type="button" class="active" href="#home">Home</a></li>
-
-</ul>
+<!-- SIDE-NAV -->
+<div id="side-nav-couch" class="side-nav-couch">
+    <h3 class="side-nav-header-couch">MENU</h3>
+    <ul class="side-nav-menu-couch">
+        <li class="side-nav-item-couch">
+            <a href=viewMovies" class="side-nav-link-couch">Moviews</a>
+        </li>
+        <li class="side-nav-item-couch">
+            <a href=viewActors" class="side-nav-link-couch">Actors</a>
+        </li>
+        <li class="side-nav-item-couch">
+            <a href=viewCasts" class="side-nav-link-couch">Casts</a>
+        </li>
+        <li class="side-nav-item-couch">
+            <a href=viewReviews" class="side-nav-link-couch">Reviews</a>
+        </li>
+        <li class="side-nav-item-couch">
+            <a href=viewUsers" class="side-nav-link-couch">Users</a>
+        </li>
+        <li class="side-nav-item-couch">
+            <a href="#" class="side-nav-link-couch">Log off</a>
+        </li>
+    </ul>
+</div>
+<!-- END OF SIDE-NAV -->
 
 <div class="text-center">
     <h1>CouchPotato-Index</h1>
@@ -24,6 +77,6 @@
     <a type="button" class="btn btn-danger" href="/editDeleteMovie">Change/Delete Movies</a>
 </div>
 
-
+<script type="text/javascript" src="js/toggler.js"></script>
 </body>
 </html>
