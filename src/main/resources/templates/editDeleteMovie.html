@@ -26,10 +26,8 @@
     <tbody class="tbody-light">
     <tr th:each="movies :${movie}">
         <td class="align-middle" th:text="${movies.getMovie_id()}"></td>
-        <td>
-            <h5 class="align-middle" th:text="${movies.getMovie_title()}"></h5>
-            <p class="align-middle" th:text="${movies.getMovie_duration()}"></p>
-        </td>
+        <td class="align-middle" th:text="${movies.getMovie_title()}"></td>
+        <td class="align-middle" th:text="${movies.getMovie_duration()}"></td>
         <td class="align-middle" th:text="${movies.getMovie_releaseDate()}"></td>
         <td class="align-middle" th:text="${movies.getMovie_genre()}"></td>
     </tr>
@@ -39,13 +37,13 @@
 
     <form action="#" th:action="@{/editMovie}" th:object="${movieEdit}" method="post">
         <p>Enter the ID of the Movie to Edit</p>
-        <p>Book ID: <input type="text" th:field="*{movie_id}"/></p>
+        <p>Movie ID: <input type="text" th:field="*{movie_id}"/></p>
         <input class="btn btn-warning" type="submit" value="Edit Movie"/>
 
     </form>
     <form action="#" th:action="@{/movieDelete}" th:object="${movieEdit}" method="post">
         <p>Enter the ID of the Movie you would like to Delete</p>
-        <p>Book ID: <input type="text" th:field="*{movie_id}"/></p>
+        <p>Movie ID: <input type="text" th:field="*{movie_id}"/></p>
         <input class="btn btn-danger" type="submit" value="Delete Movie"/>
     </form>
 </div>
