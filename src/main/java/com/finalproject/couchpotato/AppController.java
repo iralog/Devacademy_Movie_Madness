@@ -222,6 +222,12 @@ public class AppController {
         return "index";
     }
 
+
+    @GetMapping("/testpage")
+    public String testpage(Model model){
+        return "testpage";
+    }
+
     @GetMapping("/viewUsers")
     public String viewUsers(Model model) {
         user.getAllUsers();
