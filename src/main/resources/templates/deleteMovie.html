@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Remove Movie</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container text-center">
+    <form action="#" th:action="@{/movieDelete}" th:object="${movieEdit}" method="post">
+        <p>Enter the ID of the Movie you would like to Delete</p>
+        <p>Movie ID: <input type="text" th:field="*{movie_id}"/></p>
+        <input class="btn btn-danger" type="submit" value="Delete Movie"/>
+    </form>
+</div>
+
+</body>
+</html>
