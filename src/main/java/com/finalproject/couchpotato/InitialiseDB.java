@@ -129,8 +129,8 @@ public class InitialiseDB {
 
     public boolean deleteMovie(Connection con, Movies movie) {
         try {
-            String removeMovie = "DELETE FROM tblMovies WHERE movie_id = ?";
-            PreparedStatement pst = con.prepareStatement(removeMovie);
+            String deleteMovie = "DELETE FROM tblMovies WHERE movie_id = ?";
+            PreparedStatement pst = con.prepareStatement(deleteMovie);
 
             pst.setInt(1, movie.getMovie_id());
             pst.executeUpdate();

@@ -189,8 +189,9 @@ span.hamburger-line-couch {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    min-width: 100%;
+    min-width: 100vw;
     min-height: 100%;
+    max-width: 100vw;
 }
 
 #video-container-couch .video-overlay-couch {
@@ -200,9 +201,11 @@ span.hamburger-line-couch {
 
 #video-container-couch .video-content-couch {
     z-index: 99999;
-    position: absolute;
+    position: relative;
     height: 100%;
-    width: 100%;
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #video-container-couch .video-content-couch .inner-couch {
@@ -219,6 +222,7 @@ span.hamburger-line-couch {
     margin: 20px 0;
     font-size: 3em;
     text-align: center;
+    text-shadow: 5px 5px 10px #000;
 }
 
 #video-container-couch .video-content-couch .inner-couch button {
@@ -240,7 +244,7 @@ span.hamburger-line-couch {
 
 
 /* MEDIA QUERIES */
-@media (max-width: 720px) {
+@media (max-width: 768px) {
 
     /* HEADER */
     #video-container-couch video {
