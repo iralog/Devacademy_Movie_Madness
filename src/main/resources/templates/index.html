@@ -14,10 +14,10 @@
     </h2>
     <ul class="nav-menu">
         <li class="nav-menu-item">
-            <a href="#" class="nav-menu-link">Home</a>
+            <a th:href="@{index.html}" class="nav-menu-link">Home</a>
         </li>
         <li class="nav-menu-item">
-            <a href="#" class="nav-menu-link">Reviews</a>
+            <a th:href="@{/viewMoviesByUser}" class="nav-menu-link">Movie List</a>
         </li>
         <li class="nav-menu-item">
             <a th:href="@{/admin.html}" class="nav-menu-link">Log in</a>
@@ -39,7 +39,10 @@
     <h3 class="side-nav-header">MENU</h3>
     <ul class="side-nav-menu">
         <li class="side-nav-item">
-            <a href="#" class="side-nav-link">Reviews</a>
+            <a th:href="@{index.html}" class="side-nav-link">Home</a>
+        </li>
+        <li class="side-nav-item">
+            <a th:href="@{/viewMoviesByUser.html}" class="side-nav-link">Movie List</a>
         </li>
         <li class="side-nav-item">
             <a th:href="@{/admin.html}" class="side-nav-link">Log in</a>
