@@ -338,6 +338,10 @@ table.dataTable td {
 
 .dataTables_wrapper .dataTables_length {
     float: left;
+    margin-left: 1em;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    line-height: 2em;
 }
 
 .dataTables_wrapper select {
@@ -346,7 +350,7 @@ table.dataTable td {
     border-color: #1e1e1e;
     border-radius: 2em;
     font-size: 1em;
-    padding: 0.2em;
+    padding: 0.5em;
     outline: none;
 }
 
@@ -372,8 +376,9 @@ table.dataTable td {
 }
 
 .dataTables_wrapper .dataTables_filter input {
-    margin-left: 0.5em;
-    margin-bottom: 1.5em;
+    margin-right: 1em;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
     color: white;
     line-height: 2em;
     padding-left: 1em;

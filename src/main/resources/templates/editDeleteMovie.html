@@ -5,6 +5,11 @@
     <title>CouchPotato | Admin - Edit/Delete Movie</title>
     <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
     </th:block> /*/-->
+    <script type="text/javascript">
+        function getMovieID() {
+
+        }
+    </script>
 </head>
 <body>
 
@@ -16,61 +21,53 @@
 <aside th:insert="/fragments/admin-general.html :: admin-side-nav"></aside>
 <!-- END OF SIDE-NAV -->
 
+<!-- TABLE -->
 <div class="wrapper-couch">
     <table class="table table-hover text-center">
+
         <thead class="thead-dark">
         <tr>
-
             <th class="align-middle" scope="col">#</th>
             <th class="align-middle" scope="col">Movie Title</th>
             <th class="align-middle" scope="col">Movie Duration</th>
             <th class="align-middle" scope="col">Movie Release Date</th>
             <th class="align-middle" scope="col">Movie Genre</th>
             <th class="align-middle" scope="col">Actions</th>
-
         </tr>
         </thead>
+
         <tbody class="tbody-light">
         <tr th:each="movies :${movie}">
-            <form action="#" th:action="@{/editMovie}" th:object="${movieEdit}" method="post">
-                <td class="align-middle" th:text="${movies.getMovie_id()}"></td>
-                <td class="align-middle" th:text="${movies.getMovie_title()}"></td>
-                <td class="align-middle" th:text="${movies.getMovie_duration()}"></td>
-                <td class="align-middle" th:text="${movies.getMovie_releaseDate()}"></td>
-                <td class="align-middle" th:text="${movies.getMovie_genre()}"></td>
-                <td class="align-middle">
-                    <input type="hidden" th:field="*{movie_id}" th:value="${movies.getMovie_id()}"/></p>
-                    <input class="btn btn-warning" type="submit" value="Edit Movie"/>
-                </td>
-            </form>
+            <td class="align-middle" th:text="${movies.getMovie_id()}"></td>
+            <td class="align-middle" th:text="${movies.getMovie_title()}"></td>
+            <td class="align-middle" th:text="${movies.getMovie_duration()}"></td>
+            <td class="align-middle" th:text="${movies.getMovie_releaseDate()}"></td>
+            <td class="align-middle" th:text="${movies.getMovie_genre()}"></td>
+            <td class="align-middle">
+                <button class="btn btn-warning" type="submit">Edit</button>
+            </td>
         </tr>
         </tbody>
-
-        <!--<tbody class="tbody-light">-->
-        <!--<tr th:each="movies :${movie}">-->
-            <!--<td class="align-middle" th:text="${movies.getMovie_id()}"></td>-->
-            <!--<td class="align-middle" th:text="${movies.getMovie_title()}"></td>-->
-            <!--<td class="align-middle" th:text="${movies.getMovie_duration()}"></td>-->
-            <!--<td class="align-middle" th:text="${movies.getMovie_releaseDate()}"></td>-->
-            <!--<td class="align-middle" th:text="${movies.getMovie_genre()}"></td>-->
-        <!--</tr>-->
-        <!--</tbody>-->
     </table>
 </div>
-<div class="container text-center">
+<!-- END OF TABLE -->
 
+<!-- FORM -->
+<div class="container text-center">
     <form action="#" th:action="@{/editMovie}" th:object="${movieEdit}" method="post">
         <p>Enter the ID of the Movie to Edit</p>
         <p>Movie ID: <input type="text" th:field="*{movie_id}"/></p>
         <input class="btn btn-warning" type="submit" value="Edit Movie"/>
-
     </form>
+
     <form action="#" th:action="@{/movieDelete}" th:object="${movieEdit}" method="post">
         <p>Enter the ID of the Movie you would like to Delete</p>
         <p>Movie ID: <input type="text" th:field="*{movie_id}"/></p>
         <input class="btn btn-danger" type="submit" value="Delete Movie"/>
     </form>
 </div>
+<!-- END OF FORM -->
+
 
 <div class="container text-center">
     <a class="btn btn-success" th:href="@{/admin}">Back To Admin</a>

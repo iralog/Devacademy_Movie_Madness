@@ -29,12 +29,12 @@ public class InitialiseDB {
 
     public void addNewMovie(Connection con, Movies movie) {
         try {
-            String addMovies = "INSERT INTO tblMovies (movie_title, movie_summary," +
+            String addMovie = "INSERT INTO tblMovies (movie_title, movie_summary," +
                     " movie_duration, movie_genre, movie_release_date, movie_cover_image," +
                     " movie_trailer) VALUES " +
                     "(?,?,?,?,?,?,?)";
 
-            PreparedStatement pst = con.prepareStatement(addMovies);
+            PreparedStatement pst = con.prepareStatement(addMovie);
             pst.setString(1, movie.getMovie_title());
             pst.setString(2, movie.getMovie_summary());
             pst.setString(3, movie.getMovie_duration());
@@ -97,10 +97,10 @@ public class InitialiseDB {
 
     public boolean updateMovie(Connection con, Movies movie) {
         try {
-            String updateRecord = "UPDATE tblMovies SET movie_title = ?, movie_summary = ?, movie_duration = ?," +
+            String updateMovie = "UPDATE tblMovies SET movie_title = ?, movie_summary = ?, movie_duration = ?," +
                     "movie_genre = ?, movie_release_date = ?, movie_cover_image = ?, movie_trailer = ? WHERE movie_id = ?";
 
-            PreparedStatement pst = con.prepareStatement(updateRecord);
+            PreparedStatement pst = con.prepareStatement(updateMovie);
 
             pst.setString(1, movie.getMovie_title());
             pst.setString(2, movie.getMovie_summary());
