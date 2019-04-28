@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="eng">
+<head th:fragment="admin-headerfiles">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/admin-styles.css}"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<!-- NAV -->
+<nav th:fragment="admin-navbar">
+    <div class="nav-couch">
+        <div class="nav-brand-couch">
+            <a th:href="@{/}" class="nav-menu-link-couch">
+                <img th:src="@{/img/logo_cp.svg}">
+            </a>
+        </div>
+        <ul class="nav-menu-couch">
+            <li class="nav-menu-item-couch">
+                <a th:href="@{/viewMovies}" class="nav-menu-link-couch">Movies</a>
+            </li>
+            <li class="nav-menu-item-couch">
+                <a th:href="@{/viewActors}" class="nav-menu-link-couch">Actors</a>
+            </li>
+            <li class="nav-menu-item-couch">
+                <a th:href="@{/viewCasts}" class="nav-menu-link-couch">Casts</a>
+            </li>
+            <li class="nav-menu-item-couch">
+                <a th:href="@{/viewReviews}" class="nav-menu-link-couch">Reviews</a>
+            </li>
+            <li class="nav-menu-item-couch">
+                <a th:href="@{/viewUsers}" class="nav-menu-link-couch">Users</a>
+            </li>
+            <li class="nav-menu-item-couch">
+                <a th:href="@{/}" class="nav-menu-link-couch">Log off</a>
+            </li>
+        </ul>
+        <div class="hamburger-icon-couch" id="hamburger-icon-couch">
+            <span class="hamburger-line-couch"></span>
+            <span class="hamburger-line-couch"></span>
+            <span class="hamburger-line-couch"></span>
+        </div>
+    </div>
+</nav>
+<!-- END OF NAV -->
+
+<!-- SIDE-NAV -->
+<aside th:fragment="admin-side-nav">
+    <div id="side-nav-couch" class="side-nav-couch">
+        <h3 class="side-nav-header-couch">MENU</h3>
+        <ul class="side-nav-menu-couch">
+            <li class="side-nav-item-couch">
+                <a th:href="@{/viewMovies}" class="side-nav-link-couch">Moviews</a>
+            </li>
+            <li class="side-nav-item-couch">
+                <a th:href="@{/viewActors}" class="side-nav-link-couch">Actors</a>
+            </li>
+            <li class="side-nav-item-couch">
+                <a th:href="@{/viewCasts}" class="side-nav-link-couch">Casts</a>
+            </li>
+            <li class="side-nav-item-couch">
+                <a th:href="@{/viewReviews}" class="side-nav-link-couch">Reviews</a>
+            </li>
+            <li class="side-nav-item-couch">
+                <a th:href="@{/viewUsers}" class="side-nav-link-couch">Users</a>
+            </li>
+            <li class="side-nav-item-couch">
+                <a th:href="@{/}" class="side-nav-link-couch">Log off</a>
+            </li>
+        </ul>
+    </div>
+</aside>
+<!-- END OF SIDE-NAV -->
+
+
+</body>
+</html>
+

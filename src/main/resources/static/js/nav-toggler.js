@@ -1,6 +1,6 @@
 (toggler => {
-    const sideNav = document.querySelector('.side-nav');
-const hamburger = document.querySelector('#hamburger-icon');
+    const sideNav = document.querySelector('.side-nav-couch');
+const hamburger = document.querySelector('#hamburger-icon-couch');
 
 hamburger.addEventListener("click", function () {
     if (this.classList.toggle('active')) {

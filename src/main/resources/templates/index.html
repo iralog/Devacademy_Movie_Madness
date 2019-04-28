@@ -1,69 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>CouchPotato</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/home_styles.css}"/>
+    <title>Fragments</title>
+    <!--/*/ <th:block th:include="/fragments/user-general.html :: headerfiles">
+    </th:block> /*/-->
 </head>
 <body>
+
 <!-- NAV -->
-<div class="nav">
-    <h2 class="nav-brand">
-        <img th:src="@{/img/logo_cp.svg}">
-    </h2>
-    <ul class="nav-menu">
-        <li class="nav-menu-item">
-            <a href="#" class="nav-menu-link">Home</a>
-        </li>
-        <li class="nav-menu-item">
-            <a href="#" class="nav-menu-link">Reviews</a>
-        </li>
-        <li class="nav-menu-item">
-            <a th:href="@{/admin.html}" class="nav-menu-link">Log in</a>
-        </li>
-        <li class="nav-menu-item">
-            <a href="#" class="nav-menu-link">Sign up</a>
-        </li>
-    </ul>
-    <div class="hamburger-icon" id="hamburger-icon">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-    </div>
-</div>
+<nav th:insert="/fragments/user-general.html :: navbar"> </nav>
 <!-- END OF NAV -->
 
 <!-- SIDE-NAV -->
-<div id="side-nav" class="side-nav">
-    <h3 class="side-nav-header">MENU</h3>
-    <ul class="side-nav-menu">
-        <li class="side-nav-item">
-            <a href="#" class="side-nav-link">Reviews</a>
-        </li>
-        <li class="side-nav-item">
-            <a th:href="@{/admin.html}" class="side-nav-link">Log in</a>
-        </li>
-        <li class="side-nav-item">
-            <a href="#" class="side-nav-link">Sign up</a>
-        </li>
-    </ul>
-</div>
+<aside th:insert="/fragments/user-general.html :: side-nav"></aside>
 <!-- END OF SIDE-NAV -->
 
-<div id="header" class="header">
-    <div id="video-container">
-        <div class="video-overlay"></div>
-        <div class="video-content">
-            <div class="inner">
+<!-- HEADER -->
+<div id="header-couch" class="header-couch">
+    <div id="video-container-couch">
+        <div class="video-overlay-couch"></div>
+        <div class="video-content-couch">
+            <div class="inner-couch">
                 <h1>Movie reviews from people who live on the couch</h1>
                 <button>View More</button>
             </div>
-        </div> http://hakunas.000webhostapp.com/hakunas_video_bg.mp4
+        </div>
         <video autoplay muted loop th:src="@{http://hakunas.000webhostapp.com/hakunas_video_bg.mp4}"></video>
     </div>
 </div> <!-- END OF HEADER -->
 
-<script type="text/javascript" th:src="@{/js/toggler.js}"></script>
+<!-- JS TOGGLER - NAVBAR/SIDE-NAV -->
+<script type="text/javascript" th:src="@{/js/nav-toggler.js}"></script>
 </body>
 </html>
