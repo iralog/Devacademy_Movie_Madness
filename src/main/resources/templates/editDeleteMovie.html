@@ -33,9 +33,6 @@
         <tbody class="tbody-light">
         <tr th:each="movies :${movie}">
             <form action="#" th:action="@{/editMovie}" th:object="${movieEdit}" method="post">
-
-                th:action="@{/deleteBuyer/{id}(id=${buyer.buyerId})}"
-
                 <td class="align-middle" th:text="${movies.getMovie_id()}"></td>
                 <td class="align-middle" th:text="${movies.getMovie_title()}"></td>
                 <td class="align-middle" th:text="${movies.getMovie_duration()}"></td>
