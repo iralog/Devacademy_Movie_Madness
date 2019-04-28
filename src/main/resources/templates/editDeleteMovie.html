@@ -26,18 +26,38 @@
             <th class="align-middle" scope="col">Movie Duration</th>
             <th class="align-middle" scope="col">Movie Release Date</th>
             <th class="align-middle" scope="col">Movie Genre</th>
+            <th class="align-middle" scope="col">Actions</th>
 
         </tr>
         </thead>
         <tbody class="tbody-light">
         <tr th:each="movies :${movie}">
-            <td class="align-middle" th:text="${movies.getMovie_id()}"></td>
-            <td class="align-middle" th:text="${movies.getMovie_title()}"></td>
-            <td class="align-middle" th:text="${movies.getMovie_duration()}"></td>
-            <td class="align-middle" th:text="${movies.getMovie_releaseDate()}"></td>
-            <td class="align-middle" th:text="${movies.getMovie_genre()}"></td>
+            <form action="#" th:action="@{/editMovie}" th:object="${movieEdit}" method="post">
+
+                th:action="@{/deleteBuyer/{id}(id=${buyer.buyerId})}"
+
+                <td class="align-middle" th:text="${movies.getMovie_id()}"></td>
+                <td class="align-middle" th:text="${movies.getMovie_title()}"></td>
+                <td class="align-middle" th:text="${movies.getMovie_duration()}"></td>
+                <td class="align-middle" th:text="${movies.getMovie_releaseDate()}"></td>
+                <td class="align-middle" th:text="${movies.getMovie_genre()}"></td>
+                <td class="align-middle">
+                    <input type="hidden" th:field="*{movie_id}" th:value="${movies.getMovie_id()}"/></p>
+                    <input class="btn btn-warning" type="submit" value="Edit Movie"/>
+                </td>
+            </form>
         </tr>
         </tbody>
+
+        <!--<tbody class="tbody-light">-->
+        <!--<tr th:each="movies :${movie}">-->
+            <!--<td class="align-middle" th:text="${movies.getMovie_id()}"></td>-->
+            <!--<td class="align-middle" th:text="${movies.getMovie_title()}"></td>-->
+            <!--<td class="align-middle" th:text="${movies.getMovie_duration()}"></td>-->
+            <!--<td class="align-middle" th:text="${movies.getMovie_releaseDate()}"></td>-->
+            <!--<td class="align-middle" th:text="${movies.getMovie_genre()}"></td>-->
+        <!--</tr>-->
+        <!--</tbody>-->
     </table>
 </div>
 <div class="container text-center">

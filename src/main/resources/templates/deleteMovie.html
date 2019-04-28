@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Remove Movie</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="text-center jumbotron pt-1">
+    <h1 class="pb-2">Remove this movie</h1>
+    <form action="#" th:action="@{/movieDeleted}" th:object="${movie}" method="post">
+        <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie ID</p>
+        <input class="col-md-4 text-center" type="text" th:field="*{movie_id}" th:value="${movie.getMovie_id()}" readonly/>
+
+
+        <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Title</p>
+        <input class="col-md-4 text-center" type="text" th:field="*{movie_title}" th:value="${movie.getMovie_title()}"/>
+
+
+        <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Summary</p>
+        <textarea class="col-md-4 text-center" type="text" th:field="*{movie_summary}" th:value="${movie.getMovie_summary()}"/></textarea>
+
+
+        <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Duration</p>
+        <input class="col-md-4 text-center" type="text" th:field="*{movie_duration}" th:value="${movie.getMovie_duration()}"/>
+
+        <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Genre</p>
+        <input class="col-md-4 text-center" type="text" th:field="*{movie_genre}" th:value="${movie.getMovie_genre()}"/>
+
+
+        <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Release-Date</p>
+        <input class="col-md-4 text-center" type="text" th:field="*{movie_releaseDate}" th:value="${movie.getMovie_releaseDate()}"/>
+
+
+        <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Cover</p>
+        <input class="col-md-4 text-center" type="text" th:field="*{movie_coverImage}" th:value="${movie.getMovie_coverImage()}"/>
+
+
+        <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Trailer</p>
+        <input class="col-md-4 text-center" type="text" th:field="*{movie_trailer}" th:value="${movie.getMovie_trailer()}"/>
+        <br/>
+        <a class="btn btn-warning mt-2 mr-2" href="/editDeleteMovie">Cancel</a>
+        <input class="btn btn-danger mt-2 ml-2" type="submit" value="Remove Movie"/>
+    </form>
+</div>
+<div class="text-center">
+    <a class="btn btn-success" href="/">Back to Homepage</a>
+</div>
+</body>
+</html>

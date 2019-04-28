@@ -11,20 +11,56 @@
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/dataTable_dark.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/movies-table-style.css}"/>
-
+    <link rel="stylesheet" type="text/css" th:href="@{/css/user-styles.css}"/>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#movies-table').DataTable();
         } );
     </script>
 </head>
+
+<style>
+    .zoom {
+        padding: 50px;
+        transition: transform .2s; /* Animation */
+        width: 200px;
+        height: 200px;
+        margin: 60px auto;
+    }
+
+
+
+    .zoom:hover {
+        transform: scale(2.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+
+
+
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+
+
+
+
 <body>
+<!-- NAV -->
+<nav th:insert="/fragments/user-general.html :: navbar"> </nav>
+<!-- END OF NAV -->
+
+<!-- SIDE-NAV -->
+<aside th:insert="/fragments/user-general.html :: side-nav"></aside>
+<!-- END OF SIDE-NAV -->
+
+<br>
+
 <!-- TABLE -->
 <div class="movies-table-wrapper">
 <table id="movies-table" class="table table-hover table-dark">
     <thead>
     <tr>
-        <!--<th>Cover</th>-->
+        <th>Cover</th>
         <th>Movie Title</th>
         <th>Duration</th>
         <th>Genre</th>
@@ -33,8 +69,8 @@
     </thead>
     <tbody>
     <tr th:each="movies:${movie}">
-        <!--<td class="align-left" style="width: 50px;">-->
-            <!--<img class="img-thumbnail" th:src="${movies.getMovie_coverImage()}"/></td>-->
+        <td class="zoom align-left" style="width: 100px;">
+            <img class="img-thumbnail" th:src="${movies.getMovie_coverImage()}"/></td>
         <td th:text="${movies.getMovie_title()}"></td>
         <td th:text="${movies.getMovie_duration()}"></td>
         <td th:text="${movies.getMovie_genre()}"></td>
@@ -48,6 +84,6 @@
 <div class="container text-center">
     <a class="btn btn-success" href="/">Back To Homepage</a>
 </div>
-
+<script type="text/javascript" th:src="@{/js/nav-toggler.js}"></script>
 </body>
 </html>
