@@ -16,7 +16,6 @@ public class AppController {
     Users user = new Users();
 
 
-
     @GetMapping("/viewReviews")
     public String viewReviews(Model model) {
         review.getAllReviews();

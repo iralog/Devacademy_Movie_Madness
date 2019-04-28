@@ -34,7 +34,7 @@ body {
 }
 
 .nav-brand-couch {
-    margin-left: 1rem;
+    margin-left: 2rem;
     margin-top: auto;
     margin-bottom: auto;
     margin-right: auto;
@@ -52,13 +52,13 @@ ul.nav-menu-couch {
 a.nav-menu-link-couch {
     text-decoration: none;
     color: #aaa;
-    margin: 0 0.9rem;
-    padding: 0.9rem;
+    margin: 0 0rem;
+    padding: 1rem;
 }
 
 .nav-menu-couch .nav-menu-item-couch:nth-last-child(1) a {
-    margin: 0 0.2rem;
-    margin-right: 0.9rem;
+    margin: 0 0rem;
+    margin-right: 2rem;
     background-color: #ce0000;
     color: #fff;
 }
@@ -163,6 +163,10 @@ span.hamburger-line-couch {
 
 .hamburger-icon-couch.active span:nth-of-type(3) {
     transform: translateY(-11px) rotate(45deg);
+}
+
+.wrapper-couch {
+    margin-top: 5rem;
 }
 
 /* MEDIA QUERIES */

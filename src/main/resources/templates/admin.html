@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CouchPotato | Admin</title>
+    <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
+    </th:block> /*/-->
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav th:insert="/fragments/admin-general.html :: admin-navbar"> </nav>
+<!-- END OF NAV -->
+
+<!-- SIDE-NAV -->
+<aside th:insert="/fragments/admin-general.html :: admin-side-nav"></aside>
+<!-- END OF SIDE-NAV -->
+
+<div id="wrapper-couch">
+    <div class="text-center">
+        <h1>CouchPotato-Index</h1>
+        <p class="alert alert-warning"><strong>Manage your library from the options below:</strong></p>
+        <a type="button" class="btn btn-primary" th:href="@{/viewMovies}">View Our Movies</a>
+        <a type="button" class="btn btn-warning" th:href="@{/addMovie}">Add New Movies</a>
+        <a type="button" class="btn btn-danger" th:href="@{/editDeleteMovie}">Change/Delete Movies</a>
+    </div>
+</div>
+
+<!-- JS TOGGLER - NAVBAR/SIDE-NAV -->
+<!--<script type="text/javascript" th:src="@{/js/nav-toggler.js}"></script>-->
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="eng">
+<head th:fragment="headerfiles">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/user-styles.css}"/>
+</head>
+<body>
+
+<!-- NAV -->
+<nav th:fragment="navbar">
+    <div class="nav-couch">
+        <div class="nav-brand-couch">
+                <img th:src="@{/img/logo_cp.svg}">
+        </div>
+        <ul class="nav-menu-couch">
+            <li class="nav-menu-item-couch">
+                <a th:href="@{/}" class="nav-menu-link-couch">Home</a>
+            </li>
+            <li class="nav-menu-item-couch">
+                <a th:href="@{/viewMoviesByUser}" class="nav-menu-link-couch">Movie List</a>
+            </li>
+            <li class="nav-menu-item-couch">
+                <a th:href="@{/admin}" class="nav-menu-link-couch">Log in</a>
+            </li>
+            <li class="nav-menu-item-couch">
+                <a href="#" class="nav-menu-link-couch">Sign up</a>
+            </li>
+        </ul>
+        <div class="hamburger-icon-couch" id="hamburger-icon-couch">
+            <span class="hamburger-line-couch"></span>
+            <span class="hamburger-line-couch"></span>
+            <span class="hamburger-line-couch"></span>
+        </div>
+    </div>
+</nav>
+<!-- END OF NAV -->
+
+<!-- SIDE-NAV -->
+<aside th:fragment="side-nav">
+    <div id="side-nav-couch" class="side-nav-couch">
+        <h3 class="side-nav-header-couch">MENU</h3>
+        <ul class="side-nav-menu-couch">
+            <li class="side-nav-item-couch">
+                <a th:href="@{index}" class="side-nav-link-couch">Home</a>
+            </li>
+            <li class="side-nav-item-couch">
+                <a th:href="@{/viewMoviesByUser}" class="side-nav-link-couch">Movie List</a>
+            </li>
+            <li class="side-nav-item-couch">
+                <a th:href="@{/admin}" class="side-nav-link-couch">Log in</a>
+            </li>
+            <li class="side-nav-item-couch">
+                <a href="#" class="side-nav-link-couch">Sign up</a>
+            </li>
+        </ul>
+    </div>
+</aside>
+<!-- END OF SIDE-NAV -->
+
+
+
+
+</body>
+</html>

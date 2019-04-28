@@ -1,13 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Add Movies to your library</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
+    <title>CouchPotato | Admin - Edit Movie</title>
+    <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
+    </th:block> /*/-->
 </head>
 <body>
+
+<!-- NAV -->
+<nav th:insert="/fragments/admin-general.html :: admin-navbar"> </nav>
+<!-- END OF NAV -->
+
+<!-- SIDE-NAV -->
+<aside th:insert="/fragments/admin-general.html :: admin-side-nav"></aside>
+<!-- END OF SIDE-NAV -->
+
 <div class="text-center">
     <h1 class="pb-2">Add new Movies to your library</h1>
     <form action="#" th:action="@{/addingMovie}" th:object="${movie}" method="post">
