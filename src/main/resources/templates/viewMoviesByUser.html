@@ -24,16 +24,16 @@
 
     <style>
         .zoom {
-            padding: 50px;
             transition: transform .2s; /* Animation */
-            width: 200px;
+            width: 150px;
             height: 200px;
             margin: 60px auto;
         }
         .zoom:hover {
+            background: rgba(255,255,255,0.3);
             position: relative;
             float: right;
-            transform: scale(2.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+            transform: scale(1.3); /* (250% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
         }
     </style>
 </head>
@@ -66,7 +66,7 @@
     </thead>
     <tbody>
     <tr th:each="movies:${movie}">
-        <td class="zoom align-left" style="width: 100px;">
+        <td class="zoom align-left" style="width: 200px; height: auto">
             <img class="img-thumbnail" th:src="${movies.getMovie_coverImage()}"/></td>
         <td th:text="${movies.getMovie_title()}"></td>
         <td th:text="${movies.getMovie_duration()}"></td>
