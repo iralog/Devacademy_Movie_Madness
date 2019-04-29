@@ -1,46 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>CouchPotato - Movie Reviews</title>
-    <!--/*/ <th:block th:include="/fragments/user-general.html :: headerfiles">
-    </th:block> /*/-->
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/movies-table-style.css}"/>
-
-    <!-- DataTables -->
-    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/dataTable_dark.css}"/>
-    <!-- End of DataTables -->
-
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#movies-table').DataTable();
-        } );
-    </script>
-
-    <style>
-        .zoom {
-            transition: transform .2s; /* Animation */
-            width: 150px;
-            height: 200px;
-            margin: 60px auto;
-        }
-        .zoom:hover {
-            background: rgba(255,255,255,0.3);
-            position: relative;
-            float: right;
-            transform: scale(1.3); /* (250% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-        }
-    </style>
-</head>
-
-
-
-
 <body>
 <!-- NAV -->
 <nav th:insert="/fragments/user-general.html :: navbar"> </nav>
@@ -83,4 +42,52 @@
 </div>
 <script type="text/javascript" th:src="@{/js/nav-toggler.js}"></script>
 </body>
+
+
+
+
+<head>
+    <title>CouchPotato - Movie Reviews</title>
+    <!--/*/ <th:block th:include="/fragments/user-general.html :: headerfiles">
+    </th:block> /*/-->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/movies-table-style.css}"/>
+
+    <!-- DataTables -->
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dataTable_dark.css}"/>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#movies-table').dataTable({
+                "columnDefs": [{
+                    "orderable": false,
+                    "targets": 0
+                }]
+            });
+        });
+    </script>
+
+    <style>
+        .zoom {
+            transition: transform .2s; /* Animation */
+            width: 150px;
+            height: 200px;
+            margin: 60px auto;
+        }
+        .zoom:hover {
+            background: rgba(255,255,255,0.3);
+            position: relative;
+            float: right;
+            transform: scale(1.3); /* (250% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+    </style>
+    <!-- End of DataTables -->
+
+
+
+
+</head>
 </html>
