@@ -181,7 +181,7 @@ public class InitialiseDB {
     public boolean updateUserRecord(Connection con, Users user) {
         try {
             String updateRecord = "UPDATE tblUsers SET username= ?, password = ?, user_name = ?," +
-                    "user_age = ?, user_email = ?,user_join_date = ? WHERE user_id = ?";
+                    "user_age = ?, user_email = ?, user_join_date = ? WHERE user_id = ?";
 
             PreparedStatement pst = con.prepareStatement(updateRecord);
 
@@ -243,6 +243,7 @@ public class InitialiseDB {
 
             while (rs.next()) {
                 Users user = new Users();
+                user.setUser_id(rs.getInt("user_id"));
                 user.setUser_username(rs.getString("username"));
                 user.setUser_password(rs.getString("password"));
                 user.setUser_name(rs.getString("user_name"));

@@ -166,7 +166,7 @@ public class AppController {
     public String viewActors(Model model) {
         actor.getAllActors();
         model.addAttribute("actor", Actors.actors);
-        return "listActors";
+        return "viewActors";
     }
 
     @GetMapping("/listActors")
