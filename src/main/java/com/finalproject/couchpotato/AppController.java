@@ -166,7 +166,14 @@ public class AppController {
     public String viewActors(Model model) {
         actor.getAllActors();
         model.addAttribute("actor", Actors.actors);
-        return "viewActors";
+        return "listActors";
+    }
+
+    @GetMapping("/listActors")
+    public String listActors(Model model) {
+        actor.getAllActors();
+        model.addAttribute("actor", Actors.actors);
+        return "listActors";
     }
 
     @GetMapping("/addActor")
@@ -238,6 +245,13 @@ public class AppController {
         user.getAllUsers();
         model.addAttribute("user", Users.users);
         return "viewUsers";
+    }
+
+    @GetMapping("/listUsers")
+    public String listUsers(Model model) {
+        user.getAllUsers();
+        model.addAttribute("user", Users.users);
+        return "listUsers";
     }
 
     @GetMapping("/addUser")

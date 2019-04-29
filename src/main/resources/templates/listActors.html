@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CouchPotato | Admin - List Actors</title>
+    <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
+    </th:block> /*/-->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/movies-table-style.css}"/>
+
+    <!-- DataTables -->
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dataTable_dark.css}"/>
+    <!-- End of DataTables -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#actors-table').dataTable({
+                "columnDefs": [
+                    { "targets": [1], "orderable": false, "searcheable": false }
+                ]
+            })
+        });
+    </script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav th:insert="/fragments/admin-general.html :: admin-navbar"> </nav>
+<!-- END OF NAV -->
+
+<!-- SIDE-NAV -->
+<aside th:insert="/fragments/admin-general.html :: admin-side-nav"></aside>
+<!-- END OF SIDE-NAV -->
+
+<br>
+
+<div class="movies-table-wrapper">
+    <table id="actors-table" class="table table-hover table-dark">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Photo</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="actors:${actor}">
+            <td th:text="${actors.getActor_id()}"></td>
+            <td class="zoom align-left" style="width: 200px; height: auto">
+                <img class="img-thumbnail" th:src="${actors.getActor_profilePhoto()}"/></td>
+            <td th:text="${actors.getActor_name()}"></td>
+            <td th:text="${actors.getActor_gender()}"></td>
+            <td th:text="${actors.getActor_age()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--<div class="container text-center">-->
+<!--<a class="btn btn-success" th:href="@{/admin}">Back To Admin</a>-->
+<!--</div>-->
+
+</body>
+</html>
+
+
+
+
+
