@@ -39,8 +39,12 @@
             <td class="align-middle" th:text="${movies.getMovie_releaseDate()}"></td>
             <td class="align-middle" th:text="${movies.getMovie_genre()}"></td>
             <td class="align-middle">
-                <button class="btn btn-warning" type="submit">Edit</button>
-                <button class="btn btn-danger" type="submit">Delete</button>
+                <form action="#" th:action="@{/editMovie}" th:object="${movieEdit}" method="post">
+                    <input type="text" th:field="*{movie_id}" th:attr="value = ${movies.getMovie_id()}"/>
+                    <input class="btn btn-warning" type="submit" value="Edit Movie"/>
+                </form>
+                <!--<button class="btn btn-warning" type="submit">Edit</button>-->
+                <!--<button class="btn btn-danger" type="submit">Delete</button>-->
             </td>
         </tr>
         </tbody>
