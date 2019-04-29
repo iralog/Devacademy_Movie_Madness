@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+//Original Completed by Selina
 @SuppressWarnings("Duplicates")
 @Controller
 public class AppController {
@@ -95,6 +95,13 @@ public class AppController {
         movie.getAllMovies();
         model.addAttribute("movie", Movies.movies);
         return "viewMoviesByUser";
+    }
+
+    @GetMapping("/viewMovieDetails")
+    public String viewMovieDetails(Model model) {
+        movie.getAllMovies();
+        model.addAttribute("movie", Movies.movies);
+        return "viewMovieDetails";
     }
 
     @GetMapping("/addMovie")
