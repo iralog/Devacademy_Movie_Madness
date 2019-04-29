@@ -14,14 +14,4 @@ public class FragmentsController {
 
     @GetMapping("/admin")
     public String getAdmin() {return "admin.html";}
-
-    @GetMapping("/markup")
-    public String markupPage() {
-        return "markup.html";
-    }
-
-    @GetMapping("/params")
-    public String paramsPage() {
-        return "params.html";
-    }
 }

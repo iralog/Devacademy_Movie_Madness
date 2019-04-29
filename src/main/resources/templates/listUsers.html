@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>CouchPotato - Movie Reviews</title>
+    <title>CouchPotato - Users</title>
     <!--/*/ <th:block th:include="/fragments/user-general.html :: headerfiles">
     </th:block> /*/-->
 
@@ -17,7 +17,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#movies-table').dataTable({
+            $('#users-table').dataTable({
                 "columnDefs": [
                     { "targets": [0], "orderable": false }
                 ]
@@ -41,43 +41,44 @@
     </style>
 </head>
 
-
-
-
 <body>
+
 <!-- NAV -->
-<nav th:insert="/fragments/user-general.html :: navbar"> </nav>
+<nav th:insert="/fragments/admin-general.html :: admin-navbar"> </nav>
 <!-- END OF NAV -->
 
 <!-- SIDE-NAV -->
-<aside th:insert="/fragments/user-general.html :: side-nav"></aside>
+<aside th:insert="/fragments/admin-general.html :: admin-side-nav"></aside>
 <!-- END OF SIDE-NAV -->
 
 <br>
 
 <!-- TABLE -->
 <div class="movies-table-wrapper">
-<table id="movies-table" class="table table-hover table-dark">
-    <thead>
-    <tr>
-        <th>Cover</th>
-        <th>Movie Title</th>
-        <th>Duration</th>
-        <th>Genre</th>
-        <th>Release Date</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="movies:${movie}">
-        <td class="zoom align-left" style="width: 200px; height: auto">
-            <img class="img-thumbnail" th:src="${movies.getMovie_coverImage()}"/></td>
-        <td th:text="${movies.getMovie_title()}"></td>
-        <td th:text="${movies.getMovie_duration()}"></td>
-        <td th:text="${movies.getMovie_genre()}"></td>
-        <td th:text="${movies.getMovie_releaseDate()}"></td>
-    </tr>
-    </tbody>
-</table>
+    <table id="users-table" class="table table-hover table-dark">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Join Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="users:${user}">
+            <td th:text="${users.getUser_id()}"></td>
+            <td th:text="${users.getUser_username()}"></td>
+            <td th:text="${users.getUser_password()}"></td>
+            <td th:text="${users.getUser_name()}"></td>
+            <td th:text="${users.getUser_age()}"></td>
+            <td th:text="${users.getUser_email()}"></td>
+            <td th:text="${users.getUser_joinDate()}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 <!-- END OF TABLE -->
 

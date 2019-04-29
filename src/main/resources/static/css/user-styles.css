@@ -1,10 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800");
-
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:700");
 html {
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
-
+.tile {
+    position: relative;
+    float: left;
+    width: 33.333%;
+    height: 100%;
+    overflow: hidden;}
 *,
 *:before,
 *:after {

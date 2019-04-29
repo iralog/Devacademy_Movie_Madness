@@ -29,12 +29,12 @@ public class InitialiseDB {
 
     public void addNewMovie(Connection con, Movies movie) {
         try {
-            String addMovies = "INSERT INTO tblMovies (movie_title, movie_summary," +
+            String addMovie = "INSERT INTO tblMovies (movie_title, movie_summary," +
                     " movie_duration, movie_genre, movie_release_date, movie_cover_image," +
                     " movie_trailer) VALUES " +
                     "(?,?,?,?,?,?,?)";
 
-            PreparedStatement pst = con.prepareStatement(addMovies);
+            PreparedStatement pst = con.prepareStatement(addMovie);
             pst.setString(1, movie.getMovie_title());
             pst.setString(2, movie.getMovie_summary());
             pst.setString(3, movie.getMovie_duration());
@@ -97,10 +97,10 @@ public class InitialiseDB {
 
     public boolean updateMovie(Connection con, Movies movie) {
         try {
-            String updateRecord = "UPDATE tblMovies SET movie_title = ?, movie_summary = ?, movie_duration = ?," +
+            String updateMovie = "UPDATE tblMovies SET movie_title = ?, movie_summary = ?, movie_duration = ?," +
                     "movie_genre = ?, movie_release_date = ?, movie_cover_image = ?, movie_trailer = ? WHERE movie_id = ?";
 
-            PreparedStatement pst = con.prepareStatement(updateRecord);
+            PreparedStatement pst = con.prepareStatement(updateMovie);
 
             pst.setString(1, movie.getMovie_title());
             pst.setString(2, movie.getMovie_summary());
@@ -152,8 +152,8 @@ public class InitialiseDB {
 
     public void addNewUser(Connection con, Users user) {
         try {
-            String addUsers = "INSERT INTO tblUsers (user_username, user_password, user_name, user_age,user_email," +
-                    " user_joinDate) VALUES " +
+            String addUsers = "INSERT INTO tblUsers (username, password, user_name, user_age,user_email," +
+                    " user_join_date) VALUES " +
                     "(?,?,?,?,?,?)";
 
             PreparedStatement pst = con.prepareStatement(addUsers);
@@ -180,8 +180,8 @@ public class InitialiseDB {
 
     public boolean updateUserRecord(Connection con, Users user) {
         try {
-            String updateRecord = "UPDATE tblUsers SET user_ username= ?, user_password = ?, user_name = ?," +
-                    "user_age = ?, user_email = ?,user_joinDate = ? WHERE user_id = ?";
+            String updateRecord = "UPDATE tblUsers SET username= ?, password = ?, user_name = ?," +
+                    "user_age = ?, user_email = ?,user_join_date = ? WHERE user_id = ?";
 
             PreparedStatement pst = con.prepareStatement(updateRecord);
 
@@ -243,12 +243,12 @@ public class InitialiseDB {
 
             while (rs.next()) {
                 Users user = new Users();
-                user.setUser_username(rs.getString("user_username"));
-                user.setUser_password(rs.getString("user_password"));
+                user.setUser_username(rs.getString("username"));
+                user.setUser_password(rs.getString("password"));
                 user.setUser_name(rs.getString("user_name"));
                 user.setUser_age(rs.getInt("user_age"));
                 user.setUser_email(rs.getString("user_email"));
-                user.setUser_joinDate(rs.getString("user_joinDate"));
+                user.setUser_joinDate(rs.getString("user_join_date"));
 
                 users.add(user);
             }
@@ -293,7 +293,7 @@ public class InitialiseDB {
 
     public boolean deleteReview(Connection con, Reviews review) {
         try {
-            String removeReview = "DELETE FROM tblREviews WHERE review_id = ?";
+            String removeReview = "DELETE FROM tblReviews WHERE review_id = ?";
             PreparedStatement pst = con.prepareStatement(removeReview);
 
             pst.setInt(1, review.getReview_id());
@@ -377,7 +377,7 @@ public class InitialiseDB {
 
     public void addNewActors(Connection con, Actors actor) {
         try {
-            String addActors = "INSERT INTO tblActors (actor_age, actor_name, actor_gender, actor_profilePhoto) VALUES " +
+            String addActors = "INSERT INTO tblActors (actor_age, actor_name, actor_gender, actor_profile_image) VALUES " +
                     "(?,?,?,?)";
 
             PreparedStatement pst = con.prepareStatement(addActors);
@@ -427,7 +427,7 @@ public class InitialiseDB {
     public boolean updateActorsProfileList(Connection con, Actors actor) {
         try {
             String updateRecord = "UPDATE tblActors SET actor_age= ?, actor_name = ?, actor_gender" +
-                    "actor_profilePhoto = ?, WHERE actor_id = ?";
+                    "actor_profile_image = ?, WHERE actor_id = ?";
 
             PreparedStatement pst = con.prepareStatement(updateRecord);
 
@@ -467,7 +467,7 @@ public class InitialiseDB {
                 String actor_name = rs.getString("actor_name");
                 int actor_age = rs.getInt("actor_age");
                 String actor_gender = rs.getString("actor_gender");
-                String actor_profilePhoto = rs.getString("actor_profilePhoto");
+                String actor_profilePhoto = rs.getString("actor_profile_image");
 
                 Actors actor = new Actors(actor_id, actor_age, actor_name, actor_gender, actor_profilePhoto);
                 actors.add(actor);

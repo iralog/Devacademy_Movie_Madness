@@ -4,9 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+//Original Completed by Selina
 @SuppressWarnings("Duplicates")
 @Controller
 public class AppController {
@@ -97,6 +96,13 @@ public class AppController {
         return "viewMoviesByUser";
     }
 
+    @GetMapping("/viewMovieDetails")
+    public String viewMovieDetails(Model model) {
+        movie.getAllMovies();
+        model.addAttribute("movie", Movies.movies);
+        return "viewMovieDetails";
+    }
+
     @GetMapping("/addMovie")
     public String movieToAdd(Model model) {
         int nextID = Movies.movies.size() + 1;
@@ -160,7 +166,14 @@ public class AppController {
     public String viewActors(Model model) {
         actor.getAllActors();
         model.addAttribute("actor", Actors.actors);
-        return "viewActors";
+        return "listActors";
+    }
+
+    @GetMapping("/listActors")
+    public String listActors(Model model) {
+        actor.getAllActors();
+        model.addAttribute("actor", Actors.actors);
+        return "listActors";
     }
 
     @GetMapping("/addActor")
@@ -232,6 +245,13 @@ public class AppController {
         user.getAllUsers();
         model.addAttribute("user", Users.users);
         return "viewUsers";
+    }
+
+    @GetMapping("/listUsers")
+    public String listUsers(Model model) {
+        user.getAllUsers();
+        model.addAttribute("user", Users.users);
+        return "listUsers";
     }
 
     @GetMapping("/addUser")

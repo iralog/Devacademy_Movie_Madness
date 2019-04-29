@@ -1,9 +1,7 @@
-//Class coded by Danillo
-
 package com.finalproject.couchpotato;
 
 import java.util.ArrayList;
-
+//by Danillo
 public class Users {
 
     private int user_id;
