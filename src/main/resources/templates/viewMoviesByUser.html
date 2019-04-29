@@ -16,9 +16,13 @@
     <!-- End of DataTables -->
 
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('#movies-table').DataTable();
-        } );
+        $(document).ready(function () {
+            $('#movies-table').dataTable({
+                "columnDefs": [
+                    { "targets": [0], "orderable": false }
+                ]
+            })
+        });
     </script>
 
     <style>
