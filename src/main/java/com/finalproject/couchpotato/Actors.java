@@ -1,7 +1,7 @@
 package com.finalproject.couchpotato;
 
 import java.util.ArrayList;
-
+//by Selina
 public class Actors {
     private int actor_id;
     private int actor_age;

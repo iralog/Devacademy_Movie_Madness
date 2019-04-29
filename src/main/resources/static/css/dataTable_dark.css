@@ -416,6 +416,8 @@ table.dataTable td {
     border-radius: 2px;
 }
 
+
+
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
     color: white !important;
     border: 1px solid #1e1e1e;
