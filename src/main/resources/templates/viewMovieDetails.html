@@ -1,30 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Single movie</title>
+    <title>CouchPotato - Movie Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/movies-table-style.css}"/>
+
+    <!-- DataTables -->
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" language="javascript"
+            src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dataTable_dark.css}"/>
+    <!-- End of DataTables -->
 </head>
-
 <body>
-
 <!-- NAV -->
-<nav th:insert="/fragments/user-general.html :: user-navbar"> </nav>
+<nav th:insert="/fragments/user-general.html :: navbar"></nav>
 <!-- END OF NAV -->
 
 <!-- SIDE-NAV -->
-<aside th:insert="/fragments/user-general.html :: user-side-nav"></aside>
+<aside th:insert="/fragments/user-general.html :: side-nav"></aside>
 <!-- END OF SIDE-NAV -->
-<div id="table-wrapper-couch">
-    <div class="text-center">
-        <h1>Placeholder for Single Movie</h1>
-    </div>
+<br>
+<!-- TABLE -->
+<div class="movies-table-wrapper">
+    <table id="movies-table" class="table table-hover table-dark">
+        <thead>
+        <tr>
+            <th th:text="${movie.movie_title}"></th>
+            <th th:text="${movie.movie_duration}"></th>
+            <th th:text="${movie.movie_releaseDate}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="zoom align-left" style="width: 200px; height: auto">
+                <img class="img-thumbnail" th:src="${movie.movie_coverImage}"/></td>
+            <td th:text="${movie.movie_summary}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
+<!-- END OF TABLE -->
 
-<br>
-<br>
-<br>
-
-<!--/*/ <th:block th:include="/fragments/general.html :: footerfiles">
-    </th:block> /*/-->
+<div class="container text-center">
+    <a class="btn btn-success" href="/">Back To Homepage</a>
+</div>
 </body>
 </html>
+
