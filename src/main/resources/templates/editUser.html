@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CouchPotato | Admin - Edit User</title>
+    <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
+        /*/ <th:block th:include="/fragments/general.html :: bootstrap"></th:block> /*/
+    </th:block> /*/-->
+</head>
+<body>
+
+<!-- NAV -->
+<nav th:insert="/fragments/admin-general.html :: admin-navbar"> </nav>
+<!-- END OF NAV -->
+
+<!-- SIDE-NAV -->
+<aside th:insert="/fragments/admin-general.html :: admin-side-nav"></aside>
+<!-- END OF SIDE-NAV -->
+
+<!-- FORM -->
+<div class="wrapper-couch">
+    <div class="text-center jumbotron pt-1">
+        <h1 class="pb-2">Edit User</h1>
+        <form action="#" th:action="@{/userSaved}" th:object="${user}" method="post">
+            <p class="col-md-12 font-weight-bold mb-1 mt-1">ID</p>
+            <input class="col-md-4 text-center" type="text" th:field="*{user_id}" th:value="${user.getUser_id()}" readonly/>
+
+            <p class="col-md-12 font-weight-bold mb-1 mt-1">Name</p>
+            <input class="col-md-4 text-center" type="text" th:field="*{user_name}" th:value="${user.getUser_name()}"/>
+
+            <p class="col-md-12 font-weight-bold mb-1 mt-1">Username</p>
+            <textarea class="col-md-4 text-center" type="text" th:field="*{user_username}" th:value="${user.getUser_username()}"/></textarea>
+
+            <p class="col-md-12 font-weight-bold mb-1 mt-1">Password</p>
+            <input class="col-md-4 text-center" type="text" th:field="*{user_password}" th:value="${user.getUser_password()}"/>
+
+            <p class="col-md-12 font-weight-bold mb-1 mt-1">Age</p>
+            <input class="col-md-4 text-center" type="text" th:field="*{user_age}" th:value="${user.getUser_age()}"/>
+
+            <p class="col-md-12 font-weight-bold mb-1 mt-1">Email</p>
+            <input class="col-md-4 text-center" type="text" th:field="*{user_email}" th:value="${user.getUser_email()}"/>
+
+            <p class="col-md-12 font-weight-bold mb-1 mt-1">Join Date</p>
+            <input class="col-md-4 text-center" type="text" th:field="*{user_joinDate}" th:value="${user.getUser_joinDate()}" readonly/>
+
+            <!--<a class="btn btn-warning mt-2 mr-2" href="/editDeleteMovie">Cancel</a>-->
+            <!--<input class="btn btn-primary mt-2 ml-2" type="submit" value="Save"/>-->
+        </form>
+    </div>
+</div>
+<!-- END OF FORM -->
+
+<br>
+<br>
+<br>
+
+
+<!--/*/ <th:block th:include="/fragments/general.html :: footerfiles">
+    </th:block> /*/-->
+</body>
+</html>
