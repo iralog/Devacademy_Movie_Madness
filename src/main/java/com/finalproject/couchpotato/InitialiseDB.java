@@ -270,10 +270,12 @@ public class InitialiseDB {
 
     public void addNewReview(Connection con, Reviews review) {
         try {
-            String addReviews = "INSERT INTO tblReviews (review_comment, review_rating, review_date) VALUES " +
-                    "(?,?,?)";
+            String addReviews = "INSERT INTO tblReviews (user_id, movie_id, review_comment, review_rating, review_date) VALUES " +
+                    "(?,?,?,?,?)";
 
             PreparedStatement pst = con.prepareStatement(addReviews);
+            pst.setInt(1, review.getReviewUser_id());
+            pst.setInt(1, review.getReviewMovie_id());
             pst.setString(1, review.getReview_comment());
             pst.setInt(2, review.getReview_rating());
             pst.setString(3, review.getReview_date());
@@ -327,11 +329,13 @@ public class InitialiseDB {
 
             while (rs.next()) {
                 int review_id = rs.getInt("review_id");
+                int user_id=rs.getInt("user_id");
+                int movie_id=rs.getInt("movie_id");
                 String review_comment = rs.getString("review_comment");
-                int review_rating = rs.getInt("review_date");
+                int review_rating = rs.getInt("review_rating");
                 String review_date = rs.getString("review_date");
 
-                Reviews review = new Reviews(review_id, review_comment, review_rating, review_date);
+                Reviews review = new Reviews(review_id,user_id,movie_id,review_comment, review_rating, review_date);
                 reviews.add(review);
             }
 
@@ -351,14 +355,17 @@ public class InitialiseDB {
 
     public boolean updateReview(Connection con, Reviews review) {
         try {
-            String updateRecord = "UPDATE tblReviews SET review_comment= ?, review_rating = ?" +
+            String updateRecord = "UPDATE tblReviews SET user_id=?, movied_id=?,review_comment= ?, review_rating = ?" +
                     "review_date = ?, WHERE review_id = ?";
 
             PreparedStatement pst = con.prepareStatement(updateRecord);
 
-            pst.setString(1, review.getReview_comment());
-            pst.setInt(2, review.getReview_rating());
-            pst.setString(3, review.getReview_date());
+            pst.setInt(1, review.getReviewUser_id());
+            pst.setInt(2, review.getReviewMovie_id());
+            pst.setString(3, review.getReview_comment());
+            pst.setInt(4, review.getReview_rating());
+            pst.setString(5, review.getReview_date());
+
 
             pst.executeUpdate();
             pst.close();
