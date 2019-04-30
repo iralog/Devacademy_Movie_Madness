@@ -93,6 +93,7 @@ public class AppController {
     public String viewMoviesByUser(Model model) {
         movie.getAllMovies();
         model.addAttribute("movie", Movies.movies);
+        model.addAttribute("aMovie", new Movies());
         return "viewMoviesByUser";
     }
 
