@@ -34,6 +34,16 @@ public class Users {
 
     public void setUser_id(int user_id) {this.user_id = user_id;}
 
+    public String getUser_UsernameByUserID(int id){
+        String usrn = " ";
+        for(Users usr : users){
+            if (usr.getUser_id() == id){
+                usrn = getUser_name();
+            }
+        }
+        return usrn;
+    }
+
     public String getUser_username() {
         return user_username;
     }
