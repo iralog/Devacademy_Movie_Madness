@@ -5,6 +5,24 @@
     <title>CouchPotato | Admin - Edit/Delete Movie</title>
     <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
     </th:block> /*/-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/movies-table-style.css}"/>
+
+    <!-- DataTables -->
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dataTable_dark.css}"/>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#movies-table').dataTable({
+                "columnDefs": [
+                    { "targets": [5], "orderable": false }
+                ]
+            })
+        });
+    </script>
+    <!-- End of DataTables -->
 </head>
 <body>
 
@@ -18,8 +36,8 @@
 
 <!-- TABLE -->
 <div class="wrapper-couch">
-    <table class="table table-hover text-center">
-
+    <!--<table class="table table-hover text-center">-->
+    <table id="movies-table" class="table table-hover table-dark">
         <thead class="thead-dark">
         <tr>
             <th class="align-middle" scope="col">#</th>
@@ -39,12 +57,16 @@
             <td class="align-middle" th:text="${movies.getMovie_releaseDate()}"></td>
             <td class="align-middle" th:text="${movies.getMovie_genre()}"></td>
             <td class="align-middle">
-                <form action="#" th:action="@{/editMovie}" th:object="${movieEdit}" method="post">
-                    <input type="text" th:field="*{movie_id}" th:attr="value = ${movies.getMovie_id()}"/>
-                    <input class="btn btn-warning" type="submit" value="Edit Movie"/>
-                </form>
-                <!--<button class="btn btn-warning" type="submit">Edit</button>-->
-                <!--<button class="btn btn-danger" type="submit">Delete</button>-->
+                <div id="form-btns-couch">
+                    <form id="edit-btn-couch" action="#" th:action="@{/editMovie}" th:object="${movieEdit}" method="post">
+                        <!--<input type="text" th:field="*{movie_id}" th:attr="value = ${movies.getMovie_id()}"/>-->
+                        <input class="btn btn-warning" type="submit" value="Edit"/>
+                    </form>
+                    <form id="delete-btn-couch" action="#" th:action="@{/movieDelete}" th:object="${movieEdit}" method="post">
+                        <!--<input type="text" th:field="*{movie_id}" th:attr="value = ${movies.getMovie_id()}"//>-->
+                        <input class="btn btn-danger" type="submit" value="Delete"/>
+                    </form>
+                </div>
             </td>
         </tr>
         </tbody>
@@ -53,25 +75,29 @@
 <!-- END OF TABLE -->
 
 <!-- FORM -->
-<div class="container text-center">
-    <form action="#" th:action="@{/editMovie}" th:object="${movieEdit}" method="post">
-        <p>Enter the ID of the Movie to Edit</p>
-        <p>Movie ID: <input type="text" th:field="*{movie_id}"/></p>
-        <input class="btn btn-warning" type="submit" value="Edit Movie"/>
-    </form>
+<!--<div class="container text-center">-->
+    <!--<form action="#" th:action="@{/editMovie}" th:object="${movieEdit}" method="post">-->
+        <!--<p>Enter the ID of the Movie to Edit</p>-->
+        <!--<p>Movie ID: <input type="text" th:field="*{movie_id}"/></p>-->
+        <!--<input class="btn btn-warning" type="submit" value="Edit Movie"/>-->
+    <!--</form>-->
 
-    <form action="#" th:action="@{/movieDelete}" th:object="${movieEdit}" method="post">
-        <p>Enter the ID of the Movie you would like to Delete</p>
-        <p>Movie ID: <input type="text" th:field="*{movie_id}"/></p>
-        <input class="btn btn-danger" type="submit" value="Delete Movie"/>
-    </form>
-</div>
+    <!--<form action="#" th:action="@{/movieDelete}" th:object="${movieEdit}" method="post">-->
+        <!--<p>Enter the ID of the Movie you would like to Delete</p>-->
+        <!--<p>Movie ID: <input type="text" th:field="*{movie_id}"/></p>-->
+        <!--<input class="btn btn-danger" type="submit" value="Delete Movie"/>-->
+    <!--</form>-->
+<!--</div>-->
 <!-- END OF FORM -->
 
+<br>
+<br>
+<br>
 
-<div class="container text-center">
-    <a class="btn btn-success" th:href="@{/admin}">Back To Admin</a>
-</div>
+
+<!--<div class="container text-center">-->
+    <!--<a class="btn btn-success" th:href="@{/admin}">Back To Admin</a>-->
+<!--</div>-->
 
 </body>
 

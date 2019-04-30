@@ -13,16 +13,16 @@
     <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/dataTable_dark.css}"/>
-    <!-- End of DataTables -->
     <script type="text/javascript">
         $(document).ready(function () {
             $('#users-table').dataTable({
                 "columnDefs": [
-                    { "targets": [0], "orderable": false }
+                    { "targets": [2, 6], "orderable": false }
                 ]
             })
         });
     </script>
+    <!-- End of DataTables -->
 
     <style>
         .zoom {
@@ -59,22 +59,34 @@
         <tr>
             <th>ID</th>
             <th>Username</th>
-            <th>Password</th>
             <th>Name</th>
             <th>Age</th>
             <th>Email</th>
             <th>Join Date</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="users:${user}">
             <td th:text="${users.getUser_id()}"></td>
             <td th:text="${users.getUser_username()}"></td>
-            <td th:text="${users.getUser_password()}"></td>
             <td th:text="${users.getUser_name()}"></td>
             <td th:text="${users.getUser_age()}"></td>
             <td th:text="${users.getUser_email()}"></td>
             <td th:text="${users.getUser_joinDate()}"></td>
+            <td class="align-middle">
+                <div id="form-btns-couch">
+                    <form id="edit-btn-couch" action="#" method="post">
+                        <!--<input type="text" th:field="*{movie_id}" th:attr="value = ${movies.getMovie_id()}"/>-->
+                        <input class="btn btn-warning" type="submit" value="Edit"/>
+                    </form>
+                    <form id="delete-btn-couch" action="#" method="post">
+                        <!--<input type="text" th:field="*{movie_id}" th:attr="value = ${movies.getMovie_id()}"//>-->
+                        <input class="btn btn-danger" type="submit" value="Delete"/>
+                    </form>
+                </div>
+            </td>
+
         </tr>
         </tbody>
     </table>
