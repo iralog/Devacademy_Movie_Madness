@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>CouchPotato - Movie Details</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/movies-table-style.css}"/>
+    <title>CouchPotato - View Movie Details</title>
+    <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
+        /*/ <th:block th:include="/fragments/general.html :: bootstrap"></th:block> /*/
+        /*/ <th:block th:include="/fragments/general.html :: datatables"></th:block> /*/
+    </th:block> /*/-->
 
     <!-- DataTables -->
     <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -43,9 +44,11 @@
 </div>
 <!-- END OF TABLE -->
 
-<div class="container text-center">
-    <a class="btn btn-success" href="/">Back To Homepage</a>
-</div>
+<br>
+<br>
+<br>
+
+<!--/*/ <th:block th:include="/fragments/general.html :: footerfiles">
+    </th:block> /*/-->
 </body>
 </html>
-
