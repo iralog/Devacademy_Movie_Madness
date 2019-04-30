@@ -48,10 +48,12 @@
             <th class="align-left" scope="col">Review Date</th>
             <th class="align-left" scope="col">User Name </th>
 
+
         </tr>
         </thead>
         <tbody class="tbody-light">
         <tr th:each="reviews:${review}">
+
             <td class="align-left" th:text="${reviews.getReview_id()}"></td>
             <td class="align-left" th:text="${reviews.getReview_comment()}"></td>
             <td class="align-left" th:text="${reviews.getReview_rating()}"></td>
