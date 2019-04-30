@@ -98,9 +98,21 @@ public class AppController {
 
     @GetMapping("/viewMovieDetails")
     public String viewMovieDetails(Model model) {
-        movie.getAllMovies();
-        model.addAttribute("movie", Movies.movies);
+        model.addAttribute("movie", Movies.movie);
+        model.addAttribute("aMovie", new Movies());
         return "viewMovieDetails";
+    }
+    
+    @PostMapping("/selectedMovieDetails")
+    public String selectedMovieDetails(@ModelAttribute Movies movie, Model model) {
+        Movies userSelectedMovie = new Movies();
+        for (Movies mv : Movies.movie) {
+            if (mv.getMovie_id() == movie.getMovie_id()) {
+                userSelectedMovie = mv;
+            }
+        }
+        model.addAttribute("movie", userSelectedMovie);
+        return "selectedMovieDetails";
     }
 
     @GetMapping("/addMovie")
@@ -112,7 +124,7 @@ public class AppController {
         model.addAttribute("movie", movie);
         return "addMovie";
     }
-
+    
     @PostMapping("/addingMovie")
     public String movieAdded(@ModelAttribute Movies movie) {
         movie.addNewMovie(movie);
