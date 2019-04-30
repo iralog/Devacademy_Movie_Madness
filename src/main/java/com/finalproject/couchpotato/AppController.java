@@ -196,6 +196,7 @@ public class AppController {
     public String editDeleteActor(Model model) {
         model.addAttribute("actor", Actors.actors);
         model.addAttribute("actorEdit", new Actors());
+        model.addAttribute("actorDelete", new Actors());
         return "editDeleteActor";
     }
 
