@@ -16,7 +16,7 @@ body {
     font-weight: 400;
     margin: 0;
     padding: 0;
-    background-color: #fff;
+    background-color: #000000;
 }
 
 /* NAV */
@@ -168,6 +168,21 @@ span.hamburger-line-couch {
 .wrapper-couch {
     margin-top: 5rem;
 }
+
+/* STYLES FOR BUTTONS IN DATATABLES */
+.table-wrapper-couch {
+    margin-top: 4em;
+}
+#form-btns-couch{
+    display: flex;
+}
+#edit-btn-couch{
+    padding: 0.2rem;
+}
+#delete-btn-couch{
+    padding: 0.2rem;
+}
+
 
 /* MEDIA QUERIES */
 
