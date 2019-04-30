@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CouchPotato | Admin - Delete Movie</title>
+    <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
+    </th:block> /*/-->
+</head>
+<body>
+
+<!-- NAV -->
+<nav th:insert="/fragments/admin-general.html :: admin-navbar"> </nav>
+<!-- END OF NAV -->
+
+<!-- SIDE-NAV -->
+<aside th:insert="/fragments/admin-general.html :: admin-side-nav"></aside>
+<!-- END OF SIDE-NAV -->
+
+<!-- FORM -->
+<div class="wrapper-couch">
+    <div class="text-center jumbotron pt-1">
+        <h1 class="pb-2">Delete Movie</h1>
+        <form action="#" th:action="@{/movieSaved}" th:object="${movie}" method="post">
+            <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie ID:</p>
+            <input class="col-md-4 text-center" type="text" th:field="*{movie_id}" th:value="${movie.getMovie_id()}" readonly/>
+
+            <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Title:</p>
+            <input class="col-md-4 text-center" type="text" th:field="*{movie_title}" th:value="${movie.getMovie_title()}" readonly/>
+
+            <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Genre</p>
+            <input class="col-md-4 text-center" type="text" th:field="*{movie_genre}" th:value="${movie.getMovie_genre()}" readonly/>
+            <br/>
+
+            <a class="btn btn-warning mt-2 mr-2" href="/editDeleteMovie">Cancel</a>
+            <input class="btn btn-primary mt-2 ml-2" type="submit" value="Delete"/>
+        </form>
+    </div>
+</div>
+<!-- END OF FORM -->
+
+<div class="container text-center">
+    <a class="btn btn-success" th:href="@{/admin}">Back To Admin</a>
+</div>
+
+
+</body>
+
+</html>

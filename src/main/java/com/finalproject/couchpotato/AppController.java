@@ -144,7 +144,7 @@ public class AppController {
         return "index";
     }
 
-    @PostMapping("/movieDelete")
+    @PostMapping("/deleteMovie")
     public String movieToDelete(@ModelAttribute Movies movie, Model model) {
         Movies m = new Movies();
         for (Movies mv : Movies.movies) {
@@ -153,7 +153,7 @@ public class AppController {
             }
         }
         model.addAttribute("movie", m);
-        return "movieDelete";
+        return "deleteMovie";
     }
 
     @PostMapping("/movieDeleted")
