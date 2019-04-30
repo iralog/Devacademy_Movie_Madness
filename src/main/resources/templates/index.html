@@ -16,20 +16,21 @@
 <aside th:insert="/fragments/user-general.html :: side-nav"></aside>
 <!-- END OF SIDE-NAV -->
 
+<div class="wrapper-couch">
 <!-- HEADER -->
-<div id="header-couch" class="header-couch">
-    <div id="video-container-couch">
-        <div class="video-overlay-couch"></div>
-        <div class="video-content-couch">
-            <div class="inner-couch">
-                <h1>Movie reviews from people who live on the couch</h1>
-                <button>View More</button>
+    <div id="header-couch" class="header-couch">
+        <div id="video-container-couch">
+            <div class="video-overlay-couch"></div>
+            <div class="video-content-couch">
+                <div class="inner-couch">
+                    <h1>Movie reviews from people who live on the couch</h1>
+                    <button>View More</button>
+                </div>
             </div>
+            <video autoplay muted loop th:src="@{http://hakunas.000webhostapp.com/hakunas_video_bg.mp4}"></video>
         </div>
-        <video autoplay muted loop th:src="@{http://hakunas.000webhostapp.com/hakunas_video_bg.mp4}"></video>
-    </div>
-</div> <!-- END OF HEADER -->
-
+    </div> <!-- END OF HEADER -->
+</div>
 
 
 <!--/*/ <th:block th:include="/fragments/general.html :: footerfiles">
