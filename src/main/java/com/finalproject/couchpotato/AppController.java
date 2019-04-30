@@ -176,13 +176,6 @@ public class AppController {
         return "viewActors";
     }
 
-    @GetMapping("/listActors")
-    public String listActors(Model model) {
-        actor.getAllActors();
-        model.addAttribute("actor", Actors.actors);
-        return "listActors";
-    }
-
     @GetMapping("/addActor")
     public String actorToAdd(Model model) {
         int nextID = Actors.actors.size() + 1;
@@ -203,6 +196,7 @@ public class AppController {
     public String editDeleteActor(Model model) {
         model.addAttribute("actor", Actors.actors);
         model.addAttribute("actorEdit", new Actors());
+        model.addAttribute("actorDelete", new Actors());
         return "editDeleteActor";
     }
 
@@ -252,13 +246,6 @@ public class AppController {
         user.getAllUsers();
         model.addAttribute("user", Users.users);
         return "viewUsers";
-    }
-
-    @GetMapping("/listUsers")
-    public String listUsers(Model model) {
-        user.getAllUsers();
-        model.addAttribute("user", Users.users);
-        return "listUsers";
     }
 
     @GetMapping("/addUser")

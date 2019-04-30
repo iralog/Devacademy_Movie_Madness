@@ -29,7 +29,7 @@
             <input class="col-md-4 text-center" type="text" th:field="*{user_name}" th:value="${user.getUser_name()}"/>
 
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Username</p>
-            <textarea class="col-md-4 text-center" type="text" th:field="*{user_username}" th:value="${user.getUser_username()}"/></textarea>
+            <inpu class="col-md-4 text-center" type="text" th:field="*{user_username}" th:value="${user.getUser_username()}"/>
 
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Password</p>
             <input class="col-md-4 text-center" type="text" th:field="*{user_password}" th:value="${user.getUser_password()}"/>
@@ -43,8 +43,8 @@
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Join Date</p>
             <input class="col-md-4 text-center" type="text" th:field="*{user_joinDate}" th:value="${user.getUser_joinDate()}" readonly/>
 
-            <!--<a class="btn btn-warning mt-2 mr-2" href="/editDeleteMovie">Cancel</a>-->
-            <!--<input class="btn btn-primary mt-2 ml-2" type="submit" value="Save"/>-->
+            <a class="btn btn-warning mt-2 mr-2" th:href="@{/viewUsers}">Cancel</a>
+            <input class="btn btn-primary mt-2 ml-2" type="submit" value="Save"/>
         </form>
     </div>
 </div>
