@@ -4,15 +4,14 @@
 <head>
     <title>CouchPotato | Admin - Edit/Delete Movie</title>
     <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
-    </th:block> /*/-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/movies-table-style.css}"/>
+        /*/ <th:block th:include="/fragments/general.html :: bootstrap"></th:block> /*/
+   </th:block> /*/-->
 
     <!-- DataTables -->
     <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/dataTable_dark.css}"/>
+
     <script type="text/javascript">
         $(document).ready(function () {
             $('#movies-table').dataTable({
@@ -95,10 +94,8 @@
 <br>
 
 
-<!--<div class="container text-center">-->
-    <!--<a class="btn btn-success" th:href="@{/admin}">Back To Admin</a>-->
-<!--</div>-->
-
+<!--/*/ <th:block th:include="/fragments/general.html :: footerfiles">
+    </th:block> /*/-->
 </body>
 
 </html>
