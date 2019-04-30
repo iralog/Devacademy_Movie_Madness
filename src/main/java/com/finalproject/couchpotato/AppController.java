@@ -93,18 +93,11 @@ public class AppController {
     public String viewMoviesByUser(Model model) {
         movie.getAllMovies();
         model.addAttribute("movie", Movies.movies);
+        model.addAttribute("aMovie", new Movies());
         return "viewMoviesByUser";
     }
 
-    @GetMapping("/viewMovieDetails")
-    public String viewMovieDetails(Model model) {
-        movie.getAllMovies();
-        model.addAttribute("movie", Movies.movies);
-        model.addAttribute("aMovie", new Movies());
-        return "viewMovieDetails";
-    }
-    
-    @PostMapping("/selectedMovieDetails")
+    @PostMapping("/viewMovieDetails")
     public String selectedMovieDetails(@ModelAttribute Movies movie, Model model) {
         Movies userSelectedMovie = new Movies();
         for (Movies mv : Movies.movies) {
@@ -113,7 +106,7 @@ public class AppController {
             }
         }
         model.addAttribute("movie", userSelectedMovie);
-        return "selectedMovieDetails";
+        return "viewMovieDetails";
     }
 
     @GetMapping("/addMovie")
@@ -136,6 +129,7 @@ public class AppController {
     public String editDeleteMovie(Model model) {
         model.addAttribute("movie", Movies.movies);
         model.addAttribute("movieEdit", new Movies());
+        model.addAttribute("movieDelete", new Movies());
         return "editDeleteMovie";
     }
 
@@ -182,13 +176,6 @@ public class AppController {
         return "viewActors";
     }
 
-    @GetMapping("/listActors")
-    public String listActors(Model model) {
-        actor.getAllActors();
-        model.addAttribute("actor", Actors.actors);
-        return "listActors";
-    }
-
     @GetMapping("/addActor")
     public String actorToAdd(Model model) {
         int nextID = Actors.actors.size() + 1;
@@ -209,6 +196,7 @@ public class AppController {
     public String editDeleteActor(Model model) {
         model.addAttribute("actor", Actors.actors);
         model.addAttribute("actorEdit", new Actors());
+        model.addAttribute("actorDelete", new Actors());
         return "editDeleteActor";
     }
 
@@ -258,13 +246,6 @@ public class AppController {
         user.getAllUsers();
         model.addAttribute("user", Users.users);
         return "viewUsers";
-    }
-
-    @GetMapping("/listUsers")
-    public String listUsers(Model model) {
-        user.getAllUsers();
-        model.addAttribute("user", Users.users);
-        return "listUsers";
     }
 
     @GetMapping("/addUser")

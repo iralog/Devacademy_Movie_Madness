@@ -20,16 +20,16 @@
 <!-- FORM -->
 <div class="wrapper-couch">
     <div class="text-center jumbotron pt-1">
-        <h1 class="pb-2">Delete Movie</h1>
+        <h2 class="pb-2">Are you sure you want to delete movie?</h2>
         <form action="#" th:action="@{/movieSaved}" th:object="${movie}" method="post">
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie ID:</p>
-            <input class="col-md-4 text-center" type="text" th:field="*{movie_id}" th:value="${movie.getMovie_id()}" readonly/>
+            <p class="col-md-12 text-center" type="text" th:text="${movie.getMovie_id()}"></p>
 
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Title:</p>
-            <input class="col-md-4 text-center" type="text" th:field="*{movie_title}" th:value="${movie.getMovie_title()}" readonly/>
+            <p class="col-md-12 text-center" type="text" th:text="${movie.getMovie_title()}"></p>
 
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie Genre</p>
-            <input class="col-md-4 text-center" type="text" th:field="*{movie_genre}" th:value="${movie.getMovie_genre()}" readonly/>
+            <p class="col-md-12 text-center" type="text" th:text="${movie.getMovie_genre()}" ></p>
             <br/>
 
             <a class="btn btn-warning mt-2 mr-2" href="/editDeleteMovie">Cancel</a>

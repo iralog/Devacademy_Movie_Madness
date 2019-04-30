@@ -1,24 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Single movie</title>
+    <title>CouchPotato - View Movie Details</title>
+    <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
+        /*/ <th:block th:include="/fragments/general.html :: bootstrap"></th:block> /*/
+        /*/ <th:block th:include="/fragments/general.html :: datatables"></th:block> /*/
+    </th:block> /*/-->
 </head>
-
 <body>
 
+<br>
+<br>
+<br>
+<br>
+
 <!-- NAV -->
-<nav th:insert="/fragments/user-general.html :: user-navbar"> </nav>
+<nav th:insert="/fragments/user-general.html :: navbar"></nav>
 <!-- END OF NAV -->
 
 <!-- SIDE-NAV -->
-<aside th:insert="/fragments/user-general.html :: user-side-nav"></aside>
+<aside th:insert="/fragments/user-general.html :: side-nav"></aside>
 <!-- END OF SIDE-NAV -->
-<div id="table-wrapper-couch">
-    <div class="text-center">
-        <h1>Placeholder for Single Movie</h1>
-    </div>
+<br>
+<!-- TABLE -->
+<div class="movies-table-wrapper">
+    <table id="movies-table" class="table table-hover table-dark">
+        <thead>
+        <tr>
+            <th th:text="${movie.movie_title}"></th>
+            <th th:text="${movie.movie_duration}"></th>
+            <th th:text="${movie.movie_releaseDate}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="zoom align-left" style="width: 200px; height: auto">
+                <img class="img-thumbnail" th:src="${movie.movie_coverImage}"/></td>
+            <td th:text="${movie.movie_summary}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
+<!-- END OF TABLE -->
 
 <br>
 <br>

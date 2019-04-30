@@ -78,7 +78,10 @@
 </table>
 </div>
 <!-- END OF TABLE -->
-
+<form action="#" th:action="@{/viewMovieDetails}" th:object="${aMovie}" method="post">
+        <input class="nav-menu-link-couch"  type="text" th:field="*{movie_id}">
+    </form>
+    <br>
 <br>
 <br>
 <br>
