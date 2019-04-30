@@ -136,6 +136,7 @@ public class AppController {
     public String editDeleteMovie(Model model) {
         model.addAttribute("movie", Movies.movies);
         model.addAttribute("movieEdit", new Movies());
+        model.addAttribute("movieDelete", new Movies());
         return "editDeleteMovie";
     }
 

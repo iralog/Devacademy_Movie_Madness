@@ -61,7 +61,7 @@
                         <!--<input type="text" th:field="*{movie_id}" th:attr="value = ${movies.getMovie_id()}"/>-->
                         <input class="btn btn-warning" type="submit" value="Edit"/>
                     </form>
-                    <form id="delete-btn-couch" action="#" th:action="@{/movieDelete}" th:object="${movieEdit}" method="post">
+                    <form id="delete-btn-couch" action="#" th:action="@{/deleteMovie}" th:object="${movieDelete}" method="post">
                         <!--<input type="text" th:field="*{movie_id}" th:attr="value = ${movies.getMovie_id()}"//>-->
                         <input class="btn btn-danger" type="submit" value="Delete"/>
                     </form>
