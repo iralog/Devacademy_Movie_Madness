@@ -6,16 +6,9 @@ import java.util.ArrayList;
 
 public class Reviews {
 
-    private  int user_id;
-    private int movie_id;
     private int review_id;
     private String review_comment;
     private int review_rating;
-
-
-
-
-
     private String review_date;
 
 
@@ -23,10 +16,8 @@ public class Reviews {
     public static ArrayList<Reviews> reviews = new ArrayList<>();
 
 
-    public Reviews(int review_id,int user_id, int movie_id, String review_comment, int review_rating, String review_date) {
+    public Reviews(int review_id, String review_comment, int review_rating, String review_date) {
         this.review_id = review_id;
-        this.user_id = user_id;
-        this.movie_id = movie_id;
         this.review_comment = review_comment;
         this.review_rating = review_rating;
         this.review_date = review_date;
@@ -34,22 +25,7 @@ public class Reviews {
     }
     public Reviews(){}
 
-    //Getter and Setter
-    //
-    public void setReviewMovie_id(int movie_id) {
-        this.movie_id = movie_id;
-    }
-    public int getReviewUser_id() {
-        return user_id;
-    }
-
-    public void setReviewUser_id(int user_id) {
-        this.user_id = user_id;
-    }
-
-    public int getReviewMovie_id() {
-        return movie_id;
-    }
+    //Getter and Setters
     public int getReview_id() {
         return review_id;
     }

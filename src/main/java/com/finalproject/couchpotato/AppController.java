@@ -118,7 +118,7 @@ public class AppController {
         model.addAttribute("movie", movie);
         return "addMovie";
     }
-
+    
     @PostMapping("/addingMovie")
     public String movieAdded(@ModelAttribute Movies movie) {
         movie.addNewMovie(movie);
@@ -127,7 +127,6 @@ public class AppController {
 
     @GetMapping("/editDeleteMovie")
     public String editDeleteMovie(Model model) {
-        movie.getAllMovies();
         model.addAttribute("movie", Movies.movies);
         model.addAttribute("movieEdit", new Movies());
         model.addAttribute("movieDelete", new Movies());
@@ -204,6 +203,7 @@ public class AppController {
     public String editDeleteActor(Model model) {
         model.addAttribute("actor", Actors.actors);
         model.addAttribute("actorEdit", new Actors());
+        model.addAttribute("actorDelete", new Actors());
         return "editDeleteActor";
     }
 
@@ -323,3 +323,5 @@ public class AppController {
     }
 
 }
+
+

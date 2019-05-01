@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Delete Actor</title>
+
+</head>
+<body>
+<div class="text-center jumbotron pt-1">
+    <h1 class="pb-2">Delete this Actor</h1>
+    <form action="#" th:action="@{/actorDeleted}" th:object="${actor}" method="post">
+
+        <p class="col-md-12 font-weight-bold mb-1 mt-1">Actor ID</p>
+        <input class="col-md-4 text-center" type="text" th:field="*{actor_id}" th:value="${actor.getActor_id()}"
+               readonly/>
+
+        <p class="col-md-12 font-weight-bold mb-1 mt-1">Actor Name</p>
+        <input class="col-md-4 text-center" type="text" th:field="*{actor_name}" th:value="${actor.getActor_name()}"
+               readonly/>
+
+        <p class="col-md-12 font-weight-bold mb-1 mt-1">Actor Age</p>
+        <input class="col-md-4 text-center" type="text" th:field="*{actor_age}" th:value="${actor.getActor_age()}"
+               readonly/>
+
+        <p class="col-md-12 font-weight-bold mb-1 mt-1">Actor Gender</p>
+        <input class="col-md-4 text-center" type="text" th:field="*{actor_gender}" th:value="${actor.getActor_gender()}"
+               readonly/>
+
+        <p class="col-md-12 font-weight-bold mb-1 mt-1">Actor Profile Photo</p>
+        <input class="col-md-4 text-center" type="text" th:field="*{actor_profilePhoto}" th:value="${actor.getActor_profilePhoto()}"
+               readonly/>
+
+        <br/>
+        <a class="btn btn-warning mt-2 mr-2" href="/editDeleteActor">Cancel</a>
+        <input class="btn btn-danger mt-2 ml-2" type="submit" value="Delete"/>
+    </form>
+</div>
+<div class="text-center">
+    <a class="btn btn-success" href="/">Back to Homepage</a>
+</div>
+</body>
+</html>

@@ -17,8 +17,8 @@
 <aside th:insert="/fragments/admin-general.html :: admin-side-nav"></aside>
 <!-- END OF SIDE-NAV -->
 
+<!-- FORM -->
 <div class="wrapper-couch">
-    <!-- FORM -->
     <div class="text-center jumbotron pt-1">
         <h1 class="pb-2">Edit User</h1>
         <form action="#" th:action="@{/userSaved}" th:object="${user}" method="post">
@@ -29,7 +29,7 @@
             <input class="col-md-4 text-center" type="text" th:field="*{user_name}" th:value="${user.getUser_name()}"/>
 
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Username</p>
-            <inpu class="col-md-4 text-center" type="text" th:field="*{user_username}" th:value="${user.getUser_username()}"/>
+            <textarea class="col-md-4 text-center" type="text" th:field="*{user_username}" th:value="${user.getUser_username()}"/></textarea>
 
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Password</p>
             <input class="col-md-4 text-center" type="text" th:field="*{user_password}" th:value="${user.getUser_password()}"/>
@@ -43,8 +43,8 @@
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Join Date</p>
             <input class="col-md-4 text-center" type="text" th:field="*{user_joinDate}" th:value="${user.getUser_joinDate()}" readonly/>
 
-            <a class="btn btn-warning mt-2 mr-2" th:href="@{/viewUsers}">Cancel</a>
-            <input class="btn btn-primary mt-2 ml-2" type="submit" value="Save"/>
+            <!--<a class="btn btn-warning mt-2 mr-2" href="/editDeleteMovie">Cancel</a>-->
+            <!--<input class="btn btn-primary mt-2 ml-2" type="submit" value="Save"/>-->
         </form>
     </div>
 </div>

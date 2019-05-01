@@ -167,12 +167,13 @@ span.hamburger-line-couch {
 }
 
 .wrapper-couch {
-    margin-top: 8rem;
-    margin-bottom: 8rem;
+    margin-top: 5rem;
 }
 
 /* STYLES FOR BUTTONS IN DATATABLES */
-
+.table-wrapper-couch {
+    margin-top: 4em;
+}
 #form-btns-couch{
     display: flex;
 }

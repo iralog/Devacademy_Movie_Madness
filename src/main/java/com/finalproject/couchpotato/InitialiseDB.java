@@ -327,13 +327,11 @@ public class InitialiseDB {
 
             while (rs.next()) {
                 int review_id = rs.getInt("review_id");
-                int user_id=rs.getInt("user_id");
-                int movie_id=rs.getInt("movie_id");
                 String review_comment = rs.getString("review_comment");
-                int review_rating = rs.getInt("review_rating");
+                int review_rating = rs.getInt("review_date");
                 String review_date = rs.getString("review_date");
 
-                Reviews review = new Reviews(review_id,user_id,movie_id,review_comment, review_rating, review_date);
+                Reviews review = new Reviews(review_id, review_comment, review_rating, review_date);
                 reviews.add(review);
             }
 

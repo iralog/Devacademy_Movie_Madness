@@ -51,29 +51,31 @@
 <aside th:insert="/fragments/user-general.html :: side-nav"></aside>
 <!-- END OF SIDE-NAV -->
 
-<div class="wrapper-couch">
-    <!-- TABLE -->
-    <table id="movies-table" class="table table-hover table-dark">
-        <thead>
-        <tr>
-            <th>Cover</th>
-            <th>Movie Title</th>
-            <th>Duration</th>
-            <th>Genre</th>
-            <th>Release Date</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="movies:${movie}">
-            <td class="zoom align-left" style="width: 200px; height: auto">
-                <img class="img-thumbnail" th:src="${movies.getMovie_coverImage()}"/></td>
-            <td th:text="${movies.getMovie_title()}"></td>
-            <td th:text="${movies.getMovie_duration()}"></td>
-            <td th:text="${movies.getMovie_genre()}"></td>
-            <td th:text="${movies.getMovie_releaseDate()}"></td>
-        </tr>
-        </tbody>
-    </table>
+<br>
+
+<!-- TABLE -->
+<div class="table-wrapper-couch">
+<table id="movies-table" class="table table-hover table-dark">
+    <thead>
+    <tr>
+        <th>Cover</th>
+        <th>Movie Title</th>
+        <th>Duration</th>
+        <th>Genre</th>
+        <th>Release Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="movies:${movie}">
+        <td class="zoom align-left" style="width: 200px; height: auto">
+            <img class="img-thumbnail" th:src="${movies.getMovie_coverImage()}"/></td>
+        <td th:text="${movies.getMovie_title()}"></td>
+        <td th:text="${movies.getMovie_duration()}"></td>
+        <td th:text="${movies.getMovie_genre()}"></td>
+        <td th:text="${movies.getMovie_releaseDate()}"></td>
+    </tr>
+    </tbody>
+</table>
 </div>
 <!-- END OF TABLE -->
 <form action="#" th:action="@{/viewMovieDetails}" th:object="${aMovie}" method="post">
