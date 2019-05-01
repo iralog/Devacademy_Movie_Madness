@@ -270,12 +270,10 @@ public class InitialiseDB {
 
     public void addNewReview(Connection con, Reviews review) {
         try {
-            String addReviews = "INSERT INTO tblReviews (user_id, movie_id, review_comment, review_rating, review_date) VALUES " +
-                    "(?,?,?,?,?)";
+            String addReviews = "INSERT INTO tblReviews (review_comment, review_rating, review_date) VALUES " +
+                    "(?,?,?)";
 
             PreparedStatement pst = con.prepareStatement(addReviews);
-            pst.setInt(1, review.getReviewUser_id());
-            pst.setInt(1, review.getReviewMovie_id());
             pst.setString(1, review.getReview_comment());
             pst.setInt(2, review.getReview_rating());
             pst.setString(3, review.getReview_date());
@@ -355,17 +353,14 @@ public class InitialiseDB {
 
     public boolean updateReview(Connection con, Reviews review) {
         try {
-            String updateRecord = "UPDATE tblReviews SET user_id=?, movied_id=?,review_comment= ?, review_rating = ?" +
+            String updateRecord = "UPDATE tblReviews SET review_comment= ?, review_rating = ?" +
                     "review_date = ?, WHERE review_id = ?";
 
             PreparedStatement pst = con.prepareStatement(updateRecord);
 
-            pst.setInt(1, review.getReviewUser_id());
-            pst.setInt(2, review.getReviewMovie_id());
-            pst.setString(3, review.getReview_comment());
-            pst.setInt(4, review.getReview_rating());
-            pst.setString(5, review.getReview_date());
-
+            pst.setString(1, review.getReview_comment());
+            pst.setInt(2, review.getReview_rating());
+            pst.setString(3, review.getReview_date());
 
             pst.executeUpdate();
             pst.close();

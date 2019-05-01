@@ -25,8 +25,8 @@ public class Reviews {
 
     public Reviews(int review_id,int user_id, int movie_id, String review_comment, int review_rating, String review_date) {
         this.review_id = review_id;
-        this.user_id=user_id;
-        this.movie_id=movie_id;
+        this.user_id = user_id;
+        this.movie_id = movie_id;
         this.review_comment = review_comment;
         this.review_rating = review_rating;
         this.review_date = review_date;
