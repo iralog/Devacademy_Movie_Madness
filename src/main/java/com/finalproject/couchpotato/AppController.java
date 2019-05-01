@@ -41,6 +41,7 @@ public class AppController {
 
     @GetMapping("/editDeleteReview")
     public String editDeleteReview(Model model) {
+        review.getAllReviews();
         model.addAttribute("review", Reviews.reviews);
         model.addAttribute("reviewEdit", new Reviews());
         return "editDeleteReview";
@@ -127,6 +128,7 @@ public class AppController {
 
     @GetMapping("/editDeleteMovie")
     public String editDeleteMovie(Model model) {
+        movie.getAllMovies();
         model.addAttribute("movie", Movies.movies);
         model.addAttribute("movieEdit", new Movies());
         model.addAttribute("movieDelete", new Movies());
@@ -201,6 +203,7 @@ public class AppController {
 
     @GetMapping("/editDeleteActor")
     public String editDeleteActor(Model model) {
+        actor.getAllActors();
         model.addAttribute("actor", Actors.actors);
         model.addAttribute("actorEdit", new Actors());
         model.addAttribute("actorDelete", new Actors());
@@ -281,6 +284,7 @@ public class AppController {
 
     @GetMapping("/editDeleteUser")
     public String editDeleteUser(Model model) {
+        user.getAllUsers();
         model.addAttribute("user", Users.users);
         model.addAttribute("userEdit", new Users());
         return "editDeleteUser";
