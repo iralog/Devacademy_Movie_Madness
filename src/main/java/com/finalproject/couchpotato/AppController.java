@@ -127,6 +127,7 @@ public class AppController {
 
     @GetMapping("/editDeleteMovie")
     public String editDeleteMovie(Model model) {
+        movie.getAllMovies();
         model.addAttribute("movie", Movies.movies);
         model.addAttribute("movieEdit", new Movies());
         model.addAttribute("movieDelete", new Movies());
