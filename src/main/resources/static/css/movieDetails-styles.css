@@ -1,0 +1,55 @@
+body {
+    background: #000000;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    margin-top: 6rem;
+    display: flex;
+    flex-flow: row wrap;
+    font-weight: bold;
+}
+
+.wrapper > * {
+    flex: 1 100%;
+}
+
+.header {
+    background: #1e1e1e;
+    padding: 2rem;
+}
+
+.footer {
+    padding: 2rem;
+}
+
+.footer p {
+    font-weight: 300;
+}
+
+.main {
+    text-align: left;
+    padding: 2rem;
+}
+
+.main p {
+    font-weight: 300;
+}
+
+.aside {
+    padding: 2rem;
+}
+
+
+@media all and (min-width: 320px) {
+    .aside { flex: 1 0 0; }
+}
+
+@media all and (min-width: 600px) {
+    .aside { order: 1; }
+    .main    { flex: 2 0px; }
+    .main    { order: 2; }
+    .footer  { order: 4; }
+}
