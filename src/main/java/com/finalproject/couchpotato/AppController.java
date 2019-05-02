@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 
@@ -101,28 +102,40 @@ public class AppController {
         return "viewMoviesByUser";
     }
 
-    @PostMapping("/viewMovieDetails")
-    public String selectedMovieDetails(@ModelAttribute Movies movie, Model model) {
-        Movies userSelectedMovie = new Movies();
-        Reviews r = new Reviews();
-        ArrayList<Reviews> reviewList = new ArrayList<>();
+//    @PostMapping("/viewMovieDetails")
+//    public String selectedMovieDetails(@ModelAttribute Movies movie, Model model) {
+//        Movies userSelectedMovie = new Movies();
+//        Reviews r = new Reviews();
+//        ArrayList<Reviews> reviewList = new ArrayList<>();
+//
+//        for (Reviews rv : Reviews.reviews){
+//            if (rv.getReviewMovie_id() == movie.getMovie_id()) {
+//                reviewList.add(rv);
+//            }
+//        }
+//        for (Movies mv : Movies.movies) {
+//            if (mv.getMovie_id() == movie.getMovie_id()) {
+//                userSelectedMovie = mv;
+//            }
+//        }
+//
+//        model.addAttribute("reviews", reviewList);
+//        model.addAttribute("movie", userSelectedMovie);
+//        return "viewMovieDetails";
+//    }
 
-        for (Reviews rv : Reviews.reviews){
-            if (rv.getReviewMovie_id() == movie.getMovie_id()) {
-                reviewList.add(rv);
-            }
-        }
+    @GetMapping("/viewMovieDetails")
+    public String viewAMovie (@RequestParam(value = "move_id", required = false,
+            defaultValue = "1") int movie_id, @ModelAttribute Movies movie, Model model) {
+        Movies m = new Movies();
         for (Movies mv : Movies.movies) {
             if (mv.getMovie_id() == movie.getMovie_id()) {
-                userSelectedMovie = mv;
+                m = mv;
             }
         }
-
-        model.addAttribute("reviews", reviewList);
-        model.addAttribute("movie", userSelectedMovie);
+        model.addAttribute("movie", m);
         return "viewMovieDetails";
     }
-
 
     @GetMapping("/addMovie")
     public String movieToAdd(Model model) {

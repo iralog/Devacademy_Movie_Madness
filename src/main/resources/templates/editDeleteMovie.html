@@ -25,16 +25,13 @@
 
     <script type="text/javascript">
         function viewMovieDetails(value) {
-            location.href = "/viewMovieDetails?id=" + value;
-            alert(location.href)
+            location.href = "/viewMovieDetails?movie_id=" + value;
         }
         function editMovie(value) {
-            location.href = "/editMovie?id=" + value;
-            alert(location.href)
+            location.href = "/editMovie?movie_id=" + value;
         }
         function deleteMovie(value) {
-            location.href = "/deleteMovie?id=" + value;
-            alert(location.href)
+            location.href = "/deleteMovie?movie_id=" + value;
         }
     </script>
 
@@ -84,28 +81,9 @@
     </table>
 </div>
 <!-- END OF TABLE -->
-
-<!-- FORM -->
-<!--<div class="container text-center">-->
-<!--<form action="#" th:action="@{/editMovie}" th:object="${movieEdit}" method="post">-->
-<!--<p>Enter the ID of the Movie to Edit</p>-->
-<!--<p>Movie ID: <input type="text" th:field="*{movie_id}"/></p>-->
-<!--<input class="btn btn-warning" type="submit" value="Edit Movie"/>-->
-<!--</form>-->
-
-<!--<form action="#" th:action="@{/movieDelete}" th:object="${movieEdit}" method="post">-->
-<!--<p>Enter the ID of the Movie you would like to Delete</p>-->
-<!--<p>Movie ID: <input type="text" th:field="*{movie_id}"/></p>-->
-<!--<input class="btn btn-danger" type="submit" value="Delete Movie"/>-->
-<!--</form>-->
-<!--</div>-->
-<!-- END OF FORM -->
-
 <br>
 <br>
 <br>
-
-
 <!--/*/ <th:block th:include="/fragments/general.html :: footerfiles">
     </th:block> /*/-->
 </body>

@@ -112,4 +112,6 @@ public class Movies {
     public void deleteMovie(Movies movie){ initDB.deleteMovie(initDB.getDBConnection(),movie);
 
     }
+
+
 }
