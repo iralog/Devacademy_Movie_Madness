@@ -6,7 +6,6 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/movieDetails-styles.css}"/>
     <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
             /*/ <th:block th:include="/fragments/general.html :: bootstrap"></th:block> /*/
-            /*/ <th:block th:include="/fragments/general.html :: datatables"></th:block> /*/
         </th:block> /*/-->
 </head>
 <body>
@@ -19,7 +18,6 @@
 <aside th:insert="/fragments/user-general.html :: side-nav"></aside>
 <!-- END OF SIDE-NAV -->
 
-<!-- DANILLO -->
 <div class="wrapper">
     <header class="header">
         <h2 th:text="${movie.movie_title}"></h2>
@@ -29,46 +27,45 @@
         <img th:src="${movie.movie_coverImage}">
     </aside>
     <article class="main">
-        <p th:text="${movie.movie_releaseDate}"></p>
-        <p th:text="${movie.movie_duration}"></p>
-        <h5>SUMMARY</h5>
+        <h5>Info</h5>
+        <p th:text="${'Release Date: ' + movie.movie_releaseDate}"></p>
+        <p th:text="${'Duration: ' + movie.movie_duration}"></p>
+        <br>
+        <h5>Cast</h5>
+        <br>
+        <h5>Summary</h5>
         <p th:text="${movie.movie_summary}"></p>
     </article>
+</div>
     <footer class="footer">
         <h5>Reviews</h5>
-        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            <table class="table table-hover table-dark">
+                <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Rating</th>
+                    <th>Review Date</th>
+                    <th>Comment</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>User Teste</th>
+                    <th>5</th>
+                    <th>Date</th>
+                    <th>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    </th>
+                </tr>
+                </tbody>
+            </table>
     </footer>
-</div>
 
 <!--/*/ <th:block th:include="/fragments/general.html :: footerfiles">
     </th:block> /*/-->
 </body>
 </html>
-<!-- END DANILLO -->
 
-<!-- SELINA -->
-<!--<div class="profile-container">-->
-    <!--<div class="image-side">-->
-            <!--<ul class="profile-title">-->
-                <!--<li><h4 th:text="${movie.movie_title}"></h4></li>-->
-                <!--<li th:text="${movie.movie_duration}"></li>-->
-                <!--<li th:text="${movie.movie_releaseDate}"></li>-->
-            <!--</ul>-->
-            <!--<table>-->
-                <!--<tr>-->
-                    <!--<td>-->
-                        <!--<img class="profile-photo img-thumbnail" th:src="${movie.movie_coverImage}"/>-->
-                        <!--<div class="profile-trailer">-->
-                        <!--<p> review (Sample - The Quick Brown Fox Jumps Over The Lazy DogThe Quick Brown Fox Jumps Over The Lazy DogThe Quick Brown Fox Jumps Over The Lazy Dog)</p></div>-->
-                    <!--</td>-->
-                    <!--<td><div class="summary-side" th:text="${movie.movie_summary}"></div>-->
-                    <!--</td>-->
-                <!--</tr>-->
-            <!--</table>-->
-        <!--<div>review</div>-->
-    <!--</div>-->
-<!--</div>-->
-<!-- END SELINA-->
-
-<!--</body>-->
-<!--</html>-->

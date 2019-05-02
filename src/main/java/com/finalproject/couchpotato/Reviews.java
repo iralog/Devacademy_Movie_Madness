@@ -11,13 +11,7 @@ public class Reviews {
     private int review_id;
     private String review_comment;
     private int review_rating;
-
-
-
-
-
     private String review_date;
-
 
     InitialiseDB initDB = new InitialiseDB();
     public static ArrayList<Reviews> reviews = new ArrayList<>();
@@ -32,7 +26,7 @@ public class Reviews {
         this.review_date = review_date;
 
     }
-    public Reviews(){}
+    public Reviews(){};
 
     //Getter and Setter
     //

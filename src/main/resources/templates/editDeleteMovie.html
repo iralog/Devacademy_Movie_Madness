@@ -49,7 +49,8 @@
         </thead>
 
         <tbody class="tbody-light">
-        <tr th:each="movies :${movie}">
+        <tr th:each="movies :${movie}"><tbody class="tbody-light">
+    <tr th:each="movies :${movie}">
             <td class="align-middle" th:text="${movies.getMovie_id()}"></td>
             <td class="align-middle" th:text="${movies.getMovie_title()}"></td>
             <td class="align-middle" th:text="${movies.getMovie_duration()}"></td>
