@@ -5,7 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-//Original Completed by Selina
+
+import java.util.ArrayList;
+
+//Work of Team Hakunas
 @SuppressWarnings("Duplicates")
 @Controller
 public class AppController {
@@ -92,6 +95,7 @@ public class AppController {
     @GetMapping("/viewMoviesByUser")
     public String viewMoviesByUser(Model model) {
         movie.getAllMovies();
+        review.getAllReviews();
         model.addAttribute("movie", Movies.movies);
         model.addAttribute("aMovie", new Movies());
         return "viewMoviesByUser";
@@ -100,14 +104,25 @@ public class AppController {
     @PostMapping("/viewMovieDetails")
     public String selectedMovieDetails(@ModelAttribute Movies movie, Model model) {
         Movies userSelectedMovie = new Movies();
+        Reviews r = new Reviews();
+        ArrayList<Reviews> reviewList = new ArrayList<>();
+
+        for (Reviews rv : Reviews.reviews){
+            if (rv.getReviewMovie_id() == movie.getMovie_id()) {
+                reviewList.add(rv);
+            }
+        }
         for (Movies mv : Movies.movies) {
             if (mv.getMovie_id() == movie.getMovie_id()) {
                 userSelectedMovie = mv;
             }
         }
+
+        model.addAttribute("reviews", reviewList);
         model.addAttribute("movie", userSelectedMovie);
         return "viewMovieDetails";
     }
+
 
     @GetMapping("/addMovie")
     public String movieToAdd(Model model) {
@@ -127,6 +142,7 @@ public class AppController {
 
     @GetMapping("/editDeleteMovie")
     public String editDeleteMovie(Model model) {
+        movie.getAllMovies();
         model.addAttribute("movie", Movies.movies);
         model.addAttribute("movieEdit", new Movies());
         model.addAttribute("movieDelete", new Movies());
