@@ -22,6 +22,23 @@
         });
     </script>
     <!-- End of DataTables -->
+
+    <script type="text/javascript">
+        function viewMovieDetails(value) {
+            location.href = "/viewMovieDetails?id=" + value;
+            alert(location.href)
+        }
+        function editMovie(value) {
+            location.href = "/editMovie?id=" + value;
+            alert(location.href)
+        }
+        function deleteMovie(value) {
+            location.href = "/deleteMovie?id=" + value;
+            alert(location.href)
+        }
+    </script>
+
+
 </head>
 <body>
 
@@ -49,8 +66,8 @@
         </thead>
 
         <tbody class="tbody-light">
-        <tr th:each="movies :${movie}"><tbody class="tbody-light">
-    <tr th:each="movies :${movie}">
+        <tbody class="tbody-light">
+        <tr th:each="movies :${movie}" th:onclick="'javascript:viewMovieDetails(\''+ ${movies.getMovie_id()} +'\');'">
             <td class="align-middle" th:text="${movies.getMovie_id()}"></td>
             <td class="align-middle" th:text="${movies.getMovie_title()}"></td>
             <td class="align-middle" th:text="${movies.getMovie_duration()}"></td>
@@ -58,14 +75,8 @@
             <td class="align-middle" th:text="${movies.getMovie_genre()}"></td>
             <td class="align-middle">
                 <div id="form-btns-couch">
-                    <form id="edit-btn-couch" action="#" th:action="@{/editMovie}" th:object="${movieEdit}" method="post">
-                        <!--<input type="text" th:field="*{movie_id}" th:attr="value = ${movies.getMovie_id()}"/>-->
-                        <input class="btn btn-warning" type="submit" value="Edit"/>
-                    </form>
-                    <form id="delete-btn-couch" action="#" th:action="@{/deleteMovie}" th:object="${movieDelete}" method="post">
-                        <!--<input type="text" th:field="*{movie_id}" th:attr="value = ${movies.getMovie_id()}"//>-->
-                        <input class="btn btn-danger" type="submit" value="Delete"/>
-                    </form>
+                    <button class="btn btn-warning" id="edit" th:onclick="'javascript:editMovie(\''+ ${movies.getMovie_id()} +'\');'">Edit</button>
+                    <button class="btn btn-danger" id="delete" th:onclick="'javascript:deleteMovie(\''+ ${movies.getMovie_id()} +'\');'">Delete</button>
                 </div>
             </td>
         </tr>

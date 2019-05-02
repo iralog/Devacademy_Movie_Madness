@@ -175,14 +175,8 @@ span.hamburger-line-couch {
 
 #form-btns-couch{
     display: flex;
+    align-content: space-between;
 }
-#edit-btn-couch{
-    padding: 0.2rem;
-}
-#delete-btn-couch{
-    padding: 0.2rem;
-}
-
 
 /* MEDIA QUERIES */
 
