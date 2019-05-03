@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CouchPotato | Admin - Edit/Delete Reviews</title>
+    <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
+        /*/ <th:block th:include="/fragments/general.html :: bootstrap"></th:block> /*/
+   </th:block> /*/-->
+
+    <!-- DataTables -->
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" language="javascript"
+            src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dataTable_dark.css}"/>
+    <!-- End of DataTables -->
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav th:insert="/fragments/admin-general.html :: admin-navbar"></nav>
+<!-- END OF NAV -->
+
+<!-- SIDE-NAV -->
+<aside th:insert="/fragments/admin-general.html :: admin-side-nav"></aside>
+<!-- END OF SIDE-NAV -->
+
+<!-- TABLE -->
+<div class="wrapper-couch">
+    <!--<table class="table table-hover text-center">-->
+    <table id="reviews-table" class="table table-hover table-dark">
+        <thead class="thead-dark">
+        <tr>
+            <th class="align-middle" scope="col">#</th>
+            <th class="align-middle" scope="col">Review Date</th>
+            <th class="align-middle" scope="col">Review Rating</th>
+            <th class="align-middle" scope="col">Review Comment</th>
+        </tr>
+        </thead>
+        <tbody class="tbody-light">
+        <tr th:each="review :${review}" th:onclick="'javascript:viewMovieDetails(\''+ ${review.getReview_id()} +'\');'">
+            <td class="align-middle" th:text="${review.getReview_id()}"></td>
+            <td class="align-middle" th:text="${review.getReview_date()}"></td>
+            <td class="align-middle" th:text="${review.getReview_rating()} +'/5'"></td>
+            <td class="align-middle" th:text="${review.getReview_comment()}"></td>
+            <td class="align-middle">
+                <div id="form-btns-couch">
+                    <button class="btn btn-warning" id="edit"
+                            th:onclick="'javascript:editMovie(\''+ ${review.getReview_id()} +'\');'">Edit
+                    </button>
+                    <button class="btn btn-danger" id="delete"
+                            th:onclick="'javascript:deleteMovie(\''+ ${review.getReview_id()} +'\');'">Delete
+                    </button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!-- END OF TABLE -->
+<!--/*/ <th:block th:include="/fragments/general.html :: footerfiles">
+    </th:block> /*/-->
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#reviews-table').dataTable({
+            "columnDefs": [
+                {"targets": [5], "orderable": false}
+            ]
+        })
+    });
+
+    function viewReviews(value) {
+        location.href = "/viewReviews?review_id=" + value;
+    }
+
+    function editReview(value) {
+        location.href = "/editReview?review_id=" + value;
+    }
+
+    function deleteReview(value) {
+        location.href = "/deleteReview?review_id=" + value;
+    }
+</script>
+</html>

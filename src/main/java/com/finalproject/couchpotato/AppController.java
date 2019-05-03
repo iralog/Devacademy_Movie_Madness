@@ -19,7 +19,7 @@ public class AppController {
     Reviews review = new Reviews();
     Users user = new Users();
 
-    //--- Review Controllers ---
+//  -------- Review Controllers --------
     @GetMapping("/viewReviews")
     public String viewReviews(Model model) {
         review.getAllReviews();
@@ -45,12 +45,13 @@ public class AppController {
 
     @GetMapping("/editDeleteReview")
     public String editDeleteReview(Model model) {
+        review.getAllReviews();
         model.addAttribute("review", Reviews.reviews);
         model.addAttribute("reviewEdit", new Reviews());
         return "editDeleteReview";
     }
 
-    @PostMapping("/editReview")
+    @GetMapping("/editReview")
     public String reviewToEdit(@ModelAttribute Reviews review, Model model) {
         Reviews r = new Reviews();
         for (Reviews rev : Reviews.reviews) {
@@ -86,7 +87,7 @@ public class AppController {
         return "index";
     }
 
-    //--- Movie Controllers ---
+//  -------- Movie Controllers --------
     @GetMapping("/viewMovies")
     public String viewMovies(Model model) {
         movie.getAllMovies();
@@ -206,6 +207,7 @@ public class AppController {
         return "index";
     }
 
+//  -------- Actor Controllers --------
     @GetMapping("/viewActors")
     public String viewActors(Model model) {
         actor.getAllActors();
@@ -238,6 +240,7 @@ public class AppController {
 
     @GetMapping("/editDeleteActor")
     public String editDeleteActor(Model model) {
+        actor.getAllActors();
         model.addAttribute("actor", Actors.actors);
         model.addAttribute("actorEdit", new Actors());
         return "editDeleteActor";
@@ -279,11 +282,7 @@ public class AppController {
         return "index";
     }
 
-    @GetMapping("/testpage")
-    public String testpage(Model model) {
-        return "testpage";
-    }
-
+//  -------- User Controllers --------
     @GetMapping("/viewUsers")
     public String viewUsers(Model model) {
         user.getAllUsers();
@@ -317,6 +316,7 @@ public class AppController {
 
     @GetMapping("/editDeleteUser")
     public String editDeleteUser(Model model) {
+        user.getAllUsers();
         model.addAttribute("user", Users.users);
         model.addAttribute("userEdit", new Users());
         return "editDeleteUser";
@@ -357,5 +357,9 @@ public class AppController {
         user.deleteUser(user);
         return "index";
     }
-
+// -------- Test Controller --------
+    @GetMapping("/testpage")
+    public String testpage(Model model) {
+        return "testpage";
+    }
 }
