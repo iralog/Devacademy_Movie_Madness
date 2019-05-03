@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <style>
 
@@ -95,7 +95,7 @@
 <body>
 <div class="signin">
 
-    <form name="loginform" onSubmit="return validateForm();" action="main.html" method="post">
+    <form name="loginform" onSubmit="return validateForm();" method = "GET" action = "/admin">
         <h2 style="color:#fff;">Log In</h2>
         <input type="text" name="usr" placeholder="username"><br/><br/>
         <input type="password" name="pword" placeholder="password"><br/><br/>

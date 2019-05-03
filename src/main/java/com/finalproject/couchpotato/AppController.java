@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
 
@@ -362,6 +364,11 @@ public class AppController {
     public String LoginPage(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);
         return "LoginPage";
+    }
+
+    @RequestMapping(value = "/redirect", method = RequestMethod.GET)
+    public String redirect() {
+        return "redirect:admin";
     }
 
     @GetMapping("/SignupPage")
