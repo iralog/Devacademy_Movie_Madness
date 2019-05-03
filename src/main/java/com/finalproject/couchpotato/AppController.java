@@ -2,10 +2,7 @@ package com.finalproject.couchpotato;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -278,5 +275,24 @@ public class AppController {
     }
 
     //-- END OF ADD CONTROLLERS --
+
+    //-- LOGIN CONTROLLERS
+
+    @GetMapping("/LoginPage")
+    public String LoginPage(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        return "LoginPage";
+    }
+
+    @RequestMapping(value = "/redirect", method = RequestMethod.GET)
+    public String redirect() {
+        return "redirect:admin";
+    }
+
+    @GetMapping("/SignupPage")
+    public String SignupPage(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        return "SignupPage";
+    }
 
 }
