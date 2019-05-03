@@ -1,5 +1,7 @@
 # Hakuna-Matata
 
+PLEASE PULL FROM newdev
+
 Welcome: I hope you enjoy our wesbite !
 
 This project was completed by Danasawin / Danillo / Selina / Irina / Luidmila
