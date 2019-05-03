@@ -357,9 +357,23 @@ public class AppController {
         user.deleteUser(user);
         return "index";
     }
+
+    @GetMapping("/LoginPage")
+    public String LoginPage(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        return "LoginPage";
+    }
+
+    @GetMapping("/SignupPage")
+    public String SignupPage(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        return "SignupPage";
+    }
 // -------- Test Controller --------
     @GetMapping("/testpage")
     public String testpage(Model model) {
         return "testpage";
     }
+
+
 }
