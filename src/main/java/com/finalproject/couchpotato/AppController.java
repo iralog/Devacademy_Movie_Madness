@@ -19,7 +19,7 @@ public class AppController {
     Reviews review = new Reviews();
     Users user = new Users();
 
-
+    //--- Review Controllers ---
     @GetMapping("/viewReviews")
     public String viewReviews(Model model) {
         review.getAllReviews();
@@ -86,6 +86,7 @@ public class AppController {
         return "index";
     }
 
+    //--- Movie Controllers ---
     @GetMapping("/viewMovies")
     public String viewMovies(Model model) {
         movie.getAllMovies();
@@ -102,7 +103,7 @@ public class AppController {
         return "viewMoviesByUser";
     }
 
-//    @PostMapping("/viewMovieDetails")
+//    @GetMapping("/viewMovieDetails")
 //    public String selectedMovieDetails(@ModelAttribute Movies movie, Model model) {
 //        Movies userSelectedMovie = new Movies();
 //        Reviews r = new Reviews();
@@ -125,14 +126,21 @@ public class AppController {
 //    }
 
     @GetMapping("/viewMovieDetails")
-    public String viewAMovie (@RequestParam(value = "move_id", required = false,
+    public String viewAMovie(@RequestParam(value = "move_id", required = false,
             defaultValue = "1") int movie_id, @ModelAttribute Movies movie, Model model) {
         Movies m = new Movies();
+        ArrayList<Reviews> reviewList = new ArrayList<>();
         for (Movies mv : Movies.movies) {
             if (mv.getMovie_id() == movie.getMovie_id()) {
                 m = mv;
             }
         }
+        for (Reviews rv : Reviews.reviews) {
+            if (rv.getReviewMovie_id() == movie.getMovie_id()) {
+                reviewList.add(rv);
+            }
+        }
+        model.addAttribute("reviews", reviewList);
         model.addAttribute("movie", m);
         return "viewMovieDetails";
     }
