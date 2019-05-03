@@ -38,13 +38,13 @@
 
     <script type="text/javascript">
         function viewUserDetails(value) {
-            location.href = "/viewMovieDetails?movie_id=" + value;
+            location.href = "/viewUserDetails?user_id=" + value;
         }
         function editUser(value) {
-            location.href = "/editMovie?movie_id=" + value;
+            location.href = "/editUser?user_id=" + value;
         }
         function deleteUser(value) {
-            location.href = "/deleteMovie?movie_id=" + value;
+            location.href = "/deleteUser?user_id=" + value;
         }
     </script>
 </head>
@@ -74,7 +74,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="users:${user}" th:onclick="'javascript:viewUserDetails(\''+ ${users.getUser_id()} +'\');'">>
+        <tr th:each="users:${user}">
             <td th:text="${users.getUser_id()}"></td>
             <td th:text="${users.getUser_username()}"></td>
             <td th:text="${users.getUser_name()}"></td>

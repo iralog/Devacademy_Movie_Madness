@@ -24,9 +24,6 @@
     <!-- End of DataTables -->
 
     <script type="text/javascript">
-        function viewMovieDetails(value) {
-            location.href = "/viewMovieDetails?movie_id=" + value;
-        }
         function editMovie(value) {
             location.href = "/editMovie?movie_id=" + value;
         }
@@ -64,7 +61,7 @@
 
         <tbody class="tbody-light">
         <tbody class="tbody-light">
-        <tr th:each="movies :${movie}" th:onclick="'javascript:viewMovieDetails(\''+ ${movies.getMovie_id()} +'\');'">
+        <tr th:each="movies :${movie}">
             <td class="align-middle" th:text="${movies.getMovie_id()}"></td>
             <td class="align-middle" th:text="${movies.getMovie_title()}"></td>
             <td class="align-middle" th:text="${movies.getMovie_duration()}"></td>

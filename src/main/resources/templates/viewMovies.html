@@ -1,72 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>CouchPotato | Admin - View Movies</title>
+    <title>CouchPotato - Movie Reviews</title>
     <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
         /*/ <th:block th:include="/fragments/general.html :: bootstrap"></th:block> /*/
+        /*/ <th:block th:include="/fragments/general.html :: datatables"></th:block> /*/
     </th:block> /*/-->
 
     <!-- DataTables -->
     <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript"
+            src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/dataTable_dark.css}"/>
+    <!-- End of DataTables -->
 
+    <script type="text/javascript">
+        function viewMovieDetails(value) {
+            location.href = "/viewMovieDetails?movie_id=" + value;
+        }
+    </script>
+
+
+
+
+    <style>
+        .zoom {
+            transition: transform .2s; /* Animation */
+            width: 150px;
+            height: 200px;
+            margin: 60px auto;
+        }
+
+        .zoom:hover {
+            background: rgba(255, 255, 255, 0.3);
+            position: relative;
+            float: right;
+            transform: scale(1.3); /* (250% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+    </style>
 </head>
-<body>
 
+
+<body>
 <!-- NAV -->
-<nav th:insert="/fragments/admin-general.html :: admin-navbar"> </nav>
+<nav th:insert="/fragments/user-general.html :: navbar"></nav>
 <!-- END OF NAV -->
 
 <!-- SIDE-NAV -->
-<aside th:insert="/fragments/admin-general.html :: admin-side-nav"></aside>
+<aside th:insert="/fragments/user-general.html :: side-nav"></aside>
 <!-- END OF SIDE-NAV -->
 
 <div class="wrapper-couch">
-    <table class="table table-hover text-left">
-        <thead class="thead-dark">
+    <!-- TABLE -->
+    <table id="movies-table" class="table table-hover table-dark">
+        <thead>
         <tr>
-            <th class="align-left" scope="col">#</th>
-            <th class="align-left" scope="col">Cover</th>
-            <th class="align-left" scope="col">Movie Title</th>
-            <th class="align-left" scope="col">Movie Info</th>
-            <th class="align-left" scope="col">Movie Summary</th>
-            <th class="align-left" scope="col">Movie Trailer</th>
+            <th><h2>Movies</h2></th>
+            <th><p><i> Select a movie for more details.</i></p></th>
         </tr>
         </thead>
-        <tbody class="tbody-light">
-        <tr th:each="movies:${movie}">
-            <td class="align-left" th:text="${movies.getMovie_id()}"></td>
-            <td class="align-left" style="width: 200px;">
-                <img class="img-thumbnail w-100" th:src="${movies.getMovie_coverImage()}"/></td>
-            <td class="align-left" style="font-weight:bold" th:text="${movies.getMovie_title()}"></td>
-
-            <td>
-                <p class="align-left" th:text="${movies.getMovie_duration()}"></p>
-                <p class="align-left" th:text="${movies.getMovie_genre()}"></p>
-                <p class="align-left" th:text="${movies.getMovie_releaseDate()}"></p>
+        <tbody>
+        <tr th:each="movies :${movie}" th:onclick="'javascript:viewMovieDetails(\''+ ${movies.getMovie_id()} +'\');'">
+            <td class="zoom align-left" style="width: 100px; height: auto">
+                <img class="img-thumbnail" th:src="${movies.getMovie_coverImage()}"/>
             </td>
-            <td>
-                <p class="align-left" th:text="${movies.getMovie_summary()}"></p>
-            </td>
-            <td>
-                <div>
-                    <iframe width="280" height="160" th:src="${movies.getMovie_trailer()}" frameborder="0"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                </div>
-            </td>
+            <td class="align-middle"><h2 th:text="${movies.getMovie_title()}"></h2></td>
         </tr>
         </tbody>
     </table>
 </div>
-
-<br>
-<br>
+<!-- END OF TABLE -->
+<!--<form action="#" th:action="@{/viewMovieDetails}" th:object="${aMovie}" method="post">
+    <input class="nav-menu-link-couch" type="text" th:field="*{movie_id}">
+</form> -->
 <br>
 
 <!--/*/ <th:block th:include="/fragments/general.html :: footerfiles">
     </th:block> /*/-->
 </body>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#movies-table').dataTable({
+            "columnDefs": [
+                {"targets": [0], "orderable": false}
+            ]
+        })
+    });
+
+    function viewMovieDetails(value) {
+        location.href = "/viewMovieDetails?movie_id=" + value;
+    }
+
+    function editMovie(value) {
+        location.href = "/editMovie?movie_id=" + value;
+    }
+
+    function deleteMovie(value) {
+        location.href = "/deleteMovie?movie_id=" + value;
+    }
+</script>
 </html>

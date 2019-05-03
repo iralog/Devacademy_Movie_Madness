@@ -1,45 +1,69 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8">
-    <title>Admin - Edit/Delete Actors</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
+    <title>CouchPotato | Admin - Edit/Delete Actors</title>
+    <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
+        /*/ <th:block th:include="/fragments/general.html :: bootstrap"></th:block> /*/
+        /*/ <th:block th:include="/fragments/general.html :: datatables"></th:block> /*/
+    </th:block> /*/-->
+
+    <!-- DataTables -->
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dataTable_dark.css}"/>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#actors-table').dataTable({
+                "columnDefs": [
+                    { "targets": [1, 5], "orderable": false}
+                ]
+            })
+        });
+    </script>
+    <!-- End of DataTables -->
 
     <script type="text/javascript">
-        function viewMActorDetails(value) {
-            location.href = "/viewMovieDetails?movie_id=" + value;
+        function viewActor(value) {
+            location.href = "/viewActorDetails?actor_id=" + value;
         }
         function editActor(value) {
-            location.href = "/editMovie?movie_id=" + value;
+            location.href = "/editActor?actor_id=" + value;
         }
         function deleteActor(value) {
-            location.href = "/deleteMovie?movie_id=" + value;
+            location.href = "/deleteActor?actor_id=" + value;
         }
     </script>
+
 </head>
-<body>
+
+<!-- NAV -->
+<nav th:insert="/fragments/admin-general.html :: admin-navbar"> </nav>
+<!-- END OF NAV -->
+
+<!-- SIDE-NAV -->
+<aside th:insert="/fragments/admin-general.html :: admin-side-nav"></aside>
+<!-- END OF SIDE-NAV -->
+
 <div class="wrapper-couch">
-    <table class="table table-hover text-center">
-        <thead class="thead-dark">
+    <table id="actors-table" class="table table-hover table-dark">
+        <thead>
         <tr>
-            <th class="align-middle" scope="col">#</th>
-            <th class="align-middle" scope="col">Actor Name</th>
-            <th class="align-middle" scope="col">Actor Age</th>
-            <th class="align-middle" scope="col">Actor Gender</th>
-            <th class="align-middle" scope="col">Actor Profile Photo</th>
-            <th class="align-middle" scope="col">Actions</th>
+            <th>#</th>
+            <th>Photo</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Action</th>
         </tr>
         </thead>
-        <tbody class="tbody-light">
-        <tbody class="tbody-light">
-        <tr th:each="actors :${actor}"th:onclick="'javascript:viewActorDetails(\''+ ${actors.getActor_id()} +'\');'">>
-            <td class="align-middle" th:text="${actors.getActor_id()}"></td>
-            <td class="align-middle" th:text="${actors.getActor_name()}"></td>
-            <td class="align-middle" th:text="${actors.getActor_age()}"></td>
-            <td class="align-middle" th:text="${actors.getActor_gender()}"></td>
-            <td class="align-middle" th:text="${actors.getActor_profilePhoto()}"></td>
+        <tbody>
+        <tr th:each="actors:${actor}" th:onclick="'javascript:viewActorDetails(\''+ ${actors.getActor_id()} +'\');'">
+            <td th:text="${actors.getActor_id()}"></td>
+            <td class="zoom align-left" style="width: 100px; height: auto">
+                <img class="img-thumbnail" th:src="${actors.getActor_profilePhoto()}"/></td>
+            <td th:text="${actors.getActor_name()}"></td>
+            <td th:text="${actors.getActor_gender()}"></td>
+            <td th:text="${actors.getActor_age()}"></td>
             <td class="align-middle">
                 <div id="form-btns-couch">
                     <button class="btn btn-warning" id="edit" th:onclick="'javascript:editActor(\''+ ${actors.getActor_id()} +'\');'">Edit</button>
@@ -50,5 +74,19 @@
         </tbody>
     </table>
 </div>
+
+<br>
+<br>
+<br>
+<br>
+
+
+<!--/*/ <th:block th:include="/fragments/general.html :: footerfiles">
+    </th:block> /*/-->
 </body>
 </html>
+
+
+
+
+
