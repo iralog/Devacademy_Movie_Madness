@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CouchPotato | Admin - Edit/Delete Movie</title>
+    <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
+        /*/ <th:block th:include="/fragments/general.html :: bootstrap"></th:block> /*/
+   </th:block> /*/-->
+
+    <!-- DataTables -->
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dataTable_dark.css}"/>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#movies-table').dataTable({
+                "columnDefs": [
+                    { "targets": [5], "orderable": false }
+                ]
+            })
+        });
+    </script>
+    <!-- End of DataTables -->
+
+    <script type="text/javascript">
+        function viewMovieDetails(value) {
+            location.href = "/viewMovieDetails?movie_id=" + value;
+        }
+        function editMovie(value) {
+            location.href = "/editMovie?movie_id=" + value;
+        }
+        function deleteMovie(value) {
+            location.href = "/deleteMovie?movie_id=" + value;
+        }
+    </script>
+
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav th:insert="/fragments/admin-general.html :: admin-navbar"> </nav>
+<!-- END OF NAV -->
+
+<!-- SIDE-NAV -->
+<aside th:insert="/fragments/admin-general.html :: admin-side-nav"></aside>
+<!-- END OF SIDE-NAV -->
+
+<!-- TABLE -->
+<div class="wrapper-couch">
+    <!--<table class="table table-hover text-center">-->
+    <table id="movies-table" class="table table-hover table-dark">
+        <thead class="thead-dark">
+        <tr>
+            <th class="align-middle" scope="col">#</th>
+            <th class="align-middle" scope="col">Movie Title</th>
+            <th class="align-middle" scope="col">Movie Duration</th>
+            <th class="align-middle" scope="col">Movie Release Date</th>
+            <th class="align-middle" scope="col">Movie Genre</th>
+            <th class="align-middle" scope="col">Actions</th>
+        </tr>
+        </thead>
+
+        <tbody class="tbody-light">
+        <tbody class="tbody-light">
+        <tr th:each="movies :${movie}" th:onclick="'javascript:viewMovieDetails(\''+ ${movies.getMovie_id()} +'\');'">
+            <td class="align-middle" th:text="${movies.getMovie_id()}"></td>
+            <td class="align-middle" th:text="${movies.getMovie_title()}"></td>
+            <td class="align-middle" th:text="${movies.getMovie_duration()}"></td>
+            <td class="align-middle" th:text="${movies.getMovie_releaseDate()}"></td>
+            <td class="align-middle" th:text="${movies.getMovie_genre()}"></td>
+            <td class="align-middle">
+                <div id="form-btns-couch">
+                    <button class="btn btn-warning" id="edit" th:onclick="'javascript:editMovie(\''+ ${movies.getMovie_id()} +'\');'">Edit</button>
+                    <button class="btn btn-danger" id="delete" th:onclick="'javascript:deleteMovie(\''+ ${movies.getMovie_id()} +'\');'">Delete</button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!-- END OF TABLE -->
+<br>
+<br>
+<br>
+<!--/*/ <th:block th:include="/fragments/general.html :: footerfiles">
+    </th:block> /*/-->
+</body>
+</html>

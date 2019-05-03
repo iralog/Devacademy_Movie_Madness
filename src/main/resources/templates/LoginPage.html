@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>User Login</title>
+    <link href="logn.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+</head>
+
+<body>
+<div class="signin">
+
+    <form name="loginform" onSubmit="return validateForm();" action="main.html" method="post">
+        <h2 style="color:#fff;">Log In</h2>
+        <input type="text" name="usr" placeholder="username"><br/><br/>
+        <input type="password" name="pword" placeholder="password"><br/><br/>
+        <a href="cong.html"><input type="submit" value="Login"/></a><br/><br/>
+        <div id="container">
+            <a href="re.html" style=" margin-right:0px; font-size:13px; font-family:Tahoma, Geneva, sans-serif;">Reset
+                password?</a>
+            <a href="for.html" style=" margin-left:30px; font-size:13px; font-family:Tahoma, Geneva, sans-serif;">Forget
+                password</a>
+        </div>
+        <br/><br/><br/><br/><br/><br/>
+        Don't have account?<a href="SignupPage.html" style="font-family:'Play', sans-serif;">&nbsp;Sign Up</a>
+
+        <script>
+            function validateForm() {
+                var un = document.loginform.usr.value;
+                var pw = document.loginform.pword.value;
+                var username = "username";
+                var password = "password";
+                if ((un == username) && (pw == password)) {
+                    return true;
+                } else {
+                    alert("Login was unsuccessful, please check your username and password");
+                    return false;
+                }
+            }
+        </script>
+
+    </form>
+</div>
+
+</body>
+</html>

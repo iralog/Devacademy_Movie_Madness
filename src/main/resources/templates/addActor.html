@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CouchPotato | Admin - Add Actors</title>
+    <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
+        /*/ <th:block th:include="/fragments/general.html :: bootstrap"></th:block> /*/
+    </th:block> /*/-->
+</head>
+<body>
+
+<!-- NAV -->
+<nav th:insert="/fragments/admin-general.html :: admin-navbar"> </nav>
+<!-- END OF NAV -->
+
+<!-- SIDE-NAV -->
+<aside th:insert="/fragments/admin-general.html :: admin-side-nav"></aside> <br><br><br><br>
+<!-- END OF SIDE-NAV -->
+
+<div class="wrapper-couch">
+    <div class="text-center">
+        <h1 class="pb-2">Add new Actors to your library</h1>
+        <form action="#" th:action="@{/addingActor}" th:object="${actor}" method="post">
+
+            <div>
+                <p class="col-md-12 font-weight-bold mb-1 mt-1">Actor ID</p>
+                <input class="col-md-4 text-center" type="text" th:field="*{actor_id}" th:value="${actor.actor_id}"
+                       readonly/>
+            </div>
+
+            <div>
+                <p class="col-md-12 font-weight-bold mb-1 mt-1">Actor Name</p>
+                <input class="col-md-4 text-center" type="text" th:field="*{actor_name}"
+                       placeholder="Example: Russell Crowe"/>
+            </div>
+
+            <div>
+                <p class="col-md-12 font-weight-bold mb-1 mt-1">Actor gender</p>
+                <input class="col-md-4 text-center" type="text" th:field="*{actor_gender}"
+                       placeholder="Example: Male"/>
+            </div>
+
+            <div>
+                <p class="col-md-12 font-weight-bold mb-1 mt-1">Actor Age</p>
+                <input class="col-md-4 text-center" type="text" th:field="*{actor_age}"
+                       placeholder="Example: 55"/>
+            </div>
+
+            <div>
+                <p class="col-md-12 font-weight-bold mb-1 mt-1">Actor Profile Photo</p>
+                <input class="col-md-4 text-center" type="text" th:field="*{actor_profilePhoto}"/>
+            </div>
+
+            <br/>
+            <input class="btn btn-danger mt-2 mr-2" type="reset" value="Reset"/>
+            <input class="btn btn-primary mt-2 ml-2" type="submit" value="Submit"/>
+        </form>
+    </div>
+</div>
+
+
+<!--/*/ <th:block th:include="/fragments/general.html :: footerfiles">
+    </th:block> /*/-->
+</body>
+</html>

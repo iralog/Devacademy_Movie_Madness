@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CouchPotato - Movie Reviews</title>
+    <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
+        /*/ <th:block th:include="/fragments/general.html :: bootstrap"></th:block> /*/
+        /*/ <th:block th:include="/fragments/general.html :: datatables"></th:block> /*/
+    </th:block> /*/-->
+
+    <!-- DataTables -->
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dataTable_dark.css}"/>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#movies-table').dataTable({
+                "columnDefs": [
+                    { "targets": [0], "orderable": false }
+                ]
+            })
+        });
+    </script>
+    <!-- End of DataTables -->
+
+    <style>
+        .zoom {
+            transition: transform .2s; /* Animation */
+            width: 150px;
+            height: 200px;
+            margin: 60px auto;
+        }
+        .zoom:hover {
+            background: rgba(255,255,255,0.3);
+            position: relative;
+            float: right;
+            transform: scale(1.3); /* (250% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+    </style>
+</head>
+
+
+
+
+<body>
+<!-- NAV -->
+<nav th:insert="/fragments/user-general.html :: navbar"> </nav>
+<!-- END OF NAV -->
+
+<!-- SIDE-NAV -->
+<aside th:insert="/fragments/user-general.html :: side-nav"></aside>
+<!-- END OF SIDE-NAV -->
+
+<div class="wrapper-couch">
+    <!-- TABLE -->
+    <table id="movies-table" class="table table-hover table-dark">
+        <thead>
+        <tr>
+            <th>Cover</th>
+            <th>Movie Title</th>
+            <th>Duration</th>
+            <th>Genre</th>
+            <th>Release Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="movies:${movie}">
+            <td class="zoom align-left" style="width: 200px; height: auto">
+                <img class="img-thumbnail" th:src="${movies.getMovie_coverImage()}"/></td>
+            <td th:text="${movies.getMovie_title()}"></td>
+            <td th:text="${movies.getMovie_duration()}"></td>
+            <td th:text="${movies.getMovie_genre()}"></td>
+            <td th:text="${movies.getMovie_releaseDate()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!-- END OF TABLE -->
+<form action="#" th:action="@{/viewMovieDetails}" th:object="${aMovie}" method="post">
+        <input class="nav-menu-link-couch"  type="text" th:field="*{movie_id}">
+    </form>
+    <br>
+<br>
+<br>
+<br>
+
+<!--/*/ <th:block th:include="/fragments/general.html :: footerfiles">
+    </th:block> /*/-->
+</body>
+</html>

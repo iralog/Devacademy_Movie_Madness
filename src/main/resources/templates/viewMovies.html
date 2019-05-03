@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CouchPotato | Admin - View Movies</title>
+    <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
+        /*/ <th:block th:include="/fragments/general.html :: bootstrap"></th:block> /*/
+    </th:block> /*/-->
+
+    <!-- DataTables -->
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dataTable_dark.css}"/>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav th:insert="/fragments/admin-general.html :: admin-navbar"> </nav>
+<!-- END OF NAV -->
+
+<!-- SIDE-NAV -->
+<aside th:insert="/fragments/admin-general.html :: admin-side-nav"></aside>
+<!-- END OF SIDE-NAV -->
+
+<div class="wrapper-couch">
+    <table class="table table-hover text-left">
+        <thead class="thead-dark">
+        <tr>
+            <th class="align-left" scope="col">#</th>
+            <th class="align-left" scope="col">Cover</th>
+            <th class="align-left" scope="col">Movie Title</th>
+            <th class="align-left" scope="col">Movie Info</th>
+            <th class="align-left" scope="col">Movie Summary</th>
+            <th class="align-left" scope="col">Movie Trailer</th>
+        </tr>
+        </thead>
+        <tbody class="tbody-light">
+        <tr th:each="movies:${movie}">
+            <td class="align-left" th:text="${movies.getMovie_id()}"></td>
+            <td class="align-left" style="width: 200px;">
+                <img class="img-thumbnail w-100" th:src="${movies.getMovie_coverImage()}"/></td>
+            <td class="align-left" style="font-weight:bold" th:text="${movies.getMovie_title()}"></td>
+
+            <td>
+                <p class="align-left" th:text="${movies.getMovie_duration()}"></p>
+                <p class="align-left" th:text="${movies.getMovie_genre()}"></p>
+                <p class="align-left" th:text="${movies.getMovie_releaseDate()}"></p>
+            </td>
+            <td>
+                <p class="align-left" th:text="${movies.getMovie_summary()}"></p>
+            </td>
+            <td>
+                <div>
+                    <iframe width="280" height="160" th:src="${movies.getMovie_trailer()}" frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<br>
+<br>
+<br>
+
+<!--/*/ <th:block th:include="/fragments/general.html :: footerfiles">
+    </th:block> /*/-->
+</body>
+</html>

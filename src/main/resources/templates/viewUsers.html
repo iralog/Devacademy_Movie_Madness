@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CouchPotato | Admin - List Users</title>
+    <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
+        /*/ <th:block th:include="/fragments/general.html :: bootstrap"></th:block> /*/
+    </th:block> /*/-->
+
+    <!-- DataTables -->
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dataTable_dark.css}"/>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#users-table').dataTable({
+                "columnDefs": [
+                    { "targets": [2, 6], "orderable": false }
+                ]
+            })
+        });
+    </script>
+    <!-- End of DataTables -->
+
+    <style>
+        .zoom {
+            transition: transform .2s; /* Animation */
+            width: 150px;
+            height: 200px;
+            margin: 60px auto;
+        }
+        .zoom:hover {
+            background: rgba(255,255,255,0.3);
+            position: relative;
+            float: right;
+            transform: scale(1.3); /* (250% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav th:insert="/fragments/admin-general.html :: admin-navbar"> </nav>
+<!-- END OF NAV -->
+
+<!-- SIDE-NAV -->
+<aside th:insert="/fragments/admin-general.html :: admin-side-nav"></aside>
+<!-- END OF SIDE-NAV -->
+
+<!-- TABLE -->
+<div class="wrapper-couch">
+    <table id="users-table" class="table table-hover table-dark">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Join Date</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="users:${user}">
+            <td th:text="${users.getUser_id()}"></td>
+            <td th:text="${users.getUser_username()}"></td>
+            <td th:text="${users.getUser_name()}"></td>
+            <td th:text="${users.getUser_age()}"></td>
+            <td th:text="${users.getUser_email()}"></td>
+            <td th:text="${users.getUser_joinDate()}"></td>
+            <td class="align-middle">
+                <div id="form-btns-couch">
+                    <form id="edit-btn-couch" action="#" method="post">
+                        <!--<input type="text" th:field="*{movie_id}" th:attr="value = ${movies.getMovie_id()}"/>-->
+                        <input class="btn btn-warning" type="submit" value="Edit"/>
+                    </form>
+                    <form id="delete-btn-couch" action="#" method="post">
+                        <!--<input type="text" th:field="*{movie_id}" th:attr="value = ${movies.getMovie_id()}"//>-->
+                        <input class="btn btn-danger" type="submit" value="Delete"/>
+                    </form>
+                </div>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!-- END OF TABLE -->
+
+<!--/*/ <th:block th:include="/fragments/general.html :: footerfiles">
+    </th:block> /*/-->
+</body>
+</html>

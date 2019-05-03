@@ -1,0 +1,310 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:700");
+@import url("https://font-awesome-4.6.3/css/font-awesome.min.css");
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+.tile {
+    position: relative;
+    float: left;
+    width: 33.333%;
+    height: 100%;
+    overflow: hidden;}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+}
+
+/* NAV */
+.nav-couch {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #1e1e1e;
+    justify-content: space-between;
+    z-index: 100;
+}
+
+.nav-brand-couch {
+    margin-left: 1rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: auto;
+}
+
+.nav-brand-couch img {
+    height: 5rem;
+}
+
+ul.nav-menu-couch {
+    list-style: none;
+    display: flex
+}
+
+a.nav-menu-link-couch {
+    text-decoration: none;
+    color: #aaa;
+    margin: 0 0.9rem;
+    padding: 0.9rem;
+}
+
+.nav-menu-couch .nav-menu-item-couch:nth-last-child(2) a {
+    border: 1px solid #aaa;
+    margin: 0 0.2rem;
+}
+
+.nav-menu-couch .nav-menu-item-couch:nth-last-child(1) a {
+    margin: 0 0.2rem;
+    margin-right: 0.9rem;
+    background-color: #ce0000;
+    color: #fff;
+}
+
+a.nav-menu-link-couch:hover {
+    color: #fff;
+    background-color: #444;
+}
+
+.nav-menu-couch .nav-menu-item-couch:nth-last-child(1) a:hover {
+    background-color: #ff0000;
+}
+
+/* SIDE-NAV */
+.side-nav-couch {
+    position: fixed;
+    top: 5rem;
+    left: -15.6rem;
+    height: 100%;
+    width: 15.6rem;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    opacity: 0.9;
+    overflow-x: hidden;
+    background-color: #111;
+    transition: 0.5s;
+}
+
+.side-nav-header-couch {
+    color: #fff;
+}
+
+ul.side-nav-menu-couch {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 28rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+li.side-nav-item-couch {
+    position: relative;
+    margin-bottom: 0.9375rem;
+}
+
+a.side-nav-link-couch {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+/* HAMBUGER-ICON */
+.hamburger-icon-couch,
+span.hamburger-line-couch {
+    display: none;
+}
+
+.hamburger-icon-couch {
+    width: 2.25rem;
+    height: 1.625rem;
+    margin-right: 0.9375rem;
+    position: relative;
+    cursor: pointer;
+}
+
+span.hamburger-line-couch {
+    background-color: #fff;
+    position: absolute;
+    width: 100%;
+    height: 0.25rem;
+    border-radius: 0.25rem;
+}
+
+.hamburger-icon-couch span:nth-of-type(1) {
+    top: 0;
+}
+
+.hamburger-icon-couch span:nth-of-type(2) {
+    top: 0.6875rem;
+}
+
+.hamburger-icon-couch span:nth-of-type(3) {
+    bottom: 0;
+}
+
+.hamburger-icon-couch.active span:nth-of-type(1) {
+    transform: translateY(11px) rotate(-45deg);
+}
+
+.hamburger-icon-couch.active span:nth-of-type(2) {
+    display: none;
+}
+
+.hamburger-icon-couch.active span:nth-of-type(3) {
+    transform: translateY(-11px) rotate(45deg);
+}
+
+/* HEADER */
+.header-couch {
+    height: 100vh;
+}
+
+#video-container-couch  {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -100;
+}
+
+#video-container-couch video,
+.video-overlay-couch {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100vw;
+    min-height: 100%;
+    max-width: 100vw;
+}
+
+#video-container-couch .video-overlay-couch {
+    z-index: 9999;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+}
+
+#video-container-couch .video-content-couch {
+    z-index: 99999;
+    position: relative;
+    height: 100%;
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#video-container-couch .video-content-couch .inner-couch {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+}
+
+#video-container-couch .video-content-couch .inner-couch h1 {
+    color: white;
+    margin: 20px 0;
+    font-size: 3em;
+    text-align: center;
+    text-shadow: 5px 5px 10px #000;
+}
+
+#video-container-couch .video-content-couch .inner-couch button {
+    text-transform: uppercase;
+    font-family: inherit;
+    width: 10rem;
+    padding: 0.6rem 0.7rem;
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    border: none;
+    color: #2e3135;
+    border-radius: 10rem;
+    outline: none;
+    background: linear-gradient(to right, #c4c4c4 0%, #ffdd00 100%);
+}
+
+/* STYLES FOR BUTTONS IN DATATABLES */
+.table-wrapper-couch {
+    margin-top: 4em;
+}
+#form-btns-couch{
+    display: flex;
+}
+#edit-btn-couch{
+    padding: 0.2rem;
+}
+#delete-btn-couch{
+    padding: 0.2rem;
+}
+
+
+
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+
+    /* HEADER */
+    #video-container-couch video {
+        display: none;
+        visibility: hidden;
+    }
+
+    #video-container-couch {
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)),
+        url("../img/bg_hakunas.jpg") center no-repeat;
+
+    }
+
+}
+
+
+
+@media (max-width: 640px) {
+
+    .side-nav-couch {
+        display: flex;
+        left: -15.6rem;
+    }
+
+    ul.nav-menu-couch {
+        display: none;
+    }
+
+    .hamburger-icon-couch,
+    span.hamburger-line-couch {
+        display: inline-block;
+        transition: all 0.4s;
+    }
+
+    #video-container-couch .video-content-couch .inner-couch h1 {
+        color: white;
+        margin: 20px 0;
+        font-size: 2em;
+        text-align: center;
+    }
+
+}

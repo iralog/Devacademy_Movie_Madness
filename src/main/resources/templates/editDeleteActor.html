@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Edit/Delete Actors</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="wrapper-couch">
+    <table class="table table-hover text-center">
+        <thead class="thead-dark">
+        <tr>
+            <th class="align-middle" scope="col">#</th>
+            <th class="align-middle" scope="col">Actor Name</th>
+            <th class="align-middle" scope="col">Actor Age</th>
+            <th class="align-middle" scope="col">Actor Gender</th>
+            <th class="align-middle" scope="col">Actor Profile Photo</th>
+            <th class="align-middle" scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody class="tbody-light">
+        <tbody class="tbody-light">
+        <tr th:each="actors :${actor}">
+            <td class="align-middle" th:text="${actors.getActor_id()}"></td>
+            <td class="align-middle" th:text="${actors.getActor_name()}"></td>
+            <td class="align-middle" th:text="${actors.getActor_age()}"></td>
+            <td class="align-middle" th:text="${actors.getActor_gender()}"></td>
+            <td class="align-middle" th:text="${actors.getActor_profilePhoto()}"></td>
+            <td class="align-middle">
+        </tr>
+        </tbody>
+    </table>
+    <div class="container text-center">
+        <form action="#" th:action="@{/editActor}" th:object="${actorEdit}" method="post">
+            <p>Here you can enter the ID of the Actor that you would like to Edit</p>
+            <p>Actor ID: <input type="text" th:field="*{actor_id}"/></p>
+            <input class="btn btn-warning" type="submit" value="Edit Actor"/>
+        </form>
+        <form action="#" th:action="@{/deleteActor}" th:object="${actorDelete}" method="post">
+            <p>Here you can enter the ID of the Actor that you would like to Remove</p>
+            <p>Actor ID: <input type="text" th:field="*{actor_id}"/></p>
+            <input class="btn btn-danger" type="submit" value="Delete Actor"/>
+        </form>
+    </div>
+    <div class="container text-center mt-3">
+        <a class="btn btn-success" href="/">Back To Homepage</a>
+    </div>
+</div>
+</body>
+</html>
