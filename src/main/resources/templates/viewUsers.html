@@ -35,6 +35,18 @@
             transform: scale(1.3); /* (250% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
         }
     </style>
+
+    <script type="text/javascript">
+        function viewUserDetails(value) {
+            location.href = "/viewMovieDetails?movie_id=" + value;
+        }
+        function editUser(value) {
+            location.href = "/editMovie?movie_id=" + value;
+        }
+        function deleteUser(value) {
+            location.href = "/deleteMovie?movie_id=" + value;
+        }
+    </script>
 </head>
 
 <body>
@@ -62,7 +74,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="users:${user}">
+        <tr th:each="users:${user}" th:onclick="'javascript:viewUserDetails(\''+ ${users.getUser_id()} +'\');'">>
             <td th:text="${users.getUser_id()}"></td>
             <td th:text="${users.getUser_username()}"></td>
             <td th:text="${users.getUser_name()}"></td>
@@ -71,17 +83,10 @@
             <td th:text="${users.getUser_joinDate()}"></td>
             <td class="align-middle">
                 <div id="form-btns-couch">
-                    <form id="edit-btn-couch" action="#" method="post">
-                        <!--<input type="text" th:field="*{movie_id}" th:attr="value = ${movies.getMovie_id()}"/>-->
-                        <input class="btn btn-warning" type="submit" value="Edit"/>
-                    </form>
-                    <form id="delete-btn-couch" action="#" method="post">
-                        <!--<input type="text" th:field="*{movie_id}" th:attr="value = ${movies.getMovie_id()}"//>-->
-                        <input class="btn btn-danger" type="submit" value="Delete"/>
-                    </form>
+                    <button class="btn btn-warning" id="edit" th:onclick="'javascript:editUser(\''+ ${users.getUser_id()} +'\');'">Edit</button>
+                    <button class="btn btn-danger" id="delete" th:onclick="'javascript:deleteUser(\''+ ${users.getUser_id()} +'\');'">Delete</button>
                 </div>
             </td>
-
         </tr>
         </tbody>
     </table>

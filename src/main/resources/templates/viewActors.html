@@ -22,6 +22,18 @@
     </script>
     <!-- End of DataTables -->
 
+    <script type="text/javascript">
+        function viewActor(value) {
+            location.href = "/viewMovieDetails?movie_id=" + value;
+        }
+        function editActor(value) {
+            location.href = "/editMovie?movie_id=" + value;
+        }
+        function deleteActor(value) {
+            location.href = "/deleteMovie?movie_id=" + value;
+        }
+    </script>
+
 </head>
 
 <!-- NAV -->
@@ -45,25 +57,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="actors:${actor}">
+        <tr th:each="actors:${actor}" th:onclick="'javascript:viewActorDetails(\''+ ${actors.getActor_id()} +'\');'">>
             <td th:text="${actors.getActor_id()}"></td>
             <td class="zoom align-left" style="width: 100px; height: auto">
                 <img class="img-thumbnail" th:src="${actors.getActor_profilePhoto()}"/></td>
             <td th:text="${actors.getActor_name()}"></td>
             <td th:text="${actors.getActor_gender()}"></td>
             <td th:text="${actors.getActor_age()}"></td>
-            <td id="form-btns-couch" class="align-middle">
-                <div>
-                    <form id="edit-btn-couch" action="#" method="post">
-                        <!--<input type="text" th:field="*{movie_id}" th:attr="value = ${movies.getMovie_id()}"/>-->
-                        <input  class="btn btn-warning" type="submit" value="Edit"/>
-                    </form>
-                </div>
-                <div>
-                    <form id="delete-btn-couch" action="#" method="post">
-                        <!--<input type="text" th:field="*{movie_id}" th:attr="value = ${movies.getMovie_id()}"//>-->
-                        <input  class="btn btn-danger" type="submit" value="Delete"/>
-                    </form>
+            <td class="align-middle">
+                <div id="form-btns-couch">
+                    <button class="btn btn-warning" id="edit" th:onclick="'javascript:editActor(\''+ ${actors.getActor_id()} +'\');'">Edit</button>
+                    <button class="btn btn-danger" id="delete" th:onclick="'javascript:deleteActor(\''+ ${actors.getActor_id()} +'\');'">Delete</button>
                 </div>
             </td>
         </tr>

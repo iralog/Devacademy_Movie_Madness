@@ -6,6 +6,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
+
+    <script type="text/javascript">
+        function viewMActorDetails(value) {
+            location.href = "/viewMovieDetails?movie_id=" + value;
+        }
+        function editActor(value) {
+            location.href = "/editMovie?movie_id=" + value;
+        }
+        function deleteActor(value) {
+            location.href = "/deleteMovie?movie_id=" + value;
+        }
+    </script>
 </head>
 <body>
 <div class="wrapper-couch">
@@ -22,31 +34,21 @@
         </thead>
         <tbody class="tbody-light">
         <tbody class="tbody-light">
-        <tr th:each="actors :${actor}">
+        <tr th:each="actors :${actor}"th:onclick="'javascript:viewActorDetails(\''+ ${actors.getActor_id()} +'\');'">>
             <td class="align-middle" th:text="${actors.getActor_id()}"></td>
             <td class="align-middle" th:text="${actors.getActor_name()}"></td>
             <td class="align-middle" th:text="${actors.getActor_age()}"></td>
             <td class="align-middle" th:text="${actors.getActor_gender()}"></td>
             <td class="align-middle" th:text="${actors.getActor_profilePhoto()}"></td>
             <td class="align-middle">
+                <div id="form-btns-couch">
+                    <button class="btn btn-warning" id="edit" th:onclick="'javascript:editActor(\''+ ${actors.getActor_id()} +'\');'">Edit</button>
+                    <button class="btn btn-danger" id="delete" th:onclick="'javascript:deleteActor(\''+ ${actors.getActor_id()} +'\');'">Delete</button>
+                </div>
+            </td>
         </tr>
         </tbody>
     </table>
-    <div class="container text-center">
-        <form action="#" th:action="@{/editActor}" th:object="${actorEdit}" method="post">
-            <p>Here you can enter the ID of the Actor that you would like to Edit</p>
-            <p>Actor ID: <input type="text" th:field="*{actor_id}"/></p>
-            <input class="btn btn-warning" type="submit" value="Edit Actor"/>
-        </form>
-        <form action="#" th:action="@{/deleteActor}" th:object="${actorDelete}" method="post">
-            <p>Here you can enter the ID of the Actor that you would like to Remove</p>
-            <p>Actor ID: <input type="text" th:field="*{actor_id}"/></p>
-            <input class="btn btn-danger" type="submit" value="Delete Actor"/>
-        </form>
-    </div>
-    <div class="container text-center mt-3">
-        <a class="btn btn-success" href="/">Back To Homepage</a>
-    </div>
 </div>
 </body>
 </html>
