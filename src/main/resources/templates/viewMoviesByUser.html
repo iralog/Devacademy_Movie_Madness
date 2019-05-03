@@ -9,18 +9,9 @@
 
     <!-- DataTables -->
     <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript"
+            src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/dataTable_dark.css}"/>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#movies-table').dataTable({
-                "columnDefs": [
-                    { "targets": [0], "orderable": false }
-                ]
-            })
-        });
-    </script>
     <!-- End of DataTables -->
 
     <script type="text/javascript">
@@ -39,8 +30,9 @@
             height: 200px;
             margin: 60px auto;
         }
+
         .zoom:hover {
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.3);
             position: relative;
             float: right;
             transform: scale(1.3); /* (250% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
@@ -49,11 +41,9 @@
 </head>
 
 
-
-
 <body>
 <!-- NAV -->
-<nav th:insert="/fragments/user-general.html :: navbar"> </nav>
+<nav th:insert="/fragments/user-general.html :: navbar"></nav>
 <!-- END OF NAV -->
 
 <!-- SIDE-NAV -->
@@ -65,35 +55,49 @@
     <table id="movies-table" class="table table-hover table-dark">
         <thead>
         <tr>
-            <th>Cover</th>
-            <th>Movie Title</th>
-            <th>Duration</th>
-            <th>Genre</th>
-            <th>Release Date</th>
+            <th><h2>Movies</h2></th>
+            <th><p><i> Select a movie for more details.</i></p></th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="movies:${movie}">
-            <td class="zoom align-left" style="width: 200px; height: auto">
-                <img class="img-thumbnail" th:src="${movies.getMovie_coverImage()}"/></td>
-            <td th:text="${movies.getMovie_title()}"></td>
-            <td th:text="${movies.getMovie_duration()}"></td>
-            <td th:text="${movies.getMovie_genre()}"></td>
-            <td th:text="${movies.getMovie_releaseDate()}"></td>
+        <tr th:each="movies :${movie}" th:onclick="'javascript:viewMovieDetails(\''+ ${movies.getMovie_id()} +'\');'">
+            <td class="zoom align-left" style="width: 100px; height: auto">
+                <img class="img-thumbnail" th:src="${movies.getMovie_coverImage()}"/>
+            </td>
+            <td class="align-middle"><h2 th:text="${movies.getMovie_title()}"></h2></td>
         </tr>
         </tbody>
     </table>
 </div>
 <!-- END OF TABLE -->
-<form action="#" th:action="@{/viewMovieDetails}" th:object="${aMovie}" method="post">
-        <input class="nav-menu-link-couch"  type="text" th:field="*{movie_id}">
-    </form>
-    <br>
-<br>
-<br>
+<!--<form action="#" th:action="@{/viewMovieDetails}" th:object="${aMovie}" method="post">
+    <input class="nav-menu-link-couch" type="text" th:field="*{movie_id}">
+</form> -->
 <br>
 
 <!--/*/ <th:block th:include="/fragments/general.html :: footerfiles">
     </th:block> /*/-->
 </body>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#movies-table').dataTable({
+            "columnDefs": [
+                {"targets": [0], "orderable": false}
+            ]
+        })
+    });
+
+    function viewMovieDetails(value) {
+        location.href = "/viewMovieDetails?movie_id=" + value;
+    }
+
+    function editMovie(value) {
+        location.href = "/editMovie?movie_id=" + value;
+    }
+
+    function deleteMovie(value) {
+        location.href = "/deleteMovie?movie_id=" + value;
+    }
+</script>
 </html>
