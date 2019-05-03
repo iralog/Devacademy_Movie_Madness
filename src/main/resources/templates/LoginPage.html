@@ -6,8 +6,7 @@
     body {
         font-family: Tahoma, Geneva, sans-serif;
         color: #fff;
-        background: url(space-saving5.jpg);
-        background-size: cover;
+        background: #323232;
     }
 
     .signin {
@@ -107,7 +106,7 @@
                 password</a>
         </div>
         <br/><br/><br/><br/><br/><br/>
-        Don't have account?<a href="SignupPage.html" style="font-family:'Play', sans-serif;">&nbsp;Sign Up</a>
+        Don't have account?<a th:href="@{/SignupPage}" style="font-family:'Play', sans-serif;">&nbsp;Sign Up</a>
 
         <script>
             function validateForm() {

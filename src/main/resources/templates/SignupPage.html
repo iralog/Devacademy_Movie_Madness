@@ -1,12 +1,11 @@
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <style>
 
     body {
         font-family: Tahoma, Geneva, sans-serif;
         color: #fff;
-        background: url(space-saving5.jpg);
-        background-size: cover;
+        background: #323232;
     }
 
     .signup {
@@ -55,7 +54,7 @@
     }
 
     input[type=button]:hover {
-        color: #fff;
+        color: #e5e500;
         background-color: black;
     }
 
@@ -165,7 +164,7 @@
                 }, 3000);
             }
         </script>
-        Already have account?<a href="LoginPage.html"
+        Already have account?<a th:href="@{/LoginPage}"
                                 style="text-decoration: none; font-family: 'Play', sans-serif; color: yellow;">&nbsp;Log
         In</a>
     </form>
