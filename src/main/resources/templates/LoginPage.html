@@ -94,16 +94,13 @@
 <body>
 <div class="signin">
 
-    <form name="loginform" onSubmit="return validateForm();" method = "GET" action = "/admin">
+    <form name="loginform" onSubmit="return validateForm();" method = "GET" action = "/redirect">
         <h2 style="color:#fff;">Log In</h2>
         <input type="text" name="usr" placeholder="username"><br/><br/>
         <input type="password" name="pword" placeholder="password"><br/><br/>
-        <a href="cong.html"><input type="submit" value="Login"/></a><br/><br/>
+        <a th:href="@{/admin}"><input type="submit" value="Login"/></a><br/><br/>
         <div id="container">
-            <a href="re.html" style=" margin-right:0px; font-size:13px; font-family:Tahoma, Geneva, sans-serif;">Reset
-                password?</a>
-            <a href="for.html" style=" margin-left:30px; font-size:13px; font-family:Tahoma, Geneva, sans-serif;">Forget
-                password</a>
+            <a th:href="@{/ForgotUserPass}" style=" margin-right:0px; font-size:13px; font-family:Tahoma, Geneva, sans-serif;">Forgot Username/Password?</a>
         </div>
         <br/><br/><br/><br/><br/><br/>
         Don't have account?<a th:href="@{/SignupPage}" style="font-family:'Play', sans-serif;">&nbsp;Sign Up</a>
