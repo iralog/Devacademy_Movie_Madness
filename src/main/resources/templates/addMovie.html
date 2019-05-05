@@ -17,9 +17,8 @@
 <aside th:insert="/fragments/admin-general.html :: admin-side-nav"></aside> <br><br><br><br>
 <!-- END OF SIDE-NAV -->
 
-<div class="wrapper-couch">
     <div class="text-center">
-        <h1 class="pb-2">Add new Movies to your library</h1>
+        <h1 class="pb-2">Add a new movie to our library</h1>
         <form action="#" th:action="@{/addingMovie}" th:object="${movie}" method="post">
 
             <div>
@@ -77,9 +76,6 @@
             <input class="btn btn-primary mt-2 ml-2" type="submit" value="Submit"/>
         </form>
     </div>
-</div>
-
-<br>
 <br>
 <br>
 <!--/*/ <th:block th:include="/fragments/general.html :: footerfiles">

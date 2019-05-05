@@ -14,15 +14,6 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/dataTable_dark.css}"/>
     <!-- End of DataTables -->
 
-    <script type="text/javascript">
-        function viewMovieDetails(value) {
-            location.href = "/viewMovieDetails?movie_id=" + value;
-        }
-    </script>
-
-
-
-
     <style>
         .zoom {
             transition: transform .2s; /* Animation */
@@ -82,7 +73,7 @@
 
 <!--/*/ <th:block th:include="/fragments/general.html :: footerfiles">
     </th:block> /*/-->
-</body>
+
 <script type="text/javascript">
 
     $(document).ready(function () {
@@ -105,4 +96,5 @@
         location.href = "/deleteMovie?movie_id=" + value;
     }
 </script>
+</body>
 </html>
