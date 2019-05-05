@@ -295,4 +295,10 @@ public class AppController {
         return "SignupPage";
     }
 
+    @GetMapping("/ForgotUserPass")
+    public String ForgotUserPass(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        return "ForgotUserPass";
+    }
+
 }
