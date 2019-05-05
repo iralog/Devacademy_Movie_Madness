@@ -36,17 +36,6 @@
         }
     </style>
 
-    <script type="text/javascript">
-        function viewUserDetails(value) {
-            location.href = "/viewUserDetails?user_id=" + value;
-        }
-        function editUser(value) {
-            location.href = "/editUser?user_id=" + value;
-        }
-        function deleteUser(value) {
-            location.href = "/deleteUser?user_id=" + value;
-        }
-    </script>
 </head>
 
 <body>
@@ -83,8 +72,8 @@
             <td th:text="${users.getUser_joinDate()}"></td>
             <td class="align-middle">
                 <div id="form-btns-couch">
-                    <button class="btn btn-warning" id="edit" th:onclick="'javascript:editUser(\''+ ${users.getUser_id()} +'\');'">Edit</button>
-                    <button class="btn btn-danger" id="delete" th:onclick="'javascript:deleteUser(\''+ ${users.getUser_id()} +'\');'">Delete</button>
+                    <a th:href="'editUser?user_id=' + ${users.getUser_id()}" class="btn btn-warning">Edit</a>
+                    <a th:href="'deleteUser?user_id=' + ${users.getUser_id()}" class="btn btn-danger">Delete</a>
                 </div>
             </td>
         </tr>

@@ -23,14 +23,8 @@
     <!-- End of DataTables -->
 
     <script type="text/javascript">
-        function viewActor(value) {
+        function viewActorDetails(value) {
             location.href = "/viewActorDetails?actor_id=" + value;
-        }
-        function editActor(value) {
-            location.href = "/editActor?actor_id=" + value;
-        }
-        function deleteActor(value) {
-            location.href = "/deleteActor?actor_id=" + value;
         }
     </script>
 
@@ -66,8 +60,8 @@
             <td th:text="${actors.getActor_age()}"></td>
             <td class="align-middle">
                 <div id="form-btns-couch">
-                    <button class="btn btn-warning" id="edit" th:onclick="'javascript:editActor(\''+ ${actors.getActor_id()} +'\');'">Edit</button>
-                    <button class="btn btn-danger" id="delete" th:onclick="'javascript:deleteActor(\''+ ${actors.getActor_id()} +'\');'">Delete</button>
+                    <a th:href="'editActor?actor_id=' + ${actors.getActor_id()}" class="btn btn-warning">Edit</a>
+                    <a th:href="'deleteActor?actor_id=' + ${actors.getActor_id()}" class="btn btn-danger">Delete</a>
                 </div>
             </td>
         </tr>

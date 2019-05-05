@@ -24,14 +24,10 @@
     <!-- End of DataTables -->
 
     <script type="text/javascript">
-        function editMovie(value) {
-            location.href = "/editMovie?movie_id=" + value;
-        }
-        function deleteMovie(value) {
-            location.href = "/deleteMovie?movie_id=" + value;
+        function viewMovieDetails(value) {
+            location.href = "/viewMovieDetails?movie_id=" + value;
         }
     </script>
-
 
 </head>
 <body>
@@ -58,7 +54,7 @@
         </tr>
         </thead>
         <tbody class="tbody-light">
-        <tr th:each="movies :${movie}">
+        <tr th:each="movies :${movie}" th:onclick="'javascript:viewMovieDetails(\''+ ${movies.getMovie_id()} +'\');'">
             <td class="align-middle" th:text="${movies.getMovie_id()}"></td>
             <td class="align-middle" th:text="${movies.getMovie_title()}"></td>
             <td class="align-middle" th:text="${movies.getMovie_duration()}"></td>
@@ -66,8 +62,10 @@
             <td class="align-middle" th:text="${movies.getMovie_genre()}"></td>
             <td class="align-middle">
                 <div id="form-btns-couch">
-                    <button class="btn btn-warning" id="edit" th:onclick="'javascript:editMovie(\''+ ${movies.getMovie_id()} +'\');'">Edit</button>
-                    <button class="btn btn-danger" id="delete" th:onclick="'javascript:deleteMovie(\''+ ${movies.getMovie_id()} +'\');'">Delete</button>
+                    <!--<button class="btn btn-warning" id="edit" th:onclick="'javascript:editMovie(\''+ ${movies.getMovie_id()} +'\');'">Edit</button>-->
+                    <!--<button class="btn btn-danger" id="delete" th:onclick="'javascript:deleteMovie(\''+ ${movies.getMovie_id()} +'\');'">Delete</button>-->
+                    <a th:href="'editMovie?movie_id=' + ${movies.getMovie_id()}" class="btn btn-warning">Edit</a>
+                    <a th:href="'deleteMovie?movie_id=' + ${movies.getMovie_id()}" class="btn btn-danger">Delete</a>
                 </div>
             </td>
         </tr>
