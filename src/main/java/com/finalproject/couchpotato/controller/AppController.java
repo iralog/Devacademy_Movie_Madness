@@ -247,13 +247,19 @@ public class AppController {
         Reviews review = new Reviews();
         review.setReview_id(nextID);
         model.addAttribute("review", review);
-        return "index";
+        return "addReview";
     }
 
     @PostMapping("/addingReview")
     public String reviewAdded(@ModelAttribute Reviews review) {
         review.addNewReview(review);
-        return "index";
+        return "editDeleteReview";
+    }
+
+    @PostMapping("/reviewSaved")
+    public String reviewSaved(@ModelAttribute Reviews review) {
+        review.updateReview(review);
+        return "editDeleteReview";
     }
 
     @GetMapping("/addUser")

@@ -54,7 +54,6 @@
             <td class="align-left" th:text="${reviews.getReview_comment()}"></td>
             <td class="align-left" th:text="${reviews.getReview_rating()}"></td>
             <td class="align-left" th:text="${reviews.getReview_date()}"></td>
-            <td class="align-left"  th:text="${reviewRepo.getUsername()}"></td>
             <td class="align-middle">
                 <div id="form-btns-couch">
                     <a th:href="'deleteReview?review_id=' + ${reviews.getReview_id()}" class="btn btn-danger">Delete</a>
