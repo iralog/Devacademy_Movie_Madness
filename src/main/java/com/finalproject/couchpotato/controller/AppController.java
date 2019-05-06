@@ -22,7 +22,7 @@ public class AppController {
 
     //--- VIEW CONTROLLERS ---
     @GetMapping("/viewMovies")
-    public String viewMoviesByUser(Model model) {
+    public String viewMovies(Model model) {
         movie.getAllMovies();
         review.getAllReviews();
         model.addAttribute("movie", Movies.movies);
