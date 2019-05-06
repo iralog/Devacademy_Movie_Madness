@@ -14,8 +14,12 @@ public class Movies {
     private String movie_releaseDate;
     private String movie_coverImage;
     private String movie_trailer;
+
     InitialiseDB initDB = new InitialiseDB();
     public static ArrayList<Movies> movies = new ArrayList<>();
+
+
+    private static ArrayList<String> casts;
 
 
     public Movies(int movie_id, String movie_title, String movie_summary,
@@ -101,6 +105,14 @@ public class Movies {
 
     public ArrayList<Movies>getAllMovies(){movies = initDB.getMovies(initDB.getDBConnection());
         return movies;}
+
+    public static ArrayList<String> getCasts(int movie_id, int actor_id, String actor_name) {
+        return casts;
+    }
+
+    public static void setCasts(ArrayList<String> casts) {
+        Movies.casts = casts;
+    }
 
     //Methods (Add, Update and Remove movie)
     public void addNewMovie(Movies movie){

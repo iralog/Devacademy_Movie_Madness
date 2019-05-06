@@ -50,7 +50,7 @@
         </thead>
         <tbody th:each="review:${reviews}">
         <tr>
-            <td></td>
+            <td th:text="${review.username}"></td>
             <i>
                 <th th:text="${review.review_rating} +'/5'"></th>
             </i>

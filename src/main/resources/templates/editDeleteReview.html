@@ -50,6 +50,7 @@
         <tbody class="tbody-light">
         <tr th:each="reviews:${review}">
             <td class="align-left" th:text= "${reviews.getReview_id()}"></td>
+            <td class="align-left" th:text= "${reviews.getUsername()}"></td>
             <td class="align-left" th:text="${reviews.getReview_comment()}"></td>
             <td class="align-left" th:text="${reviews.getReview_rating()}"></td>
             <td class="align-left" th:text="${reviews.getReview_date()}"></td>
