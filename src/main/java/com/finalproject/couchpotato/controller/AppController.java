@@ -1,5 +1,9 @@
-package com.finalproject.couchpotato;
+package com.finalproject.couchpotato.controller;
 
+import com.finalproject.couchpotato.Actors;
+import com.finalproject.couchpotato.Movies;
+import com.finalproject.couchpotato.Reviews;
+import com.finalproject.couchpotato.Users;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
