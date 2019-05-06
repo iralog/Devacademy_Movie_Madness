@@ -63,7 +63,6 @@ public class AppController {
         return "editDeleteUser";
     }
 
-
     //--- END OF VIEW CONTROLLERS ---
 
 
@@ -309,6 +308,20 @@ public class AppController {
     public String ForgotUserPass(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);
         return "ForgotUserPass";
+    }
+
+    @GetMapping("/userProfile")
+    public String userProfile(@RequestParam(value = "user_id", required = false,
+        defaultValue = "1") int user_id, Model model) {
+            Users u = new Users();
+
+            for (Users ur : Users.users) {
+                if (ur.getUser_id() == user_id) {
+                    u = ur;
+                }
+            }
+            model.addAttribute("user", u);
+            return "userProfile";
     }
 
 }

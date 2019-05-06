@@ -2,7 +2,7 @@
 <html lang="en">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>CouchPotato | Admin</title>
+    <title>CouchPotato | User</title>
     <!--/*/ <th:block th:include="/fragments/admin-general.html :: admin-headerfiles">
     </th:block> /*/-->
 </head>
@@ -10,17 +10,18 @@
 <body>
 
 <!-- NAV -->
-<nav th:insert="/fragments/admin-general.html :: admin-navbar"> </nav>
+<nav th:insert="/fragments/user-general.html :: user-navbar"> </nav>
 <!-- END OF NAV -->
 
 <!-- SIDE-NAV -->
-<aside th:insert="/fragments/admin-general.html :: admin-side-nav"></aside> <br><br><br><br>
+<aside th:insert="/fragments/user-general.html :: user-side-nav"></aside> <br><br><br><br>
 <!-- END OF SIDE-NAV -->
 
-<header class="header">
-    <h1 th:style="'padding: 0 1em 1em 1em'">Welcome Admin!</h1>
-</header>
-
+    <!-- HEADER -->
+    <header class="header">
+        <h1 th:style="'padding: 0 1em 1em 1em'">Welcome User!</h1>
+    </header>
+    <!-- END OF HEADER -->
 <!--/*/ <th:block th:include="/fragments/general.html :: footerfiles">
     </th:block> /*/-->
 </body>

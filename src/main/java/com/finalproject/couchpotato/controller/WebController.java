@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class WebController {
-    @RequestMapping(value = {"/welcome"})
-    public String welcome() {
-        return "welcome";
+    @RequestMapping(value = {"/user"})
+    public String user() {
+        return "user";
     }
 
     @RequestMapping(value = {"login"})

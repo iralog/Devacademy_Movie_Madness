@@ -14,4 +14,7 @@ public class FragmentsController {
 
     @GetMapping("/admin")
     public String getAdmin() {return "admin.html";}
+
+    @GetMapping("/user")
+    public String getUser() {return "user.html";}
 }
