@@ -1,8 +1,11 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway+Dots);
+@import url(http://fonts.googleapis.com/css?family=Advent+Pro:400,200,700);
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+
 body {
     font-family: Tahoma, Geneva, sans-serif;
     color: #fff;
-    background: url(space-saving5.jpg);
-    background-size: cover;
+    background: #323232;
 }
 
 .signin {
@@ -76,4 +79,35 @@ a:hover {
 ::placeholder {
     color: aliceblue;
     opacity: 0.8; /* Firefox */
+}
+/* NAV */
+.nav-couch {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #1e1e1e;
+    justify-content: space-between;
+    z-index: 100;
+}
+
+.nav-brand-couch {
+    margin-left: 2rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: auto;
+}
+
+.nav-brand-couch img {
+    height: 5rem;
+}
+
+a.nav-menu-link-couch {
+    text-decoration: none;
+    color: #aaa;
+    margin: 0 0rem;
+    padding: 1rem;
 }
