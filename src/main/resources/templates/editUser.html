@@ -42,7 +42,7 @@
 
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Join Date</p>
             <input class="col-md-4 text-center" type="text" th:field="*{user_joinDate}" th:value="${user.getUser_joinDate()}" readonly/>
-
+            <br/>
             <a class="btn btn-warning mt-2 mr-2" th:href="@{/viewUsers}">Cancel</a>
             <input class="btn btn-primary mt-2 ml-2" type="submit" value="Save"/>
         </form>
