@@ -155,8 +155,8 @@ public class InitialiseDB {
     public void addNewUser(Connection con, Users user) {
         try {
             String addUsers = "INSERT INTO tblUsers (username, password, user_name, user_age,user_email," +
-                    " user_join_date, admin_user) VALUES " +
-                    "(?,?,?,?,?,?,?)";
+                    " user_join_date) VALUES " +
+                    "(?,?,?,?,?,?)";
 
             PreparedStatement pst = con.prepareStatement(addUsers);
             pst.setString(1, user.getUser_username());
@@ -165,7 +165,6 @@ public class InitialiseDB {
             pst.setInt(4, user.getUser_age());
             pst.setString(5, user.getUser_email());
             pst.setString(6, user.getUser_joinDate());
-            pst.setInt(7, user.getAdmin_user());
 
             pst.executeUpdate();
             pst.close();
@@ -184,7 +183,7 @@ public class InitialiseDB {
     public boolean updateUserRecord(Connection con, Users user) {
         try {
             String updateRecord = "UPDATE tblUsers SET username= ?, password = ?, user_name = ?," +
-                    "user_age = ?, user_email = ?, user_join_date = ?, admin_user = ? WHERE user_id = ?";
+                    "user_age = ?, user_email = ?, user_join_date = ? WHERE user_id = ?";
 
             PreparedStatement pst = con.prepareStatement(updateRecord);
 
@@ -194,8 +193,7 @@ public class InitialiseDB {
             pst.setInt(4, user.getUser_age());
             pst.setString(5, user.getUser_email());
             pst.setString(6, user.getUser_joinDate());
-            pst.setInt(7, user.getAdmin_user());
-
+            pst.setInt(7, user.getUser_id());
 
             pst.executeUpdate();
             pst.close();
@@ -255,7 +253,6 @@ public class InitialiseDB {
                 user.setUser_age(rs.getInt("user_age"));
                 user.setUser_email(rs.getString("user_email"));
                 user.setUser_joinDate(rs.getString("user_join_date"));
-                user.setAdmin_user(rs.getInt("admin_user"));
 
                 users.add(user);
             }
@@ -396,21 +393,15 @@ public class InitialiseDB {
 
     public void addNewActors(Connection con, Actors actor) {
         try {
-<<<<<<< HEAD
             String addActors = "INSERT INTO tblActors (actor_age, actor_name," +
                     " actor_gender, actor_profile_image) VALUES " +
                     "(?,?,?,?)";
-=======
-            String addActors = "INSERT INTO tblActors (actor_age, actor_name, actor_gender, actor_profile_image, actor_bio) VALUES " +
-                    "(?,?,?,?,?)";
->>>>>>> e853d0c801dfcb28e509c7f3f15599b7a44df6ff
 
             PreparedStatement pst = con.prepareStatement(addActors);
             pst.setInt(1, actor.getActor_age());
             pst.setString(2, actor.getActor_name());
             pst.setString(3, actor.getActor_gender());
             pst.setString(4, actor.getActor_profilePhoto());
-            pst.setString(5, actor.getActor_bio());
 
             pst.executeUpdate();
             pst.close();
@@ -452,23 +443,18 @@ public class InitialiseDB {
 
     public boolean updateActorsProfileList(Connection con, Actors actor) {
         try {
-<<<<<<< HEAD
             String updateActor = "UPDATE tblActors " +
                     "SET actor_name = ?, actor_age = ?, actor_gender = ?," +
                     "actor_profile_image= ? " +
                     "WHERE actor_id = ?";
-=======
-            String updateRecord = "UPDATE tblActors SET actor_age= ?, actor_name = ?, actor_gender" +
-                    "actor_profile_image = ?, actor_bio = ?, WHERE actor_id = ?";
->>>>>>> e853d0c801dfcb28e509c7f3f15599b7a44df6ff
 
-            PreparedStatement pst = con.prepareStatement(updateRecord);
+            PreparedStatement pst = con.prepareStatement(updateActor);
 
             pst.setString(1, actor.getActor_name());
             pst.setInt(2, actor.getActor_age());
             pst.setString(3, actor.getActor_gender());
             pst.setString(4, actor.getActor_profilePhoto());
-            pst.setString(5, actor.getActor_bio());
+            pst.setInt(5, actor.getActor_id());
 
             pst.executeUpdate();
             pst.close();
@@ -502,9 +488,8 @@ public class InitialiseDB {
                 int actor_age = rs.getInt("actor_age");
                 String actor_gender = rs.getString("actor_gender");
                 String actor_profilePhoto = rs.getString("actor_profile_image");
-                String actor_bio = rs.getString("actor_bio");
 
-                Actors actor = new Actors(actor_id, actor_age, actor_name, actor_gender, actor_profilePhoto, actor_bio);
+                Actors actor = new Actors(actor_id, actor_age, actor_name, actor_gender, actor_profilePhoto);
                 actors.add(actor);
             }
 
