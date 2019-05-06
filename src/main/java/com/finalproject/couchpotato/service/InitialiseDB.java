@@ -326,19 +326,27 @@ public class InitialiseDB {
         Statement stmnt = null;
 
         try {
-            String getReviewsQuery = "SELECT * FROM tblReviews";
+            String getReviewsQuery =
+                    "SELECT tm.movie_id, tu.user_id, tr.review_id, tu.username, tr.review_rating," +
+                            "tr.review_comment, tr.review_date " +
+                            "FROM tblReviews tr " +
+                            "JOIN tblMovies tm USING (movie_id) " +
+                            "JOIN tblUsers tu USING (user_id) " +
+                            "ORDER BY tm.movie_id;";
+
             stmnt = con.createStatement();
             ResultSet rs = stmnt.executeQuery(getReviewsQuery);
 
             while (rs.next()) {
+                int user_id = rs.getInt("user_id");
+                int movie_id = rs.getInt("movie_id");
                 int review_id = rs.getInt("review_id");
-                int user_id=rs.getInt("user_id");
-                int movie_id=rs.getInt("movie_id");
+                String username = rs.getString("username");
                 String review_comment = rs.getString("review_comment");
                 int review_rating = rs.getInt("review_rating");
                 String review_date = rs.getString("review_date");
 
-                Reviews review = new Reviews(review_id,user_id,movie_id,review_comment, review_rating, review_date);
+                Reviews review = new Reviews(user_id, movie_id, review_id, username, review_comment, review_rating, review_date);
                 reviews.add(review);
             }
 
@@ -498,79 +506,10 @@ public class InitialiseDB {
         return actors;
     }
 
-    public ArrayList<CastRepo> getCastRepo(Connection con) {
-
-        ArrayList<CastRepo> castRepo = new ArrayList<CastRepo>();
-        Statement stmnt = null;
-
-        try {
-            String getCastRepoQuery =
-                    "SELECT tm.movie_id, tmc.movie_cast_id, ta.actor_name, ta.actor_profile_image FROM tblMovieCast tmc JOIN tblMovies tm USING (movie_id) JOIN tblActors ta USING (actor_id) ORDER BY tmc.movie_id;";
-            stmnt = con.createStatement();
-            ResultSet rs = stmnt.executeQuery(getCastRepoQuery);
-
-            while (rs.next()) {
-                CastRepo cast = new CastRepo();
-                cast.setMovie_id(rs.getInt("movie_id"));
-                cast.setCast_id(rs.getInt("cast_id"));
-                cast.setActor_name(rs.getString("actor_name"));
-                cast.setActor_profilePhoto(rs.getString("actor_profilePhoto"));
-
-                castRepo.add(cast);
-            }
-
-        } catch (Exception ex) {
-            System.out.println(ex.getClass());
-            ex.printStackTrace();
-        } finally {
-            try {
-                stmnt.close();
-                con.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return castRepo;
-    }
-
-    public ArrayList<ReviewRepo> getReviewRepo(Connection con) {
-
-        ArrayList<ReviewRepo> reviewRepo = new ArrayList<ReviewRepo>();
-        Statement stmnt = null;
-
-        try {
-            String getReviewRepoQuery =
-                    "SELECT tm.movie_id,tu.username,tr.review_rating,tr.review_comment,tr.review_date  FROM tblReviews tr JOIN tblMovies tm USING (movie_id) JOIN tblUsers tu USING (user_id) ORDER BY tm.movie_id;";
-            stmnt = con.createStatement();
-            ResultSet rs = stmnt.executeQuery(getReviewRepoQuery);
-
-            while (rs.next()) {
-                ReviewRepo review = new ReviewRepo();
-                review.setMovie_id(rs.getInt("movie_id"));
-                review.setUsername(rs.getString("username"));
-                review.setReview_rating(rs.getInt("review_rating"));
-                review.setReview_comment(rs.getString("review_comment"));
-                review.setReview_date(rs.getString("review_date"));
-
-                reviewRepo.add(review);
-            }
-
-        } catch (Exception ex) {
-            System.out.println(ex.getClass());
-            ex.printStackTrace();
-        } finally {
-            try {
-                stmnt.close();
-                con.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return reviewRepo;
-    }
-
     public Connection getDBConnection() {
         Connection con = connectDB();
         return con;
     }
+
+
 }

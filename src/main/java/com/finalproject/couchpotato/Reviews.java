@@ -11,6 +11,7 @@ public class Reviews {
     private  int user_id;
     private int movie_id;
     private int review_id;
+    private String username;
     private String review_comment;
     private int review_rating;
     private String review_date;
@@ -18,40 +19,51 @@ public class Reviews {
     InitialiseDB initDB = new InitialiseDB();
     public static ArrayList<Reviews> reviews = new ArrayList<>();
 
-
-    public Reviews(int review_id,int user_id, int movie_id, String review_comment, int review_rating, String review_date) {
-        this.review_id = review_id;
+    public Reviews(int user_id, int movie_id, int review_id, String username, String review_comment, int review_rating, String review_date) {
         this.user_id = user_id;
         this.movie_id = movie_id;
+        this.review_id = review_id;
+        this.username = username;
         this.review_comment = review_comment;
         this.review_rating = review_rating;
         this.review_date = review_date;
-
     }
+
     public Reviews(){};
 
     //Getter and Setter
-    //
-    public void setReviewMovie_id(int movie_id) {
-        this.movie_id = movie_id;
-    }
-    public int getReviewUser_id() {
+
+
+    public int getUser_id() {
         return user_id;
     }
 
-    public void setReviewUser_id(int user_id) {
+    public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
 
-    public int getReviewMovie_id() {
+    public int getMovie_id() {
         return movie_id;
     }
+
+    public void setMovie_id(int movie_id) {
+        this.movie_id = movie_id;
+    }
+
     public int getReview_id() {
         return review_id;
     }
 
     public void setReview_id(int review_id) {
         this.review_id = review_id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getReview_comment() {
@@ -78,8 +90,7 @@ public class Reviews {
         this.review_date = review_date;
     }
 
-    public ArrayList<Reviews> getAllReviews() {
-        reviews = initDB.getReviews(initDB.getDBConnection());
+    public ArrayList<Reviews> getAllReviews(){reviews = initDB.getReviews(initDB.getDBConnection());
         return reviews;
     }
 

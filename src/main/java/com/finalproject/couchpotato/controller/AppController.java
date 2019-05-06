@@ -79,7 +79,7 @@ public class AppController {
             }
         }
         for (Reviews rv : Reviews.reviews) {
-            if (rv.getReviewMovie_id() == movie.getMovie_id()) {
+            if (rv.getMovie_id() == movie.getMovie_id()) {
                 reviewList.add(rv);
             }
         }
@@ -103,7 +103,7 @@ public class AppController {
             }
         }
         model.addAttribute("movie", m);
-        return "editMovie";
+        return "editDeleteMovie";
     }
 
     @GetMapping("/editActor")
@@ -116,7 +116,7 @@ public class AppController {
             }
         }
         model.addAttribute("actor", a);
-        return "editActor";
+        return "editDeleteActor";
     }
 
     @GetMapping("/editUser")
@@ -129,7 +129,7 @@ public class AppController {
             }
         }
         model.addAttribute("user", u);
-        return "editUser";
+        return "editDeleteUser";
     }
     //--- END EDIT CONTROLLERS ---
 
@@ -208,13 +208,13 @@ public class AppController {
     @PostMapping("/addingMovie")
     public String movieAdded(@ModelAttribute Movies movie) {
         movie.addNewMovie(movie);
-        return "admin";
+        return "editDeleteMovie";
     }
 
     @PostMapping("/movieSaved")
     public String movieSaved(@ModelAttribute Movies movie) {
         movie.updateMovie(movie);
-        return "admin";
+        return "editDeleteMovie";
     }
 
     @GetMapping("/addActor")
@@ -224,19 +224,19 @@ public class AppController {
         Actors actor = new Actors();
         actor.setActor_id(nextID);
         model.addAttribute("actor", actor);
-        return "addActor";
+        return "editDeleteActor";
     }
 
     @PostMapping("/addingActor")
     public String actorAdded(@ModelAttribute Actors actor) {
         actor.addNewActors(actor);
-        return "admin";
+        return "editDeleteActor";
     }
 
     @PostMapping("/actorSaved")
     public String actorSaved(@ModelAttribute Actors actor) {
         actor.updateActorProfileList(actor);
-        return "admin";
+        return "editDeleteActor";
     }
 
 
@@ -247,13 +247,13 @@ public class AppController {
         Reviews review = new Reviews();
         review.setReview_id(nextID);
         model.addAttribute("review", review);
-        return "admin";
+        return "index";
     }
 
     @PostMapping("/addingReview")
     public String reviewAdded(@ModelAttribute Reviews review) {
         review.addNewReview(review);
-        return "admin";
+        return "index";
     }
 
     @GetMapping("/addUser")
@@ -269,13 +269,13 @@ public class AppController {
     @PostMapping("/addingUser")
     public String userAdded(@ModelAttribute Users user) {
         user.addNewUser(user);
-        return "admin";
+        return "editDeleteUser";
     }
 
     @PostMapping("/userSaved")
     public String userSaved(@ModelAttribute Users user) {
         user.updateUserRecord(user);
-        return "admin";
+        return "editDeleteUser";
     }
 
     //-- END OF ADD CONTROLLERS --
