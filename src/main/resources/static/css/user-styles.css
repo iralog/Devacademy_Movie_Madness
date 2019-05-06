@@ -232,20 +232,6 @@ span.hamburger-line-couch {
     text-shadow: 5px 5px 10px #000;
 }
 
-#video-container-couch .video-content-couch .inner-couch button {
-    text-transform: uppercase;
-    font-family: inherit;
-    width: 10rem;
-    padding: 0.6rem 0.7rem;
-    font-size: 1rem;
-    letter-spacing: 0.1rem;
-    border: none;
-    color: #2e3135;
-    border-radius: 10rem;
-    outline: none;
-    background: linear-gradient(to right, #c4c4c4 0%, #ffdd00 100%);
-}
-
 /* MEDIA QUERIES */
 @media (max-width: 768px) {
 

@@ -105,26 +105,26 @@ public class AppController {
     @GetMapping("/editActor")
     public String actorToEdit(@RequestParam(value = "move_id", required = false,
             defaultValue = "1") int actor_id, @ModelAttribute Actors actor, Model model) {
-        Actors m = new Actors();
-        for (Actors mv : Actors.actors) {
-            if (mv.getActor_id() == actor.getActor_id()) {
-                m = mv;
+        Actors a = new Actors();
+        for (Actors ac : Actors.actors) {
+            if (ac.getActor_id() == actor.getActor_id()) {
+                a = ac;
             }
         }
-        model.addAttribute("actor", m);
+        model.addAttribute("actor", a);
         return "editActor";
     }
 
     @GetMapping("/editUser")
     public String userToEdit(@RequestParam(value = "move_id", required = false,
             defaultValue = "1") int user_id, @ModelAttribute Users user, Model model) {
-        Users m = new Users();
-        for (Users mv : Users.users) {
-            if (mv.getUser_id() == user.getUser_id()) {
-                m = mv;
+        Users u = new Users();
+        for (Users usr : Users.users) {
+            if (usr.getUser_id() == user.getUser_id()) {
+                u = usr;
             }
         }
-        model.addAttribute("user", m);
+        model.addAttribute("user", u);
         return "editUser";
     }
     //--- END EDIT CONTROLLERS ---
@@ -162,13 +162,13 @@ public class AppController {
     @GetMapping("/deleteReview")
     public String reviewToDelete(@RequestParam(value = "review_id", required = false,
             defaultValue = "1") int review_id, @ModelAttribute Reviews review, Model model) {
-        Reviews u = new Reviews();
-        for (Reviews usr : Reviews.reviews) {
-            if (usr.getReview_id() == review.getReview_id()) {
-                u = usr;
+        Reviews r = new Reviews();
+        for (Reviews rev : Reviews.reviews) {
+            if (rev.getReview_id() == review.getReview_id()) {
+                r = rev;
             }
         }
-        model.addAttribute("review", u);
+        model.addAttribute("review", r);
         review.deleteReview(review);
         return "editDeleteReview";
     }

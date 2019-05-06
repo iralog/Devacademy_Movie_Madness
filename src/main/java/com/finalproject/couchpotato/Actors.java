@@ -71,7 +71,7 @@ public class Actors {
     public void addNewActors(Actors actor) {
       initDB.addNewActors(initDB.getDBConnection(),actor);
   }
- public void updateActorProfileList(Actors actor){
+    public void updateActorProfileList(Actors actor){
       initDB.updateActorsProfileList(initDB.getDBConnection(), actor);
    }
     public void deleteActor(Actors actor){
