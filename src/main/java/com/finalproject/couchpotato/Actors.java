@@ -3,26 +3,27 @@ package com.finalproject.couchpotato;
 import com.finalproject.couchpotato.service.InitialiseDB;
 
 import java.util.ArrayList;
-//by Selina
+
 public class Actors {
     private int actor_id;
     private int actor_age;
     private String actor_name;
     private String actor_gender;
     private String actor_profilePhoto;
+    private String actor_bio;
+
     InitialiseDB initDB = new InitialiseDB();
     public static ArrayList<Actors> actors = new ArrayList<>();
 
-    public Actors() {
+    public Actors() {}
 
-    }
-
-    public Actors(int actor_id, int actor_age, String actor_name, String actor_gender, String actor_profilePhoto) {
+    public Actors(int actor_id, int actor_age, String actor_name, String actor_gender, String actor_profilePhoto, String actor_bio) {
         this.actor_id = actor_id;
         this.actor_age = actor_age;
         this.actor_name = actor_name;
         this.actor_gender = actor_gender;
         this.actor_profilePhoto = actor_profilePhoto;
+        this.actor_bio = actor_bio;
     }
 
     public int getActor_id() {
@@ -64,20 +65,30 @@ public class Actors {
     public void setActor_profilePhoto(String actor_profilePhoto) {
         this.actor_profilePhoto = actor_profilePhoto;
     }
-    //Below ready for use. no methods made yet.
 
-    public ArrayList<Actors>getAllActors(){
-       actors = initDB.getActors(initDB.getDBConnection());
+    public String getActor_bio() {
+        return actor_bio;
+    }
+
+    public void setActor_bio(String actor_bio) {
+        this.actor_bio = actor_bio;
+    }
+
+    public ArrayList<Actors> getAllActors() {
+        actors = initDB.getActors(initDB.getDBConnection());
         return actors;
-   }
+    }
+
     public void addNewActors(Actors actor) {
-      initDB.addNewActors(initDB.getDBConnection(),actor);
-  }
-    public void updateActorProfileList(Actors actor){
-      initDB.updateActorsProfileList(initDB.getDBConnection(), actor);
-   }
-    public void deleteActor(Actors actor){
-       initDB.deleteActor(initDB.getDBConnection(), actor);
-   }
+        initDB.addNewActors(initDB.getDBConnection(), actor);
+    }
+
+    public void updateActorProfileList(Actors actor) {
+        initDB.updateActorsProfileList(initDB.getDBConnection(), actor);
+    }
+
+    public void deleteActor(Actors actor) {
+        initDB.deleteActor(initDB.getDBConnection(), actor);
+    }
 
 }
