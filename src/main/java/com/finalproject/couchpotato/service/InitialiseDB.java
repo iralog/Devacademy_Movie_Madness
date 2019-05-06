@@ -1,8 +1,10 @@
 package com.finalproject.couchpotato.service;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
+import java.util.Date;
 import com.finalproject.couchpotato.*;
 import org.springframework.stereotype.Service;
 import org.sqlite.SQLiteConfig;
@@ -365,7 +367,16 @@ public class InitialiseDB {
     }
 
     public boolean updateReview(Connection con, Reviews review) {
+
+     /*   Date date = new Date();
+        final DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        System.out.println(sdf.format(date));
+
+*/
         try {
+
+
+
             String updateRecord = "UPDATE tblReviews SET review_comment= ?, review_rating = ?" +
                     "review_date = ?, WHERE review_id = ?";
 
