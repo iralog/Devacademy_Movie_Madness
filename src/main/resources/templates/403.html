@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>User Login</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login-style.css}"/>
+</head>
+
+<body>
+
+<nav>
+    <div class="nav-couch">
+        <div class="nav-brand-couch">
+            <a th:href="@{/}" class="nav-menu-link-couch">
+                <img th:src="@{/img/logo_cp.svg}">
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="wrapper">
+    <header class="header">
+        <h1 th:style="'text-align: center'">Access is Denied!</h1>
+
+    </header>
+</div>
+</body>
+</html>
