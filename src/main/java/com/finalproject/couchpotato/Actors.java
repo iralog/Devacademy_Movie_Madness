@@ -1,5 +1,7 @@
 package com.finalproject.couchpotato;
 
+import com.finalproject.couchpotato.service.InitialiseDB;
+
 import java.util.ArrayList;
 //by Selina
 public class Actors {

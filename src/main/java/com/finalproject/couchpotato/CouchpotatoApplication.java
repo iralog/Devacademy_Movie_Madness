@@ -1,5 +1,6 @@
 package com.finalproject.couchpotato;
 
+import com.finalproject.couchpotato.service.InitialiseDB;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

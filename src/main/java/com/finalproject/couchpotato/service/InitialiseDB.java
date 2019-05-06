@@ -1,8 +1,9 @@
-package com.finalproject.couchpotato;
+package com.finalproject.couchpotato.service;
 
 import java.sql.*;
 import java.util.ArrayList;
 
+import com.finalproject.couchpotato.*;
 import org.springframework.stereotype.Service;
 import org.sqlite.SQLiteConfig;
 
