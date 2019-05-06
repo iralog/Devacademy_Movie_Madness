@@ -1,8 +1,9 @@
-package com.finalproject.couchpotato;
+package com.finalproject.couchpotato.service;
 
 import java.sql.*;
 import java.util.ArrayList;
 
+import com.finalproject.couchpotato.*;
 import org.springframework.stereotype.Service;
 import org.sqlite.SQLiteConfig;
 
@@ -191,6 +192,7 @@ public class InitialiseDB {
             pst.setInt(4, user.getUser_age());
             pst.setString(5, user.getUser_email());
             pst.setString(6, user.getUser_joinDate());
+            pst.setInt(7, user.getUser_id());
 
             pst.executeUpdate();
             pst.close();
@@ -429,15 +431,16 @@ public class InitialiseDB {
 
     public boolean updateActorsProfileList(Connection con, Actors actor) {
         try {
-            String updateRecord = "UPDATE tblActors SET actor_age= ?, actor_name = ?, actor_gender" +
-                    "actor_profile_image = ?, WHERE actor_id = ?";
+            String updateActor = "UPDATE tblActors SET actor_name = ?, actor_age = ?, actor_gender = ?," +
+                    "actor_profile_image= ? WHERE actor_id = ?";
 
-            PreparedStatement pst = con.prepareStatement(updateRecord);
+            PreparedStatement pst = con.prepareStatement(updateActor);
 
             pst.setString(1, actor.getActor_name());
             pst.setInt(2, actor.getActor_age());
             pst.setString(3, actor.getActor_gender());
             pst.setString(4, actor.getActor_profilePhoto());
+            pst.setInt(5, actor.getActor_id());
 
             pst.executeUpdate();
             pst.close();
