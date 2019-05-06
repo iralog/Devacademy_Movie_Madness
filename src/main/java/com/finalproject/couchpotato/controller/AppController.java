@@ -290,7 +290,7 @@ public class AppController {
     @GetMapping("/LoginPage")
     public String LoginPage(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);
-        return "LoginPage";
+        return "login";
     }
 
     @RequestMapping(value = "/redirect", method = RequestMethod.GET)

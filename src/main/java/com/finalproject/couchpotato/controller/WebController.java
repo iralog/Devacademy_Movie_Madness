@@ -10,7 +10,7 @@ public class WebController {
         return "user";
     }
 
-    @RequestMapping(value = {"login"})
+    @RequestMapping(value = {"/login"})
     public String login() {
         return "login";
     }
