@@ -3,6 +3,7 @@ package com.finalproject.couchpotato;
 import com.finalproject.couchpotato.service.InitialiseDB;
 
 import java.util.ArrayList;
+
 //by Danillo
 public class Users {
 
@@ -13,33 +14,38 @@ public class Users {
     private int user_age;
     private String user_email;
     private String user_joinDate;
+    private int admin_user;
+
     InitialiseDB initDB = new InitialiseDB();
     public static ArrayList<Users> users = new ArrayList<>();
 
-    public Users(int user_id, String user_username, String user_password,
-                 String user_name, int user_age, String user_email,String user_joinDate) {
+    public Users(int user_id, String user_username, String user_password, String user_name, int user_age, String user_email, String user_joinDate, int admin_user) {
         this.user_id = user_id;
         this.user_username = user_username;
         this.user_password = user_password;
         this.user_name = user_name;
         this.user_age = user_age;
-        this.user_email=user_email;
+        this.user_email = user_email;
         this.user_joinDate = user_joinDate;
+        this.admin_user = admin_user;
     }
 
-    public Users(){}
+    public Users() {
+    }
 
     //Getters and Setters
     public int getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {this.user_id = user_id;}
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
 
-    public String getUser_usernameByUserId(int id){
+    public String getUser_usernameByUserId(int id) {
         String usrn = " ";
-        for(Users usr : users){
-            if (usr.getUser_id() == id){
+        for (Users usr : users) {
+            if (usr.getUser_id() == id) {
                 usrn = getUser_name();
             }
         }
@@ -66,7 +72,9 @@ public class Users {
         return user_name;
     }
 
-    public void setUser_name(String user_name) {this.user_name = user_name;}
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
 
     public int getUser_age() {
         return user_age;
@@ -75,6 +83,7 @@ public class Users {
     public void setUser_age(int user_age) {
         this.user_age = user_age;
     }
+
     public String getUser_email() {
         return user_email;
     }
@@ -91,9 +100,18 @@ public class Users {
         this.user_joinDate = user_joinDate;
     }
 
+    public int getAdmin_user() {
+        return admin_user;
+    }
 
-    public ArrayList<Users>getAllUsers(){users = initDB.getUsers(initDB.getDBConnection());
-        return users;}
+    public void setAdmin_user(int admin_user) {
+        this.admin_user = admin_user;
+    }
+
+    public ArrayList<Users> getAllUsers() {
+        users = initDB.getUsers(initDB.getDBConnection());
+        return users;
+    }
 
 
     //Methods (Add, Update and Delete User)
@@ -101,8 +119,12 @@ public class Users {
         initDB.addNewUser(initDB.getDBConnection(), user);
     }
 
-    public void updateUserRecord(Users user) {initDB.updateUserRecord(initDB.getDBConnection(), user);}
+    public void updateUserRecord(Users user) {
+        initDB.updateUserRecord(initDB.getDBConnection(), user);
+    }
 
-    public void deleteUser(Users user) {initDB.deleteUser(initDB.getDBConnection(), user);}
+    public void deleteUser(Users user) {
+        initDB.deleteUser(initDB.getDBConnection(), user);
+    }
 
 }
