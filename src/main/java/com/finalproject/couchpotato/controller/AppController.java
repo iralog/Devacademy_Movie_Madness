@@ -102,7 +102,7 @@ public class AppController {
             }
         }
         model.addAttribute("movie", m);
-        return "editDeleteMovie";
+        return "editMovie";
     }
 
     @GetMapping("/editActor")
@@ -115,7 +115,7 @@ public class AppController {
             }
         }
         model.addAttribute("actor", a);
-        return "editDeleteActor";
+        return "editActor";
     }
 
     @GetMapping("/editUser")
@@ -128,7 +128,7 @@ public class AppController {
             }
         }
         model.addAttribute("user", u);
-        return "editDeleteUser";
+        return "editUser";
     }
     //--- END EDIT CONTROLLERS ---
 
@@ -223,7 +223,7 @@ public class AppController {
         Actors actor = new Actors();
         actor.setActor_id(nextID);
         model.addAttribute("actor", actor);
-        return "editDeleteActor";
+        return "addActor";
     }
 
     @PostMapping("/addingActor")
