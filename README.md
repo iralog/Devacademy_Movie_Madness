@@ -2,9 +2,9 @@
 
 PLEASE PULL FROM newdev
 
-Welcome: I hope you enjoy our wesbite !
+Welcome: I hope you enjoy our website !
 
-This project was completed by Danasawin / Danillo / Selina / Irina / Luidmila
+This project was completed by Danasawin / Danillo / Selina / Irina / Liudmila
 
 Below are SCRUM documentations:
 
