@@ -25,16 +25,27 @@
         <form action="#" th:action="@{/addingReview}" th:object="${review}" method="post">
 
             <div>
-                <p class="col-md-12 font-weight-bold mb-1 mt-1">Review ID</p>
+                <p class="col-md-12 font-weight-bold mb-1 mt-1">Review Comment</p>
                 <input class="col-md-4 text-center" type="text" th:field="*{review_comment}"
-                       th:value="${review.review_comment}"
-                       readonly/>
+                       th:value="${review.review_comment}"/>
+            </div>
+
+            <div>
+                <p class="col-md-12 font-weight-bold mb-1 mt-1">Review Username</p>
+                <input class="col-md-4 text-center" type="text" th:field="*{username}"
+                       th:value="${review.username}"/>
+            </div>
+
+            <div>
+                <p class="col-md-12 font-weight-bold mb-1 mt-1">Movie ID</p>
+                <input class="col-md-4 text-center" type="text" th:field="*{movie_id}"
+                       th:value="${review.movie_id}"/>
             </div>
             <div>
                 <p class="col-md-12 font-weight-bold mb-1 mt-1">Review Rating</p>
                 <input class="col-md-4 text-center" type="text" th:field="*{review_rating}"
                        th:value="${review.review_rating}"
-                       readonly/>
+                      />
             </div>
 
             <br/>
