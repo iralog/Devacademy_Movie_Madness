@@ -22,7 +22,7 @@ public class AppController {
 
     //--- VIEW CONTROLLERS ---
     @GetMapping("/viewMovies")
-    public String viewMoviesByUser(Model model) {
+    public String viewMovies(Model model) {
         movie.getAllMovies();
         review.getAllReviews();
         model.addAttribute("movie", Movies.movies);
@@ -63,7 +63,6 @@ public class AppController {
         return "editDeleteUser";
     }
 
-
     //--- END OF VIEW CONTROLLERS ---
 
 
@@ -103,7 +102,7 @@ public class AppController {
             }
         }
         model.addAttribute("movie", m);
-        return "editDeleteMovie";
+        return "editMovie";
     }
 
     @GetMapping("/editActor")
@@ -116,7 +115,7 @@ public class AppController {
             }
         }
         model.addAttribute("actor", a);
-        return "editDeleteActor";
+        return "editActor";
     }
 
     @GetMapping("/editUser")
@@ -129,7 +128,7 @@ public class AppController {
             }
         }
         model.addAttribute("user", u);
-        return "editDeleteUser";
+        return "editUser";
     }
     //--- END EDIT CONTROLLERS ---
 
@@ -224,7 +223,7 @@ public class AppController {
         Actors actor = new Actors();
         actor.setActor_id(nextID);
         model.addAttribute("actor", actor);
-        return "editDeleteActor";
+        return "addActor";
     }
 
     @PostMapping("/addingActor")
@@ -247,13 +246,19 @@ public class AppController {
         Reviews review = new Reviews();
         review.setReview_id(nextID);
         model.addAttribute("review", review);
-        return "index";
+        return "addReview";
     }
 
     @PostMapping("/addingReview")
     public String reviewAdded(@ModelAttribute Reviews review) {
         review.addNewReview(review);
-        return "index";
+        return "editDeleteReview";
+    }
+
+    @PostMapping("/reviewSaved")
+    public String reviewSaved(@ModelAttribute Reviews review) {
+        review.updateReview(review);
+        return "editDeleteReview";
     }
 
     @GetMapping("/addUser")
@@ -285,7 +290,7 @@ public class AppController {
     @GetMapping("/LoginPage")
     public String LoginPage(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);
-        return "LoginPage";
+        return "login";
     }
 
     @RequestMapping(value = "/redirect", method = RequestMethod.GET)
@@ -303,6 +308,20 @@ public class AppController {
     public String ForgotUserPass(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);
         return "ForgotUserPass";
+    }
+
+    @GetMapping("/userProfile")
+    public String userProfile(@RequestParam(value = "user_id", required = false,
+        defaultValue = "1") int user_id, Model model) {
+            Users u = new Users();
+
+            for (Users ur : Users.users) {
+                if (ur.getUser_id() == user_id) {
+                    u = ur;
+                }
+            }
+            model.addAttribute("user", u);
+            return "userProfile";
     }
 
 }

@@ -7,6 +7,21 @@ body {
     color: #fff;
     background: #323232;
 }
+.wrapper {
+    margin-top: 6rem;
+    display: flex;
+    flex-flow: row wrap;
+    font-weight: bold;
+}
+
+.wrapper > * {
+    flex: 1 100%;
+}
+
+.header {
+    background: #1e1e1e;
+    padding: 2rem;
+}
 
 .signin {
     background: rgba(44, 62, 80, 0.7);

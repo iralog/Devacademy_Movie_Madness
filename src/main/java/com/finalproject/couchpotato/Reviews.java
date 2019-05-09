@@ -29,7 +29,7 @@ public class Reviews {
         this.review_date = review_date;
     }
 
-    public Reviews(){};
+    public Reviews(){}
 
     //Getter and Setter
 

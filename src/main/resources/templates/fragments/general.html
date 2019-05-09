@@ -1,19 +1,73 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<html lang="eng">
-<head>
-    <block th:fragment="bootstrap">
-        <!-- BOOTSTRAP -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    </block>
+<html lang="en">
+<head th:fragment="headerfiles">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/admin-styles.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/movies-table-style.css}"/>
 </head>
 <body>
+
+<!-- NAV -->
+<nav th:fragment="navbar">
+    <div class="nav-couch">
+        <div class="nav-brand-couch">
+            <img th:src="@{/img/logo_cp.svg}">
+        </div>
+        <ul class="nav-menu-couch">
+            <li class="nav-menu-item-couch">
+                <a th:href="@{/}" class="nav-menu-link-couch">Home</a>
+            </li>
+            <li class="nav-menu-item-couch">
+                <a th:href="@{/viewMovies}" class="nav-menu-link-couch">Movie List</a>
+            </li>
+            <li class="nav-menu-item-couch">
+                <a th:href="@{/LoginPage}" class="nav-menu-link-couch">Log in</a>
+            </li>
+            <li class="nav-menu-item-couch">
+                <a th:href="@{/SignupPage}" class="nav-menu-link-couch">Sign up</a>
+            </li>
+        </ul>
+        <div class="hamburger-icon-couch" id="hamburger-icon-couch">
+            <span class="hamburger-line-couch"></span>
+            <span class="hamburger-line-couch"></span>
+            <span class="hamburger-line-couch"></span>
+        </div>
+    </div>
+</nav>
+<!-- END OF NAV -->
+
+<!-- SIDE-NAV -->
+<aside th:fragment="side-nav">
+    <div id="side-nav-couch" class="side-nav-couch">
+        <h3 class="side-nav-header-couch">MENU</h3>
+        <ul class="side-nav-menu-couch">
+            <li class="side-nav-item-couch">
+                <a th:href="@{index}" class="side-nav-link-couch">Home</a>
+            </li>
+            <li class="side-nav-item-couch">
+                <a th:href="@{/viewMovies}" class="side-nav-link-couch">Movie List</a>
+            </li>
+            <li class="side-nav-item-couch">
+                <a th:href="@{/LoginPage}" class="side-nav-link-couch">Log in</a>
+            </li>
+            <li class="side-nav-item-couch">
+                <a th:href="@{/SignupPage}" class="nav-menu-link-couch">Sign up</a>
+            </li>
+        </ul>
+    </div>
+</aside>
+<!-- END OF SIDE-NAV -->
 
 
 <footer th:fragment="footerfiles">
     <!-- JS TOGGLER - NAVBAR/SIDE-NAV -->
     <script type="text/javascript" th:src="@{/js/nav-toggler.js}"></script>
 </footer>
+
 </body>
 </html>

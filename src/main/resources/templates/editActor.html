@@ -36,7 +36,7 @@
 
             <p class="col-md-12 font-weight-bold mb-1 mt-1">Photo</p>
             <input class="col-md-4 text-center" type="text" th:field="*{actor_profilePhoto}" th:value="${actor.getActor_profilePhoto()}"/>
-
+            <br/>
             <a class="btn btn-warning mt-2 mr-2" th:href="@{/editDeleteActor}">Cancel</a>
             <input class="btn btn-primary mt-2 ml-2" type="submit" value="Save"/>
         </form>
